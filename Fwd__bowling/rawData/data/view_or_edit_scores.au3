@@ -33,10 +33,11 @@ $return2=0
 
 
 
-$hListView_Right = _GUICtrlListView_Create($GameScheduleGui, "", 300, 10, 350, 330, BitOR($LVS_DEFAULT, $WS_BORDER))
+$hListView_Right = _GUICtrlListView_Create($GameScheduleGui, "", 200, 10, 450, 330, BitOR($LVS_DEFAULT, $WS_BORDER))
 _GUICtrlListView_SetExtendedListViewStyle($hListView_Right, BitOR($LVS_EX_FULLROWSELECT,$LVS_EX_GRIDLINES ))
 ;_GUICtrlListView_AddColumn($hListView_Right, "", 43)
 _GUICtrlListView_AddColumn($hListView_Right, "player name", 100)
+_GUICtrlListView_AddColumn($hListView_Right, "team number", 100)
 _GUICtrlListView_AddColumn($hListView_Right, "game 1", 83);add column
 _GUICtrlListView_AddColumn($hListView_Right, "game 2", 83)
 _GUICtrlListView_AddColumn($hListView_Right, "game 3", 83)
@@ -135,10 +136,10 @@ _GUIListViewEx_SetEditStatus($iLV_Right_Index, "*")
 ;MsgBox(0,@error,$RETURN)
 
 ; Create buttons
-$cInsert_Button = GUICtrlCreateButton("Insert", 270, 350, 200, 30)
-$cDelete_Button = GUICtrlCreateButton("Delete", 270, 390, 200, 30)
-$cUp_Button = GUICtrlCreateButton("Move Up", 480, 350, 200, 30)
-$cDown_Button = GUICtrlCreateButton("Move Down", 480, 390, 200, 30)
+$cInsert_Button = GUICtrlCreateButton("Insert", 220, 350, 200, 30)
+$cDelete_Button = GUICtrlCreateButton("Delete", 220, 390, 200, 30)
+$cUp_Button = GUICtrlCreateButton("Move Up", 430, 350, 200, 30)
+$cDown_Button = GUICtrlCreateButton("Move Down", 430, 390, 200, 30)
 $roundNumberLabel = GUICtrlCreateLabel("Round Number", 26, 25, 86, 17)
 $RoundNumberInput = GUICtrlCreateInput("", 106, 25, 49, 21,$ES_CENTER)
 
@@ -148,7 +149,7 @@ $RoundNumberInput = GUICtrlCreateInput("", 106, 25, 49, 21,$ES_CENTER)
 ;$cHeader_Right_Button = GUICtrlCreateButton("Edit Right Header 0", 220, 470, 200, 30)
 ;$cDisplay_Left_Button = GUICtrlCreateButton("Show Left", 430, 350, 100, 30)
 ;$cDisplay_Right_Button = GUICtrlCreateButton("Show Right", 530, 350, 100, 30)
-$cExit_Button = GUICtrlCreateButton("Exit", 270, 430, 410, 68)
+$cExit_Button = GUICtrlCreateButton("Exit", 220, 430, 410, 68)
 
 ; Register for sorting, dragging and editing
 _GUIListViewEx_MsgRegister()
