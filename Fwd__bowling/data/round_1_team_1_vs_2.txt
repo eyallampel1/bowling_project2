@@ -1,0 +1,41 @@
+round 1
+teamNumber: 1
+אייל למפל
+150
+150
+105
+round 1
+teamNumber: 1
+גבי למפל
+150
+150
+150
+round 1
+teamNumber: 1
+ברנס ליאור
+150
+150
+150
+round 1
+teamNumber: 2
+ון קופם
+150
+150
+150
+round 1
+teamNumber: 2
+אריה סיגנר
+150
+150
+180
+round 1
+teamNumber: 2
+דוטרקי
+180
+180
+180
+final Score:
+teamNumber: 1
+ points
+teamNumber: 2
+ points

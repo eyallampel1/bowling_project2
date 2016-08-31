@@ -1,0 +1,36 @@
+round 1
+teamNumber: 5
+Lampel 1
+
+
+
+round 1
+teamNumber: 5
+Lampel 2
+
+
+
+round 1
+teamNumber: 5
+Lampel 3
+
+
+
+round 1
+teamNumber: 6
+Lampel 4
+
+
+
+round 1
+teamNumber: 6
+Lampel 5
+
+
+
+round 1
+teamNumber: 6
+Lampel 6
+
+
+

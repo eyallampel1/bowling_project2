@@ -1,0 +1,36 @@
+round 1
+teamNumber: 11
+Lampel 4
+
+
+
+round 1
+teamNumber: 11
+גבי למפל
+
+
+
+round 1
+teamNumber: 11
+Lampel 6
+
+
+
+round 1
+teamNumber: 12
+Lampel 7
+
+
+
+round 1
+teamNumber: 12
+Lampel 8
+
+
+
+round 1
+teamNumber: 12
+Lampel 9
+
+
+

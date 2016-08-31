@@ -1,0 +1,36 @@
+round 1
+teamNumber: 9
+Lampel 13
+
+
+
+round 1
+teamNumber: 9
+Lampel 14
+
+
+
+round 1
+teamNumber: 9
+Lampel 15
+
+
+
+round 1
+teamNumber: 10
+Lampel 1
+
+
+
+round 1
+teamNumber: 10
+Lampel 2
+
+
+
+round 1
+teamNumber: 10
+Lampel 3
+
+
+

@@ -1,0 +1,70 @@
+round 1
+30.05.16
+lanes 1 - 2
+1 vs 2
+lanes 3 - 4
+3 vs 4
+lanes 5 - 6
+5 vs 6
+lanes 7 - 8
+7 vs 8
+lanes 9 - 10
+9 vs 10
+lanes 11 - 12
+11 vs 12
+round 2
+07.06.16
+lanes 1 - 2
+4 vs 5
+lanes 3 - 4
+2 vs 6
+lanes 5 - 6
+8 vs 10
+lanes 7 - 8
+9 vs 11
+lanes 9 - 10
+1 vs 7
+lanes 11 - 12
+3 vs 12
+round 3
+14.06.16
+lanes 1 - 2
+3 vs 1
+lanes 3 - 4
+1 vs 10
+lanes 5 - 6
+4 vs 11
+lanes 7 - 8
+6 vs 7
+lanes 9 - 10
+2 vs 8
+lanes 11 - 12
+5 vs 12
+round 4
+21.06.16
+lanes 1 - 2
+4 vs 5
+lanes 3 - 4
+2 vs 6
+lanes 5 - 6
+8 vs 10
+lanes 7 - 8
+9 vs 11
+lanes 9 - 10
+1 vs 7
+lanes 11 - 12
+3 vs 12
+round 5
+27.07.16
+lanes 1 - 2
+2 vs 3
+lanes 3 - 4
+4 vs 5
+lanes 5 - 6
+6 vs 7
+lanes 7 - 8
+8 vs 9
+lanes 9 - 10
+10 vs 11
+lanes 11 - 12
+1 vs 12

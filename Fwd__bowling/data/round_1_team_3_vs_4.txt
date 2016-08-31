@@ -1,0 +1,36 @@
+round 1
+teamNumber: 3
+ללי בוב
+
+
+
+round 1
+teamNumber: 3
+דני הרוש
+
+
+
+round 1
+teamNumber: 3
+ירון כהן
+
+
+
+round 1
+teamNumber: 4
+פרגמין גולן
+
+
+
+round 1
+teamNumber: 4
+פרלמן סמיון
+
+
+
+round 1
+teamNumber: 4
+דיין איציק
+
+
+

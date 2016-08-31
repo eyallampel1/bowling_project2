@@ -1,0 +1,11 @@
+10|
+Lampel 1| 1
+Lampel 2| 1
+Lampel 1| 1
+Lampel 2| 1
+Lampel 3| 1
+Lampel 4| 2
+Lampel 5| 2
+Lampel 6| 2
+Lampel 7| 3
+Lampel 8| 3

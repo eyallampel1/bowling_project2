@@ -1,0 +1,36 @@
+round 1
+teamNumber: 7
+Lampel 7
+
+
+
+round 1
+teamNumber: 7
+Lampel 8
+
+
+
+round 1
+teamNumber: 7
+Lampel 9
+
+
+
+round 1
+teamNumber: 8
+Lampel 10
+
+
+
+round 1
+teamNumber: 8
+Lampel 11
+
+
+
+round 1
+teamNumber: 8
+Lampel 12
+
+
+
