@@ -1,0 +1,41 @@
+round 1
+teamNumber: 1
+םםם
+
+
+
+round 1
+teamNumber: 1
+גבי למפל
+
+
+
+round 1
+teamNumber: 1
+ברנס ליאור
+
+
+
+round 1
+teamNumber: 2
+ון קופם
+
+
+
+round 1
+teamNumber: 2
+אריה סיגנר
+
+
+
+round 1
+teamNumber: 2
+דוטרקי
+
+
+
+final Score:
+teamNumber: 1
+ points
+teamNumber: 2
+ points

@@ -1,0 +1,41 @@
+round 1
+teamNumber: 12
+Lampel 7
+
+
+
+round 1
+teamNumber: 12
+Lampel 8
+
+
+
+round 1
+teamNumber: 12
+Lampel 9
+
+
+
+round 1
+teamNumber: 12
+Lampel 7
+
+
+
+round 1
+teamNumber: 12
+Lampel 8
+
+
+
+round 1
+teamNumber: 12
+Lampel 9
+
+
+
+final Score:
+teamNumber: 12
+ points
+teamNumber: 12
+ points

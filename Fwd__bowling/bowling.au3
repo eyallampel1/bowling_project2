@@ -12,7 +12,7 @@
 #include <File.au3>
 #include <MsgBoxConstants.au3>
 ;#include "bowlingTableTry.au3"
-#include "GUIListViewEx.au3"
+#include "rawData/GUIListViewEx.au3"
 
 #Region ### START Koda GUI section ### Form=c:\users\hilalampel\documents\bowling.kxf
 $Form1_1 = GUICreate("Ahsdod Bowling", 1125, 647, 118, 12)
@@ -129,7 +129,8 @@ While 1
         Case $CreateTablesButton
 			startFunction()
 		Case $InsertPlayersNamesInitialInsertButton
-Run("bowlingTableTry.exe",@SCRIPTDIR)
+		;	MsgBox(0,"",@SCRIPTDIR&"\rawData")
+Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 		;	GUISetState(@SW_DISABLE,$Form1_1)
 		;	_gui2()
 		;	GUISetState(@SW_ENABLE,$Form1_1)
@@ -142,7 +143,7 @@ Run("bowlingTableTry.exe",@SCRIPTDIR)
 			writeToInputBoxesOfTeam2_From_TeamDividerTextFile()
 		Case $InseartGamesDateButton
 			;InseartDateButton()
-			Run("Game_schedule_gui.exe",@SCRIPTDIR)
+			Run(@SCRIPTDIR&"\rawData\"&"Game_schedule_gui.exe",@SCRIPTDIR)
 		Case $insertDataButton
 			InsertDataButton()
 		Case $RoundNumberInput
@@ -158,7 +159,8 @@ Run("bowlingTableTry.exe",@SCRIPTDIR)
 		Case $Player1_score_game3_1
 		;	CalculateAverage()
 		Case $editRoundScoresButton
-			Run("view_or_edit_scores.exe",@SCRIPTDIR&"/data")
+
+			Run(@SCRIPTDIR&"\rawData\data\" &"view_or_edit_scores.exe",@SCRIPTDIR)
 	EndSwitch
 WEnd
 
@@ -239,7 +241,7 @@ $excelObject.ActiveSheet.Columns().AutoFit
 
 ;==
 $returnArray=0
-_FileReadToArray(@ScriptDir&"\PlayerNames.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\PlayerNames.txt",$returnArray);read text file into an array
 _ArrayDelete($returnArray,0)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$returnArray,"B6")
 
@@ -260,7 +262,7 @@ $returnArray=0
 $PlayersNameTextFile=  FileOpen(@ScriptDir&"\PlayerNames.txt",0)
 If $PlayersNameTextFile=1 then ;file exist add names
 MsgBox(0,"","file exist")
-_FileReadToArray(@ScriptDir&"\PlayerNames.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\PlayerNames.txt",$returnArray);read text file into an array
 
 _ArrayDisplay($returnArray)
 FileChangeDir(@ScriptDir)
@@ -270,8 +272,8 @@ FileChangeDir(@ScriptDir)
 
 Else;file does not exist , create new file name
 MsgBox(0,"","file dosent exists")
-FileOpen(@ScriptDir&"\PlayerNames.txt",1)
-ShellExecute(@ScriptDir&"\PlayerNames.txt")
+FileOpen(@ScriptDir&"\rawData\PlayerNames.txt",1)
+ShellExecute(@ScriptDir&"\rawData\PlayerNames.txt")
 EndIf
 
 _Excel_Print
@@ -293,10 +295,10 @@ $returnArray=0
 
 ;MsgBox(0,"",@ScriptDir&"\PlayerNames.txt")
 
-$PlayersTeamsTextFile=  FileOpen(@ScriptDir&"\TeamDivder.txt",0)
+$PlayersTeamsTextFile=  FileOpen(@ScriptDir&"\rawData\TeamDivder.txt",0)
 If $PlayersTeamsTextFile=1 then ;file exist add names
 MsgBox(0,"","file exist")
-_FileReadToArray(@ScriptDir&"\TeamDivder.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\TeamDivder.txt",$returnArray);read text file into an array
 
 _ArrayDisplay($returnArray)
 FileChangeDir(@ScriptDir)
@@ -306,8 +308,8 @@ FileChangeDir(@ScriptDir)
 
 Else;file does not exist , create new file name
 MsgBox(0,"","file dosent exists")
-FileOpen(@ScriptDir&"\TeamDivder.txt",1);write mode
-ShellExecute(@ScriptDir&"\TeamDivder.txt")
+FileOpen(@ScriptDir&"\rawData\TeamDivder.txt",1);write mode
+ShellExecute(@ScriptDir&"\rawData\TeamDivder.txt")
 EndIf
 
 
@@ -325,7 +327,7 @@ EndFunc
 Func writeToInputBoxesOfTeam1_From_TeamDividerTextFile()
 $returnArray=0
 
-_FileReadToArray(@ScriptDir&"\TeamDivder.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\TeamDivder.txt",$returnArray);read text file into an array
 ;_ArrayDisplay($returnArray)
 $Team1Position= _ArraySearch($returnArray,"קבוצה 1")
 $Team2Position= _ArraySearch($returnArray,"קבוצה 2")
@@ -433,7 +435,7 @@ EndFunc
 Func writeToInputBoxesOfTeam2_From_TeamDividerTextFile()
 $returnArray=0
 
-_FileReadToArray(@ScriptDir&"\TeamDivder.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\TeamDivder.txt",$returnArray);read text file into an array
 $Team1Position= _ArraySearch($returnArray,"קבוצה 1")
 $Team2Position= _ArraySearch($returnArray,"קבוצה 2")
 $Team3Position= _ArraySearch($returnArray,"קבוצה 3")
@@ -524,14 +526,14 @@ $returnArray=0
 ;MsgBox(0,"",@ScriptDir&"\PlayerNames.txt")
 
 $GamesdateTextFile= 0
-_FileReadToArray(@ScriptDir&"\Game_Schedule.txt",$GamesdateTextFile)
+_FileReadToArray(@ScriptDir&"\rawData\Game_Schedule.txt",$GamesdateTextFile)
 _ArrayDisplay($GamesdateTextFile)
 
 
-$GamesdateTextFile=  FileOpen(@ScriptDir&"\GamesDate.txt",0)
+$GamesdateTextFile=  FileOpen(@ScriptDir&"\rawData\GamesDate.txt",0)
 If $GamesdateTextFile=1 then ;file exist add names
 MsgBox(0,"","file exist")
-_FileReadToArray(@ScriptDir&"\GamesDate.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\GamesDate.txt",$returnArray);read text file into an array
 
 _ArrayDisplay($returnArray)
 FileChangeDir(@ScriptDir)
@@ -541,8 +543,8 @@ FileChangeDir(@ScriptDir)
 
 Else;file does not exist , create new file name
 MsgBox(0,"","file dosent exists")
-FileOpen(@ScriptDir&"\GamesDate.txt",1)
-ShellExecute(@ScriptDir&"\GamesDate.txt")
+FileOpen(@ScriptDir&"\rawData\GamesDate.txt",1)
+ShellExecute(@ScriptDir&"\rawData\GamesDate.txt")
 EndIf
 FileClose($GamesdateTextFile)
 EndFunc
@@ -611,7 +613,7 @@ Else
 
 $FileName="round_"&$roundNumber&"_team_"&$teamNumber_1&"_vs_"&$teamNumber_2&".txt"
 ;MsgBox(0,"",$FileName)
-$ScoreTextFile=  FileOpen(@ScriptDir&"\data\"&$FileName,2)
+$ScoreTextFile=  FileOpen(@ScriptDir&"\rawData\data\"&$FileName,2)
 ;_FileWriteToLine(@ScriptDir&"\DATA\PlayersScore.txt",0,"kkk",True)
 For $i=0 To 5
 	FileWriteLine($ScoreTextFile,$Player1_Score_1[$i])
@@ -653,7 +655,7 @@ If $ScoreTextFile=1 then ;file exist add names
 ;_ArrayDisplay($Player1_Score_2)
 ;_ArrayDisplay($Player2_Score_2)
 ;_ArrayDisplay($Player3_Score_2)
-_FileWriteFromArray(@ScriptDir&"\PlayersScore.txt",$Player1_Score_1)
+_FileWriteFromArray(@ScriptDir&"\rawData\PlayersScore.txt",$Player1_Score_1)
 
 
 ;_ArrayDisplay($returnArray)
@@ -709,7 +711,7 @@ EndFunc
 Func RoundNumberInput_function()
 	$returnArray=0
 ;$NextIndex=0
-_FileReadToArray(@ScriptDir&"\GamesDate.txt",$returnArray);read text file into an array
+_FileReadToArray(@ScriptDir&"\rawData\GamesDate.txt",$returnArray);read text file into an array
 
 $Round1Position= _ArraySearch($returnArray,"round 1")
 $Round2Position= _ArraySearch($returnArray,"round 2")
