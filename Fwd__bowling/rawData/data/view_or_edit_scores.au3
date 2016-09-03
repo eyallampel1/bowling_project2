@@ -17,6 +17,7 @@
 ;#include "UDFs\GuiListViewEx2.au3"
 
 
+
 ;Func _gui2()
 Global $iCount_Left = 1,$TeamRunningIndex=1,$TeamRunningIndex2=1, $iCount_Right = 20, $vData, $sMsg, $aLV_List_Left, $aLV_List_Right, $aRet, $iEditMode = 0
 
@@ -33,13 +34,86 @@ $return2=0
 
 
 
-$hListView_Right = _GUICtrlListView_Create($GameScheduleGui, "", 300, 10, 350, 330, BitOR($LVS_DEFAULT, $WS_BORDER))
+$hListView_Right = _GUICtrlListView_Create($GameScheduleGui, "", 200, 10, 450, 330, BitOR($LVS_DEFAULT, $WS_BORDER))
 _GUICtrlListView_SetExtendedListViewStyle($hListView_Right, BitOR($LVS_EX_FULLROWSELECT,$LVS_EX_GRIDLINES ))
 ;_GUICtrlListView_AddColumn($hListView_Right, "", 43)
 _GUICtrlListView_AddColumn($hListView_Right, "player name", 100)
+_GUICtrlListView_AddColumn($hListView_Right, "team number", 100)
 _GUICtrlListView_AddColumn($hListView_Right, "game 1", 83);add column
 _GUICtrlListView_AddColumn($hListView_Right, "game 2", 83)
 _GUICtrlListView_AddColumn($hListView_Right, "game 3", 83)
+_GUICtrlListView_JustifyColumn ( $hListView_Right,0,2);center text in coulum 0 , [2 is center text 1 is right aliagn]
+_GUICtrlListView_JustifyColumn ( $hListView_Right,1,2);center text in coulum 1
+_GUICtrlListView_JustifyColumn ( $hListView_Right,2,2);center text in coulum 2
+_GUICtrlListView_JustifyColumn ( $hListView_Right,3,2);center text in coulum 3
+_GUICtrlListView_JustifyColumn ( $hListView_Right,4,2);center text in coulum 4
+
+
+;=======read all text files into an array
+
+$aFileList = _FileListToArray(@Scriptdir, "*.txt")
+;MsgBox(0,"",@Scriptdir&"\rawdata\")
+
+If @error=1 Then
+    MsgBox (0, "", "No Files\Folders Found.")
+    Exit
+EndIf
+
+Global $aFileStrings[$aFileList[0] + 1][2] = [[$aFileList[0]]]
+$sFile=0
+For $i = 1 To $aFileList[0]
+    ; Add file name to [n][0] element
+    $aFileStrings[$i][0] = $aFileList[$i]
+    ; Read file content
+    ;$sFile = FileRead(@ScriptDir & "\" & $aFileList[$i])
+	    _FileReadToArray(@ScriptDir & "\" & $aFileList[$i],$sFile)
+    ; Add file content to [n][1] element
+    $aFileStrings[$i][1] = $sFile
+Next
+
+_ArrayDisplay($aFileStrings)
+
+
+
+;_ArrayDisplay($aFileStrings[4][1])
+;_ArrayDisplay($aFileStrings[5][1])
+;_ArrayDisplay($aFileStrings[6][1])
+;_ArrayDisplay($aFileStrings[7][1])
+;=====
+$index3=0
+Local $singleTextFileArray
+Local $nameIndex=-1
+
+For $index3=1 to UBound($aFileStrings)-1
+ $singleTextFileArray=$aFileStrings[$index3][1];acsses array within array
+If $singleTextFileArray[0]==41 Then
+	$nameIndex+=1
+;	_ArrayDisplay($singleTextFileArray)
+_GUICtrlListView_AddItem($hListView_Right, "1",$nameIndex);; dummy addition i use only subitem
+_GUICtrlListView_AddItem($hListView_Right, "1",$nameIndex)
+_GUICtrlListView_AddItem($hListView_Right, "1",$nameIndex)
+_GUICtrlListView_AddItem($hListView_Right, "1",$nameIndex)
+_GUICtrlListView_AddItem($hListView_Right, "1",$nameIndex)
+_GUICtrlListView_AddItem($hListView_Right, "1",$nameIndex)
+
+;MsgBox(0,"",$singleTextFileArray[3])
+;_ArrayDisplay($singleTextFileArray)
+_GUICtrlListView_AddSubItem($hListView_Right,$nameIndex, $singleTextFileArray[3],$nameIndex+6*$nameIndex);;add row 1
+_GUICtrlListView_AddSubItem($hListView_Right,$nameIndex+1+6*$nameIndex, $singleTextFileArray[9],0);;add row 1
+_GUICtrlListView_AddSubItem($hListView_Right,$nameIndex+2+6*$nameIndex, $singleTextFileArray[15],0);;add row 1
+_GUICtrlListView_AddSubItem($hListView_Right,$nameIndex+3+6*$nameIndex, $singleTextFileArray[21],0);;add row 1
+_GUICtrlListView_AddSubItem($hListView_Right,$nameIndex+4+6*$nameIndex, $singleTextFileArray[27],0);;add row 1
+_GUICtrlListView_AddSubItem($hListView_Right,$nameIndex+5+6*$nameIndex, $singleTextFileArray[33],0);;add row 1
+
+;_GUICtrlListView_AddItem($hListView_Right,$i, $singleTextFileArray[3],$i);;add row 1
+;_GUICtrlListView_AddSubItem($hListView_Right,$i, $singleTextFileArray[4],1);;add row 1
+;_GUICtrlListView_AddSubItem($hListView_Right,$i, $singleTextFileArray[5],2);;add row 1
+;_GUICtrlListView_AddSubItem($hListView_Right,$i, $singleTextFileArray[6],3);;add row 1
+EndIf
+Next
+MsgBox(0,"",$singleTextFileArray)
+
+MsgBox(0,"",$singleTextFileArray[3])
 
 
 ;_GUICtrlListView_AddColumn($hListView_Right, "קבוצות", 53)
@@ -59,12 +133,12 @@ Next
 
 
 
-_GUICtrlListView_AddItem($hListView_Right, "1",0);;add row 1
-_GUICtrlListView_AddItem($hListView_Right, "2",1);;add row 1
-_GUICtrlListView_AddItem($hListView_Right, "3",2);;add row 1
-_GUICtrlListView_AddItem($hListView_Right, "4",3);;add row 1
-_GUICtrlListView_AddItem($hListView_Right, "5",4);;add row 1
-
+;_GUICtrlListView_AddItem($hListView_Right, "1",0);;add row 1
+;_GUICtrlListView_AddItem($hListView_Right, "2",1);;add row 1
+;_GUICtrlListView_AddItem($hListView_Right, "3",2);;add row 1
+;_GUICtrlListView_AddItem($hListView_Right, "4",3);;add row 1
+;_GUICtrlListView_AddItem($hListView_Right, "5",4);;add row 1
+;_GUICtrlListView_AddSubItem($hListView_Right,0, "jjj",1);;add row 1
 ;_GUICtrlListView_AddSubItem($hListView_Right,0,"20.08.16",1)
 ;_GUICtrlListView_AddSubItem($hListView_Right,0,"[קבוצה 1",2)
 ;_GUICtrlListView_AddSubItem($hListView_Right,0,"קבוצה 2]",3)
@@ -135,10 +209,10 @@ _GUIListViewEx_SetEditStatus($iLV_Right_Index, "*")
 ;MsgBox(0,@error,$RETURN)
 
 ; Create buttons
-$cInsert_Button = GUICtrlCreateButton("Insert", 270, 350, 200, 30)
-$cDelete_Button = GUICtrlCreateButton("Delete", 270, 390, 200, 30)
-$cUp_Button = GUICtrlCreateButton("Move Up", 480, 350, 200, 30)
-$cDown_Button = GUICtrlCreateButton("Move Down", 480, 390, 200, 30)
+$cInsert_Button = GUICtrlCreateButton("Insert", 220, 350, 200, 30)
+$cDelete_Button = GUICtrlCreateButton("Delete", 220, 390, 200, 30)
+$cUp_Button = GUICtrlCreateButton("Move Up", 430, 350, 200, 30)
+$cDown_Button = GUICtrlCreateButton("Move Down", 430, 390, 200, 30)
 $roundNumberLabel = GUICtrlCreateLabel("Round Number", 26, 25, 86, 17)
 $RoundNumberInput = GUICtrlCreateInput("", 106, 25, 49, 21,$ES_CENTER)
 
@@ -148,7 +222,7 @@ $RoundNumberInput = GUICtrlCreateInput("", 106, 25, 49, 21,$ES_CENTER)
 ;$cHeader_Right_Button = GUICtrlCreateButton("Edit Right Header 0", 220, 470, 200, 30)
 ;$cDisplay_Left_Button = GUICtrlCreateButton("Show Left", 430, 350, 100, 30)
 ;$cDisplay_Right_Button = GUICtrlCreateButton("Show Right", 530, 350, 100, 30)
-$cExit_Button = GUICtrlCreateButton("Exit", 270, 430, 410, 68)
+$cExit_Button = GUICtrlCreateButton("Exit", 220, 430, 410, 68)
 
 ; Register for sorting, dragging and editing
 _GUIListViewEx_MsgRegister()
