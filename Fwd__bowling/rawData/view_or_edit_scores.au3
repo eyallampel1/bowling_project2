@@ -16,6 +16,31 @@
 ;#include "UDFs\ListViewColorsFonts2.au3"
 ;#include "UDFs\GuiListViewEx2.au3"
 
+;=======read all text files into an array
+
+$aFileList = _FileListToArray(@Scriptdir&"\data\", "*.txt")
+;MsgBox(0,"",@Scriptdir&"\rawdata\")
+
+If @error=1 Then
+    MsgBox (0, "", "No Files\Folders Found.")
+    Exit
+EndIf
+
+Global $aFileStrings[$aFileList[0] + 1][2] = [[$aFileList[0]]]
+
+For $i = 1 To $aFileList[0]
+    ; Add file name to [n][0] element
+    $aFileStrings[$i][0] = $aFileList[$i]
+    ; Read file content
+    $sFile = FileRead(@ScriptDir & "\" & $aFileList[$i])
+    ; Add file content to [n][1] element
+    $aFileStrings[$i][1] = $sFile
+Next
+
+_ArrayDisplay($aFileStrings)
+MsgBox(0,"",$aFileStrings[7][1])
+;=====
+
 
 ;Func _gui2()
 Global $iCount_Left = 1,$TeamRunningIndex=1,$TeamRunningIndex2=1, $iCount_Right = 20, $vData, $sMsg, $aLV_List_Left, $aLV_List_Right, $aRet, $iEditMode = 0
@@ -41,7 +66,11 @@ _GUICtrlListView_AddColumn($hListView_Right, "team number", 100)
 _GUICtrlListView_AddColumn($hListView_Right, "game 1", 83);add column
 _GUICtrlListView_AddColumn($hListView_Right, "game 2", 83)
 _GUICtrlListView_AddColumn($hListView_Right, "game 3", 83)
-
+_GUICtrlListView_JustifyColumn ( $hListView_Right,0,2);center text in coulum 0 , [2 is center text 1 is right aliagn]
+_GUICtrlListView_JustifyColumn ( $hListView_Right,1,2);center text in coulum 1
+_GUICtrlListView_JustifyColumn ( $hListView_Right,2,2);center text in coulum 2
+_GUICtrlListView_JustifyColumn ( $hListView_Right,3,2);center text in coulum 3
+_GUICtrlListView_JustifyColumn ( $hListView_Right,4,2);center text in coulum 4
 
 ;_GUICtrlListView_AddColumn($hListView_Right, "קבוצות", 53)
 ;_GUICtrlListView_AddColumn($hListView_Right, "קבוצות", 53)

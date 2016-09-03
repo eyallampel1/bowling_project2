@@ -1,6 +1,6 @@
 round 1
-teamNumber: 11
-Lampel 4
+teamNumber: 9
+Lampel 13
 
 
 

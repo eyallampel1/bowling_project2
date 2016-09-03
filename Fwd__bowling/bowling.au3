@@ -598,7 +598,7 @@ $Player3_Score_2[3]=GUICtrlRead($Player3_score_game1_2 )
 $Player3_Score_2[4]=GUICtrlRead($Player3_score_game2_2 )
 $Player3_Score_2[5]=GUICtrlRead($Player3_score_game3_2 )
 
-	If $NextIndex=5 Then;added 11.08.16 17:00
+	If $NextIndex=4 Then;added 11.08.16 17:00
 	$NextIndex=0
 	Else
 	$NextIndex+=1
