@@ -52,7 +52,7 @@ _GUICtrlListView_JustifyColumn ( $hListView_Right,4,2);center text in coulum 4
 ;=======read all text files into an array
 
 $aFileList = _FileListToArray(@Scriptdir, "*.txt")
-;MsgBox(0,"",@Scriptdir&"\rawdata\")
+MsgBox(0,"",@Scriptdir)
 
 If @error=1 Then
     MsgBox (0, "", "No Files\Folders Found.")

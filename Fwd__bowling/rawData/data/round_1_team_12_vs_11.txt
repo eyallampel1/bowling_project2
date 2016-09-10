@@ -1,0 +1,65 @@
+round 1
+teamNumber: 12
+Lampel 333
+
+
+
+round 1
+teamNumber: 12
+Lampel 444
+
+
+
+round 1
+teamNumber: 12
+Lampel 555
+
+
+
+round 1
+teamNumber: 12
+Lampel 111
+
+
+
+round 1
+teamNumber: 12
+Lampel ff
+
+
+
+round 1
+teamNumber: 12
+Lampel ee
+
+
+
+round 1
+teamNumber: 12
+Lampel dd
+
+
+
+round 1
+teamNumber: 11
+Lampel ccc
+
+
+
+round 1
+teamNumber: 11
+Lampel bbb
+
+
+
+round 1
+teamNumber: 11
+Lampel aaa
+
+
+
+final Score:
+teamNumber: 9
+ points
+teamNumber: 10
+ points

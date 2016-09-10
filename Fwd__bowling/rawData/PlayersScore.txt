@@ -1,6 +1,6 @@
-round 1
-teamNumber: 9
-Lampel 13
-
-
-
+round 2
+teamNumber: 1
+אייל למפל
+180
+180
+180
