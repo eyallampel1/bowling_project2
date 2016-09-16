@@ -1,0 +1,41 @@
+round 2
+teamNumber: 2
+ון קופם
+150
+150
+150
+round 2
+teamNumber: 2
+אריה סיגנר
+105
+105
+150
+round 2
+teamNumber: 2
+דוטרקי
+105
+105
+105
+round 2
+teamNumber: 6
+Lampel 4
+150
+150
+150
+round 2
+teamNumber: 6
+Lampel 5
+180
+180
+108
+round 2
+teamNumber: 6
+Lampel 6
+170
+170
+180
+final Score:
+teamNumber: 2
+4points
+teamNumber: 6
+4points

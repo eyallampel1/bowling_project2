@@ -1,0 +1,54 @@
+round 1
+teamNumber: 12
+דקורדובי עופר
+105
+110
+120
+round 1
+teamNumber: 12
+אוריון אייל
+130
+140
+150
+round 1
+teamNumber: 12
+מרלי סימו
+160
+170
+180
+round 1
+teamNumber: 12
+פסח עדן
+190
+200
+222
+round 1
+teamNumber: 12
+TWELVE
+180
+170
+165
+round 1
+teamNumber: 12
+שפירא בר
+177
+177
+123
+round 1
+teamNumber: 11
+Lampel 444
+122
+133
+144
+round 1
+teamNumber: 11
+Lampel 555
+155
+156
+167
+round 1
+teamNumber: 11
+Lampel 666
+190
+180
+170

@@ -1,0 +1,41 @@
+round 2
+teamNumber: 9
+Lampel 13
+199
+198
+197
+round 2
+teamNumber: 9
+Lampel 14
+150
+150
+140
+round 2
+teamNumber: 9
+Lampel 15
+130
+120
+120
+round 2
+teamNumber: 11
+Lampel 444
+150
+150
+150
+round 2
+teamNumber: 11
+Lampel 555
+140
+142
+142
+round 2
+teamNumber: 11
+Lampel 666
+142
+142
+135
+final score:
+teamNumber: 9
+2points
+teamNumber: 11
+2points

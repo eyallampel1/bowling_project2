@@ -1,0 +1,196 @@
+round פרגמין גולן
+ 4
+lanes 1 - 2
+160
+lanes 3 - 4
+5
+lanes 5 - 6
+ 4
+lanes 7 - 8
+190
+lanes 9 - 10
+5
+lanes 11 - 12
+ 4
+220
+230
+lanes 1 - 2
+round Lampel 1
+lanes 3 - 4
+150
+lanes 5 - 6
+170
+lanes 7 - 8
+round Lampel 2
+lanes 9 - 10
+180
+lanes 11 - 12
+200
+round Lampel 3
+ 5
+lanes 1 - 2
+220
+lanes 3 - 4
+5
+lanes 5 - 6
+ 2
+lanes 7 - 8
+150
+lanes 9 - 10
+5
+lanes 11 - 12
+ 2
+150
+150
+lanes 1 - 2
+round דוטרקי
+lanes 3 - 4
+150
+lanes 5 - 6
+150
+lanes 7 - 8
+round Lampel 4
+lanes 9 - 10
+150
+lanes 11 - 12
+150
+round Lampel 5
+ 6
+lanes 1 - 2
+150
+lanes 3 - 4
+5
+lanes 5 - 6
+ 6
+lanes 7 - 8
+150
+lanes 9 - 10
+5
+lanes 11 - 12
+ 8
+150
+210
+lanes 1 - 2
+round Lampel 11
+lanes 3 - 4
+150
+lanes 5 - 6
+150
+lanes 7 - 8
+round Lampel 12
+lanes 9 - 10
+150
+lanes 11 - 12
+150
+round Lampel 1
+ 10
+lanes 1 - 2
+150
+lanes 3 - 4
+5
+lanes 5 - 6
+ 10
+lanes 7 - 8
+150
+lanes 9 - 10
+5
+lanes 11 - 12
+ 10
+150
+150
+lanes 1 - 2
+round Lampel 13
+lanes 3 - 4
+150
+lanes 5 - 6
+150
+lanes 7 - 8
+round Lampel 14
+lanes 9 - 10
+150
+lanes 11 - 12
+150
+round Lampel 15
+ 9
+lanes 1 - 2
+150
+lanes 3 - 4
+5
+lanes 5 - 6
+ 11
+lanes 7 - 8
+150
+lanes 9 - 10
+5
+lanes 11 - 12
+ 11
+150
+150
+lanes 1 - 2
+round Lampel 6
+lanes 3 - 4
+150
+lanes 5 - 6
+150
+lanes 7 - 8
+round אייל למפל
+lanes 9 - 10
+150
+lanes 11 - 12
+150
+round גבי למפל
+ 1
+lanes 1 - 2
+150
+lanes 3 - 4
+5
+lanes 5 - 6
+ 1
+lanes 7 - 8
+150
+lanes 9 - 10
+5
+lanes 11 - 12
+ 7
+150
+150
+lanes 1 - 2
+round Lampel 8
+lanes 3 - 4
+150
+lanes 5 - 6
+150
+lanes 7 - 8
+round Lampel 9
+lanes 9 - 10
+150
+lanes 11 - 12
+150
+round דקורדובי עופר
+12
+lanes 1 - 2
+
+lanes 3 - 4
+5
+lanes 5 - 6
+12
+lanes 7 - 8
+
+lanes 9 - 10
+5
+lanes 11 - 12
+12
+
+
+lanes 1 - 2
+round פסח עדן
+lanes 3 - 4
+
+lanes 5 - 6
+
+lanes 7 - 8
+round ברנס ליאור
+lanes 9 - 10
+
+lanes 11 - 12
+
