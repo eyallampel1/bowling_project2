@@ -27,22 +27,60 @@ $RoundNumberInput = GUICtrlCreateInput("", 870, 25, 49, 21,$ES_CENTER)
 $PrintGamesCurrentDateButton = GUICtrlCreateButton("Print Round", 472, 520, 123, 25)
 ;================================================= team 2====================================
 $Group2 = GUICtrlCreateGroup("", 176, 290, 609, 225)
-$TeamPlayer1Name_2 = GUICtrlCreateInput("", 613, 386, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
+
+$Player1_score_game1_1 = GUICtrlCreateInput("", 541, 127, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player1_score_game2_1 = GUICtrlCreateInput("", 488, 127, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player1_score_game3_1 = GUICtrlCreateInput("", 433, 127, 49, 21,$ES_CENTER);;game3 team 1 input
+  GUICtrlSetLimit(-1, 3)
+
+$Player2_score_game1_1 = GUICtrlCreateInput("", 541, 157, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player2_score_game2_1 = GUICtrlCreateInput("", 488, 157, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player2_score_game3_1 = GUICtrlCreateInput("", 433, 157, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+
+$Player3_score_game1_1 = GUICtrlCreateInput("", 541, 187, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player3_score_game2_1 = GUICtrlCreateInput("", 488, 187, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player3_score_game3_1 = GUICtrlCreateInput("", 433, 187, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+
 $Player1_score_game1_2 = GUICtrlCreateInput("", 541, 386, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
 $Player1_score_game2_2 = GUICtrlCreateInput("", 488, 386, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
 $Player1_score_game3_2 = GUICtrlCreateInput("", 433, 386, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+
+$Player2_score_game1_2 = GUICtrlCreateInput("", 541, 416, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player2_score_game2_2 = GUICtrlCreateInput("", 488, 416, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player2_score_game3_2 = GUICtrlCreateInput("", 433, 416, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player3_score_game1_2 = GUICtrlCreateInput("", 541, 446, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player3_score_game2_2 = GUICtrlCreateInput("", 488, 446, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+$Player3_score_game3_2 = GUICtrlCreateInput("", 433, 446, 49, 21,$ES_CENTER)
+  GUICtrlSetLimit(-1, 3)
+
+$ScoreTeam1 = GUICtrlCreateInput("", 187, 225, 49, 21,$ES_CENTER)
+$ScoreTeam2 = GUICtrlCreateInput("", 190, 484, 49, 21,$ES_CENTER)
+
+$TeamPlayer3Name_2 = GUICtrlCreateInput("", 613, 446, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
+$TeamPlayer1Name_2 = GUICtrlCreateInput("", 613, 386, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
+
 $Label4 = GUICtrlCreateLabel("Game 2", 488, 362, 43, 17)
 $Label16 = GUICtrlCreateLabel("Name", 680, 362, 28, 17)
 $Label17 = GUICtrlCreateLabel("Game 1", 544, 362, 43, 17)
 $Label18 = GUICtrlCreateLabel("Game 3", 433, 362, 43, 17)
 $TeamPlayer2Name_2 = GUICtrlCreateInput("", 613, 416, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$Player2_score_game1_2 = GUICtrlCreateInput("", 541, 416, 49, 21,$ES_CENTER)
-$Player2_score_game2_2 = GUICtrlCreateInput("", 488, 416, 49, 21,$ES_CENTER)
-$Player2_score_game3_2 = GUICtrlCreateInput("", 433, 416, 49, 21,$ES_CENTER)
-$TeamPlayer3Name_2 = GUICtrlCreateInput("", 613, 446, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$Player3_score_game1_2 = GUICtrlCreateInput("", 541, 446, 49, 21,$ES_CENTER)
-$Player3_score_game2_2 = GUICtrlCreateInput("", 488, 446, 49, 21,$ES_CENTER)
-$Player3_score_game3_2 = GUICtrlCreateInput("", 433, 446, 49, 21,$ES_CENTER)
+
 $Label19 = GUICtrlCreateLabel("Handicap", 370, 362, 59, 17)
 $HandicapPlayer1_2 = GUICtrlCreateInput("", 370, 386, 49, 21,$ES_CENTER)
 $HandicapPlayer2_2 = GUICtrlCreateInput("", 370, 416, 49, 21,$ES_CENTER)
@@ -59,7 +97,7 @@ $HandicapPlayer3_2 = GUICtrlCreateInput("", 370, 446, 49, 21,$ES_CENTER)
 $Label22 = GUICtrlCreateLabel("Team Number", 432, 301, 75, 17)
 $TeamNumber_2_inputbox = GUICtrlCreateInput("", 440, 325, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
 ;$TotalPins_Plus_Handicap_team2 = GUICtrlCreateInput("", 356, 485, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-$ScoreTeam2 = GUICtrlCreateInput("", 190, 484, 49, 21,$ES_CENTER)
+
 ;$Label23 = GUICtrlCreateLabel("Team Total Pins + Handicap", 414, 485, 163, 17)
 $Label24 = GUICtrlCreateLabel("Score", 243, 489, 28, 17)
 ;$Label7 = GUICtrlCreateLabel("Team Total Pins", 670, 479, 99, 17)
@@ -70,9 +108,7 @@ $Label24 = GUICtrlCreateLabel("Score", 243, 489, 28, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $Group1 = GUICtrlCreateGroup("", 173, 31, 609, 225)
 $TeamPlayer1Name_1 = GUICtrlCreateInput("", 613, 127, 153, 21,BitOR($ES_CENTER,$ES_READONLY));player 1 name - team 1
-$Player1_score_game1_1 = GUICtrlCreateInput("", 541, 127, 49, 21,$ES_CENTER)
-$Player1_score_game2_1 = GUICtrlCreateInput("", 488, 127, 49, 21,$ES_CENTER)
-$Player1_score_game3_1 = GUICtrlCreateInput("", 433, 127, 49, 21,$ES_CENTER);;game3 team 1 input
+
 ;$Player1_round_avarege_1 = GUICtrlCreateInput("", 261, 117, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
 $Label2 = GUICtrlCreateLabel("Game 2", 488, 103, 43, 17)
 $Label3 = GUICtrlCreateLabel("Name", 677, 103, 28, 17)
@@ -80,13 +116,7 @@ $Label5 = GUICtrlCreateLabel("Game 1", 541, 103, 43, 17)
 $Label6 = GUICtrlCreateLabel("Game 3", 433, 103, 43, 17)
 
 $TeamPlayer2Name_1 = GUICtrlCreateInput("", 613, 157, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$Player2_score_game1_1 = GUICtrlCreateInput("", 541, 157, 49, 21,$ES_CENTER)
-$Player2_score_game2_1 = GUICtrlCreateInput("", 488, 157, 49, 21,$ES_CENTER)
-$Player2_score_game3_1 = GUICtrlCreateInput("", 433, 157, 49, 21,$ES_CENTER)
 $TeamPlayer3Name_1 = GUICtrlCreateInput("", 613, 187, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$Player3_score_game1_1 = GUICtrlCreateInput("", 541, 187, 49, 21,$ES_CENTER)
-$Player3_score_game2_1 = GUICtrlCreateInput("", 488, 187, 49, 21,$ES_CENTER)
-$Player3_score_game3_1 = GUICtrlCreateInput("", 433, 187, 49, 21,$ES_CENTER)
 $Label8 = GUICtrlCreateLabel("Handicap", 370, 103, 59, 17)
 $HandicapPlayer1_1 = GUICtrlCreateInput("", 370, 127, 49, 21,$ES_CENTER)
 $HandicapPlayer2_1 = GUICtrlCreateInput("", 370, 157, 49, 21,$ES_CENTER)
@@ -103,7 +133,7 @@ $HandicapPlayer3_1 = GUICtrlCreateInput("", 370, 187, 49, 21,$ES_CENTER)
 $Label11 = GUICtrlCreateLabel("Team Number", 429, 42, 75, 17)
 $TeamNumber_1_inputbox = GUICtrlCreateInput("", 437, 66, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
 ;$TotalPins_Plus_Handicap_team1 = GUICtrlCreateInput("", 353, 226, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-$ScoreTeam1 = GUICtrlCreateInput("", 187, 225, 49, 21,$ES_CENTER)
+
 ;$Label13 = GUICtrlCreateLabel("Team Total Pins + Handicap", 411, 226, 163, 17)
 $Label14 = GUICtrlCreateLabel("Score", 240, 230, 28, 17)
 ;$Label25 = GUICtrlCreateLabel("Team Total Pins", 667, 220, 99, 17)
@@ -117,6 +147,8 @@ $InseartGamesDateButton = GUICtrlCreateButton("Games Schedule", 864, 376, 139, 2
 $setHandicupButton = GUICtrlCreateButton("set Handicap Level", 864, 424, 139, 25)
 $editRoundScoresButton = GUICtrlCreateButton("view / edit round scores", 220, 520, 139, 25)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
+   GUIRegisterMsg($WM_COMMAND, "WM_COMMAND")
+
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 ;================================================= team 1====================================
@@ -1055,5 +1087,13 @@ EndIf
 
 EndFunc
 
+Func WM_COMMAND($hWnd, $Msg, $wParam, $lParam)
+    $nNotifyCode = BitShift($wParam, 16)
+    $nID = BitAnd($wParam, 0x0000FFFF)
+    Switch $nNotifyCode
+        Case $EN_UPDATE
+            If StringLen(GUICtrlRead($nID)) = 3 Then GUICtrlSetState($nID+1, $GUI_FOCUS)
+    EndSwitch
+EndFunc
 
 
