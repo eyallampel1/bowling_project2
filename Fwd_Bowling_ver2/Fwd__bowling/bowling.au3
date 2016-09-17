@@ -1092,8 +1092,18 @@ Func WM_COMMAND($hWnd, $Msg, $wParam, $lParam)
     $nID = BitAnd($wParam, 0x0000FFFF)
     Switch $nNotifyCode
         Case $EN_UPDATE
-            If StringLen(GUICtrlRead($nID)) = 3 Then GUICtrlSetState($nID+1, $GUI_FOCUS)
-    EndSwitch
+            If StringLen(GUICtrlRead($nID)) = 3 Then
+					If (Int(GUICtrlRead($nID))>300 Or Int(GUICtrlRead($nID))<0 ) Then
+						MsgBox(0,"ERROR","Only LAMPEL can score more then 300")
+						GUICtrlSetState($nID, $GUI_FOCUS)
+					ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
+					    MsgBox(0,"ERROR","ONLY numbers are allowed")
+						GUICtrlSetState($nID, $GUI_FOCUS)
+					Else
+						GUICtrlSetState($nID+1, $GUI_FOCUS)
+					EndIf
+			EndIf
+		EndSwitch
 EndFunc
 
 
