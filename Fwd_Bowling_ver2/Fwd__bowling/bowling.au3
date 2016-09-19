@@ -163,7 +163,8 @@ While 1
         Case $CreateTablesButton
 			;startFunction()
 		;	MsgBox(0,"",@SCRIPTDIR&"\rawData\"&"dataToExcel.exe")
-		Run(@SCRIPTDIR&"\rawData\"&"dataToExcel.exe","")
+		;Run(@SCRIPTDIR&"\rawData\"&"dataToExcel.exe","")
+		Run('"' & @AutoItExe & '" /AutoIt3ExecuteScript "' & @SCRIPTDIR&"\rawData\"&"dataToExcel.au3"& ' " ', "", @SW_SHOW, 0)
 		Case $InsertPlayersNamesInitialInsertButton
 			;	MsgBox(0,"",@SCRIPTDIR&"\rawData")
 Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
