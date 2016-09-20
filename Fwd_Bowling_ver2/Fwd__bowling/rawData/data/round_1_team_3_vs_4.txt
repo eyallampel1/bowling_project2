@@ -36,6 +36,6 @@ teamNumber: 4
 220
 final score:
 teamNumber: 3
-4points
+0points
 teamNumber: 4
-1points
+6points

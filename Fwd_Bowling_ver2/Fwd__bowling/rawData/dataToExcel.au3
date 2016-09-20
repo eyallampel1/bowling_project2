@@ -271,7 +271,7 @@ EndIf
 ;If $playerGame1+$playerGame2+$playerGame3>$PlayerRoundMax3Games Then
 ;$PlayerRoundMax3Games=$playerGame1+$playerGame2+$playerGame3
 ;EndIf
-MsgBox(0,$returnArray[4+2*$i],"$playerGame1="&$playerGame1&"$playerGame2="&$playerGame2&"$playerGame3="&$playerGame3&"$PlayerRoundMaxScore"&$PlayerRoundMaxScore)
+;MsgBox(0,$returnArray[4+2*$i],"$playerGame1="&$playerGame1&"$playerGame2="&$playerGame2&"$playerGame3="&$playerGame3&"$PlayerRoundMaxScore"&$PlayerRoundMaxScore)
 $PlayerRoundMaxScore=_Max($playerGame1,$playerGame2)
 $PlayerRoundMaxScore=_Max($PlayerRoundMaxScore,$playerGame3)
 

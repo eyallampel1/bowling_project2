@@ -1,7 +1,7 @@
 round 3
 teamNumber: 6
 Lampel 4
-
+190
 100
 100
 round 3
@@ -34,8 +34,8 @@ Lampel 9
 200
 200
 200
-final score:
+final Score:
 teamNumber: 6
-x points
+0points
 teamNumber: 7
-y points
+6points

@@ -1,8 +1,8 @@
 round 1
 teamNumber: 5
 Lampel 1
-150
-160
+300
+300
 160
 round 1
 teamNumber: 5
@@ -36,6 +36,6 @@ Lampel 6
 190
 final score:
 teamNumber: 5
-2points
+8points
 teamNumber: 6
-4points
+0points

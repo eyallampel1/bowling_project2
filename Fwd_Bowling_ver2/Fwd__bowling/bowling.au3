@@ -14,151 +14,127 @@
 ;#include "bowlingTableTry.au3"
 #include "rawData/GUIListViewEx.au3"
 
-#Region ### START Koda GUI section ### Form=c:\users\hilalampel\documents\bowling.kxf
-$Form1_1 = GUICreate("Ahsdod Bowling", 1125, 647, 118, 12)
-GUISetIcon(@ScriptDir&"\pic\download.ico")
+;======;
+#Region ### START Koda GUI section ### Form=D:\bowling_project2\Fwd_Bowling_ver2\Fwd__bowling\bowling.kxf
+$Form1_1 = GUICreate("Ahsdod Bowling", 1127, 575, 196, 106)
 $CreateTablesButton = GUICtrlCreateButton("Create tables", 378, 520, 75, 25)
-;$Label1 = GUICtrlCreateLabel("Open Screen", 440, 8, 81, 17)
-;$Label12 = GUICtrlCreateLabel("Date", 928, 48, 37, 17)
-;$MonthCal1 = GUICtrlCreateMonthCal("2016/08/02", 848, 72, 257, 155)
 $insertDataButton = GUICtrlCreateButton("Enter Data", 610, 520, 75, 25)
-$Label15 = GUICtrlCreateLabel("Round Number", 926, 25, 86, 17)
-$RoundNumberInput = GUICtrlCreateInput("", 870, 25, 49, 21,$ES_CENTER)
+$Label15 = GUICtrlCreateLabel("Round Number", 894, 39, 86, 17)
+$RoundNumberInput = GUICtrlCreateInput("", 907, 58, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 $PrintGamesCurrentDateButton = GUICtrlCreateButton("Print Round", 472, 520, 123, 25)
-;================================================= team 2====================================
 $Group2 = GUICtrlCreateGroup("", 176, 290, 609, 225)
+$Player1_score_game1_1 = GUICtrlCreateInput("", 536, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player1_score_game2_1 = GUICtrlCreateInput("", 483, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player1_score_game3_1 = GUICtrlCreateInput("", 430, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_score_game1_1 = GUICtrlCreateInput("", 536, 165, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_score_game2_1 = GUICtrlCreateInput("", 483, 165, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_score_game3_1 = GUICtrlCreateInput("", 430, 165, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_score_game1_1 = GUICtrlCreateInput("", 536, 195, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_score_game2_1 = GUICtrlCreateInput("", 483, 195, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_score_game3_1 = GUICtrlCreateInput("", 430, 195, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 
-$Player1_score_game1_1 = GUICtrlCreateInput("", 541, 127, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player1_score_game2_1 = GUICtrlCreateInput("", 488, 127, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player1_score_game3_1 = GUICtrlCreateInput("", 433, 127, 49, 21,$ES_CENTER);;game3 team 1 input
-  GUICtrlSetLimit(-1, 3)
+$Player1_score_game1_2 = GUICtrlCreateInput("", 539, 386, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player1_score_game2_2 = GUICtrlCreateInput("", 486, 386, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player1_score_game3_2 = GUICtrlCreateInput("", 433, 386, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_score_game1_2 = GUICtrlCreateInput("", 539, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_score_game2_2 = GUICtrlCreateInput("", 486, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_score_game3_2 = GUICtrlCreateInput("", 433, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_score_game1_2 = GUICtrlCreateInput("", 539, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_score_game2_2 = GUICtrlCreateInput("", 486, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_score_game3_2 = GUICtrlCreateInput("", 433, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 
-$Player2_score_game1_1 = GUICtrlCreateInput("", 541, 157, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player2_score_game2_1 = GUICtrlCreateInput("", 488, 157, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player2_score_game3_1 = GUICtrlCreateInput("", 433, 157, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
+$Player1_AVG_1 = GUICtrlCreateInput("", 324, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_AVG_1 = GUICtrlCreateInput("", 324, 165, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_AVG_1 = GUICtrlCreateInput("", 324, 195, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 
-$Player3_score_game1_1 = GUICtrlCreateInput("", 541, 187, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player3_score_game2_1 = GUICtrlCreateInput("", 488, 187, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player3_score_game3_1 = GUICtrlCreateInput("", 433, 187, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
+$Player1_AVG_2 = GUICtrlCreateInput("", 327, 386, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player2_AVG_2 = GUICtrlCreateInput("", 327, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Player3_AVG_2 = GUICtrlCreateInput("", 327, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 
-$Player1_score_game1_2 = GUICtrlCreateInput("", 541, 386, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player1_score_game2_2 = GUICtrlCreateInput("", 488, 386, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player1_score_game3_2 = GUICtrlCreateInput("", 433, 386, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-
-$Player2_score_game1_2 = GUICtrlCreateInput("", 541, 416, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player2_score_game2_2 = GUICtrlCreateInput("", 488, 416, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player2_score_game3_2 = GUICtrlCreateInput("", 433, 416, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player3_score_game1_2 = GUICtrlCreateInput("", 541, 446, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player3_score_game2_2 = GUICtrlCreateInput("", 488, 446, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-$Player3_score_game3_2 = GUICtrlCreateInput("", 433, 446, 49, 21,$ES_CENTER)
-  GUICtrlSetLimit(-1, 3)
-
-$ScoreTeam1 = GUICtrlCreateInput("", 187, 225, 49, 21,$ES_CENTER)
-$ScoreTeam2 = GUICtrlCreateInput("", 190, 484, 49, 21,$ES_CENTER)
-
-$TeamPlayer3Name_2 = GUICtrlCreateInput("", 613, 446, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$TeamPlayer1Name_2 = GUICtrlCreateInput("", 613, 386, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-
-$Label4 = GUICtrlCreateLabel("Game 2", 488, 362, 43, 17)
+$HandicapPlayer1_2 = GUICtrlCreateInput("", 380, 386, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$HandicapPlayer2_2 = GUICtrlCreateInput("", 380, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$HandicapPlayer3_2 = GUICtrlCreateInput("", 380, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$ScoreTeam2 = GUICtrlCreateInput("", 190, 484, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TeamPlayer3Name_2 = GUICtrlCreateInput("", 613, 446, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TeamPlayer1Name_2 = GUICtrlCreateInput("", 613, 386, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Label4 = GUICtrlCreateLabel("Game 2", 489, 362, 43, 17)
 $Label16 = GUICtrlCreateLabel("Name", 680, 362, 28, 17)
 $Label17 = GUICtrlCreateLabel("Game 1", 544, 362, 43, 17)
-$Label18 = GUICtrlCreateLabel("Game 3", 433, 362, 43, 17)
-$TeamPlayer2Name_2 = GUICtrlCreateInput("", 613, 416, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-
-$Label19 = GUICtrlCreateLabel("Handicap", 370, 362, 59, 17)
-$HandicapPlayer1_2 = GUICtrlCreateInput("", 370, 386, 49, 21,$ES_CENTER)
-$HandicapPlayer2_2 = GUICtrlCreateInput("", 370, 416, 49, 21,$ES_CENTER)
-$HandicapPlayer3_2 = GUICtrlCreateInput("", 370, 446, 49, 21,$ES_CENTER)
-
-;$Label20 = GUICtrlCreateLabel("Round Average", 256, 352, 75, 17)
-;$Player1_round_avarege_2 = GUICtrlCreateInput("", 264, 376, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$Player2_round_avarege_2 = GUICtrlCreateInput("", 264, 408, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$Player3_round_avarege_2 = GUICtrlCreateInput("", 264, 432, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$Label21 = GUICtrlCreateLabel("Season Average", 338, 354, 87, 17)
-;$Player1_Season_Average_2 = GUICtrlCreateInput("", 338, 378, 49, 21,$ES_CENTER)
-;$Player2_Season_Average_2 = GUICtrlCreateInput("", 338, 410, 49, 21,$ES_CENTER)
-;$Player3_Season_Average_2 = GUICtrlCreateInput("", 338, 434, 49, 21,$ES_CENTER)
+$Label18 = GUICtrlCreateLabel("Game 3", 436, 362, 43, 17)
+$TeamPlayer2Name_2 = GUICtrlCreateInput("", 613, 416, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Label19 = GUICtrlCreateLabel("Handicap", 381, 362, 51, 17)
 $Label22 = GUICtrlCreateLabel("Team Number", 432, 301, 75, 17)
-$TeamNumber_2_inputbox = GUICtrlCreateInput("", 440, 325, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$TotalPins_Plus_Handicap_team2 = GUICtrlCreateInput("", 356, 485, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-
-;$Label23 = GUICtrlCreateLabel("Team Total Pins + Handicap", 414, 485, 163, 17)
+$TeamNumber_2_inputbox = GUICtrlCreateInput("", 440, 325, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label24 = GUICtrlCreateLabel("Score", 243, 489, 28, 17)
-;$Label7 = GUICtrlCreateLabel("Team Total Pins", 670, 479, 99, 17)
-;$TotalPins_team2 = GUICtrlCreateInput("", 612, 479, 49, 21,BitOR($ES_CENTER,$ES_READONLY));group pins b
-;================================================= team 2====================================
 
-;================================================= team 1====================================
+$Label7 = GUICtrlCreateLabel("Player AVG", 321, 362, 59, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$Group1 = GUICtrlCreateGroup("", 173, 31, 609, 225)
-$TeamPlayer1Name_1 = GUICtrlCreateInput("", 613, 127, 153, 21,BitOR($ES_CENTER,$ES_READONLY));player 1 name - team 1
+$Group1 = GUICtrlCreateGroup("", 173, 39, 609, 225)
 
-;$Player1_round_avarege_1 = GUICtrlCreateInput("", 261, 117, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-$Label2 = GUICtrlCreateLabel("Game 2", 488, 103, 43, 17)
-$Label3 = GUICtrlCreateLabel("Name", 677, 103, 28, 17)
-$Label5 = GUICtrlCreateLabel("Game 1", 541, 103, 43, 17)
-$Label6 = GUICtrlCreateLabel("Game 3", 433, 103, 43, 17)
+$HandicapPlayer1_1 = GUICtrlCreateInput("", 377, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$HandicapPlayer2_1 = GUICtrlCreateInput("", 377, 165, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$HandicapPlayer3_1 = GUICtrlCreateInput("", 377, 195, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$ScoreTeam1 = GUICtrlCreateInput("", 187, 233, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TeamPlayer1Name_1 = GUICtrlCreateInput("", 613, 135, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Label2 = GUICtrlCreateLabel("Game 2", 486, 111, 43, 17)
+$Label3 = GUICtrlCreateLabel("Name", 677, 111, 28, 17)
+$Label5 = GUICtrlCreateLabel("Game 1", 541, 111, 43, 17)
+$Label6 = GUICtrlCreateLabel("Game 3", 433, 111, 43, 17)
+$TeamPlayer2Name_1 = GUICtrlCreateInput("", 613, 165, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TeamPlayer3Name_1 = GUICtrlCreateInput("", 613, 195, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Label8 = GUICtrlCreateLabel("Handicap", 378, 111, 51, 17)
+$Label11 = GUICtrlCreateLabel("Team Number", 429, 50, 75, 17)
+$TeamNumber_1_inputbox = GUICtrlCreateInput("", 437, 74, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Label14 = GUICtrlCreateLabel("Score", 240, 238, 28, 17)
+$Label1 = GUICtrlCreateLabel("Player AVG", 318, 111, 59, 17)
 
-$TeamPlayer2Name_1 = GUICtrlCreateInput("", 613, 157, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$TeamPlayer3Name_1 = GUICtrlCreateInput("", 613, 187, 153, 21,BitOR($ES_CENTER,$ES_READONLY))
-$Label8 = GUICtrlCreateLabel("Handicap", 370, 103, 59, 17)
-$HandicapPlayer1_1 = GUICtrlCreateInput("", 370, 127, 49, 21,$ES_CENTER)
-$HandicapPlayer2_1 = GUICtrlCreateInput("", 370, 157, 49, 21,$ES_CENTER)
-$HandicapPlayer3_1 = GUICtrlCreateInput("", 370, 187, 49, 21,$ES_CENTER)
-
-;$Label9 = GUICtrlCreateLabel("Round Average", 253, 93, 75, 17)
-
-;$Player2_round_avarege_1 = GUICtrlCreateInput("", 261, 149, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$Player3_round_avarege_1 = GUICtrlCreateInput("", 261, 173, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$Label10 = GUICtrlCreateLabel("Season Average", 335, 95, 87, 17)
-;$Player1_Season_Average_1 = GUICtrlCreateInput("", 335, 119, 49, 21,$ES_CENTER)
-;$Player2_Season_Average_1 = GUICtrlCreateInput("", 335, 151, 49, 21,$ES_CENTER)
-;$Player3_Season_Average_1 = GUICtrlCreateInput("", 335, 175, 49, 21,$ES_CENTER)
-$Label11 = GUICtrlCreateLabel("Team Number", 429, 42, 75, 17)
-$TeamNumber_1_inputbox = GUICtrlCreateInput("", 437, 66, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-;$TotalPins_Plus_Handicap_team1 = GUICtrlCreateInput("", 353, 226, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
-
-;$Label13 = GUICtrlCreateLabel("Team Total Pins + Handicap", 411, 226, 163, 17)
-$Label14 = GUICtrlCreateLabel("Score", 240, 230, 28, 17)
-;$Label25 = GUICtrlCreateLabel("Team Total Pins", 667, 220, 99, 17)
-;$TotalPins_team1 = GUICtrlCreateInput("", 609, 220, 49, 21,BitOR($ES_CENTER,$ES_READONLY))
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$Label26 = GUICtrlCreateLabel("VS", 460, 267, 29, 17)
-$Group3 = GUICtrlCreateGroup("First time use", 840, 304, 185, 163)
-$InsertPlayersNamesInitialInsertButton = GUICtrlCreateButton("Players names", 864, 328, 139, 25)
-;$DivideIntoTeamsInitialInsertButton = GUICtrlCreateButton("team divider", 864, 376, 139, 25)
-$InseartGamesDateButton = GUICtrlCreateButton("Games Schedule", 864, 376, 139, 25)
-$setHandicupButton = GUICtrlCreateButton("set Handicap Level", 864, 424, 139, 25)
+$Label26 = GUICtrlCreateLabel("VS", 460, 272, 29, 17)
+$Group3 = GUICtrlCreateGroup("First time use", 840, 290, 185, 115)
+$InsertPlayersNamesInitialInsertButton = GUICtrlCreateButton("Players names", 864, 314, 139, 25)
+$InseartGamesDateButton = GUICtrlCreateButton("Games Schedule", 864, 362, 139, 25)
+GUICtrlCreateGroup("", -99, -99, 1, 1)
 $editRoundScoresButton = GUICtrlCreateButton("view / edit round scores", 220, 520, 139, 25)
+$Handicap_groupBox = GUICtrlCreateGroup("For Handicap Calculation", 840, 87, 185, 169)
+$LeagueAVG_Label = GUICtrlCreateLabel("SET League AVG", 888, 119, 89, 17)
+$League_AVG_InputBox = GUICtrlCreateInput("", 872, 143, 121, 21,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$HandicapPrecentFromLeague_Label = GUICtrlCreateLabel("Handicap % ", 905, 188, 64, 17)
+$Handicap_Precent_InputBox = GUICtrlCreateInput("", 873, 212, 121, 21,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-   GUIRegisterMsg($WM_COMMAND, "WM_COMMAND")
-
+$LeagueYear_Label = GUICtrlCreateLabel("League year:", 189, 14, 70, 17)
+$LeagueYear_InputBox = GUICtrlCreateInput("2016-2017", 261, 12, 97, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$LeagueName_Label = GUICtrlCreateLabel("League Name:", 495, 14, 70, 17)
+$LeagueName_inputBox = GUICtrlCreateInput("עמותת כדורת אשדוד", 567, 12, 185, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
+
+;======;
 ;================================================= team 1====================================
+GUICtrlSetState($Player1_score_game1_1, $GUI_FOCUS)
+GUIRegisterMsg($WM_COMMAND, "WM_COMMAND")
 ;readFromTextFile()
 Global $NextIndex=0
+
+$LeagueInformationArray=0
+_FileReadToArray(@ScriptDir&"\rawData\League_Information.txt",$LeagueInformationArray)
+
+If IsArray($LeagueInformationArray) Then
+GUICtrlSetData($LeagueYear_InputBox,$LeagueInformationArray[1])
+GUICtrlSetData($LeagueName_InputBox,$LeagueInformationArray[2])
+GUICtrlSetData($League_AVG_InputBox,$LeagueInformationArray[3])
+GUICtrlSetData($Handicap_Precent_InputBox,$LeagueInformationArray[4])
+EndIf
 
 While 1
 	$nMsg = GUIGetMsg()
 	Switch $nMsg
 		Case $GUI_EVENT_CLOSE
+				$LeagueName_LeagueYears_Handicap_Phandicap_TextFile=FileOpen(@ScriptDir&"\rawData\League_Information.txt",2)
+				FileWriteLine($LeagueName_LeagueYears_Handicap_Phandicap_TextFile,GUICtrlRead($LeagueYear_InputBox))
+				FileWriteLine($LeagueName_LeagueYears_Handicap_Phandicap_TextFile,GUICtrlRead($LeagueName_InputBox))
+				FileWriteLine($LeagueName_LeagueYears_Handicap_Phandicap_TextFile,GUICtrlRead($League_AVG_InputBox))
+				FileWriteLine($LeagueName_LeagueYears_Handicap_Phandicap_TextFile,GUICtrlRead($Handicap_Precent_InputBox))
+
 			Exit
         Case $CreateTablesButton
 			;startFunction()
@@ -185,6 +161,8 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 			InsertDataButton()
 		Case $RoundNumberInput
 		RoundNumberInput_function()
+		calculateScore()
+
 		Case $PrintGamesCurrentDateButton
 			PrintRoundGames()
 		Case $Player1_score_game1_1 ;or $Player1_score_game2_1
@@ -196,8 +174,12 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 		Case $Player1_score_game3_1
 		;	CalculateAverage()
 		Case $editRoundScoresButton
-
 			Run(@SCRIPTDIR&"\rawData\data\" &"view_or_edit_scores.exe",@SCRIPTDIR)
+
+		Case $HandicapPlayer1_1 Or $HandicapPlayer2_1 Or $HandicapPlayer3_1 Or $HandicapPlayer1_2 Or $HandicapPlayer2_2 Or $HandicapPlayer3_2
+			calculateScore()
+
+
 	EndSwitch
 WEnd
 
@@ -713,6 +695,9 @@ RoundNumberInput_function()
 deleteScore()
 
 setScoreAtEditBox_TakeFrom_RawData_Files();look her
+
+
+
 EndFunc
 ;===============================;
 
@@ -751,6 +736,11 @@ GUICtrlSetData($ScoreTeam2 ,"" )
 EndFunc
 
 Func RoundNumberInput_function()
+
+	If  GUICtrlRead( $RoundNumberInput)="1" Then
+
+MsgBox(0,"READ ME","In the first and the second rounds"&@CRLF&"You need to manually add players LAST YEAR averages"&@CRLF&"This is for Handicap calculation."&@CRLF&"After the second round the system will calculate the real player average" )
+	EndIf
 	$returnArray=0
 ;$NextIndex=0
 _FileReadToArray(@ScriptDir&"\rawData\GamesDate.txt",$returnArray);read text file into an array
@@ -1016,6 +1006,9 @@ MsgBox(0,"You Have To Enter Round Number","You Did not entered round number")
 
 
 Else
+calculateScore()
+
+
 
 EndIf
 
@@ -1091,20 +1084,293 @@ EndFunc
 Func WM_COMMAND($hWnd, $Msg, $wParam, $lParam)
     $nNotifyCode = BitShift($wParam, 16)
     $nID = BitAnd($wParam, 0x0000FFFF)
+
     Switch $nNotifyCode
-        Case $EN_UPDATE
+		Case $EN_UPDATE
+			calculateHandicap()
+        $PreviousTitle=GUICtrlRead($nID-1)
+;MsgBox(0,"-1",$PreviousTitle)
+;If $CurrentTitle<>"2016-2017" Then
+If ($PreviousTitle<>"League year:") Then;;igonre warning for this input boxes
+	If ($PreviousTitle<>"League Name:") Then
             If StringLen(GUICtrlRead($nID)) = 3 Then
+$checkIfDecimalNumber=GUICtrlRead($nID)
+$checkIfDecimalNumber=StringSplit($checkIfDecimalNumber,".")
+			If $checkIfDecimalNumber[0]<>2 Then;only if not decimal number
 					If (Int(GUICtrlRead($nID))>300 Or Int(GUICtrlRead($nID))<0 ) Then
+
 						MsgBox(0,"ERROR","Only LAMPEL can score more then 300")
 						GUICtrlSetState($nID, $GUI_FOCUS)
+
 					ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
 					    MsgBox(0,"ERROR","ONLY numbers are allowed")
 						GUICtrlSetState($nID, $GUI_FOCUS)
 					Else
+		;				calculateScore()
 						GUICtrlSetState($nID+1, $GUI_FOCUS)
 					EndIf
 			EndIf
+			EndIf
+	EndIf
+	EndIf
 		EndSwitch
 EndFunc
+
+
+Func calculateScore()
+;InputBox ( "title", "prompt")
+$ScoreTeam1_func=0
+$ScoreTeam2_func=0
+
+
+
+If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  = (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+$ScoreTeam1_func+=0.5
+$ScoreTeam2_func+=0.5
+ElseIf  ( (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  > (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+
+	$ScoreTeam1_func+=1
+	Else
+$ScoreTeam2_func+=1
+EndIf
+
+If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game2_1))+Int(GUICtrlRead($Player2_score_game2_1))+Int(GUICtrlRead($Player3_score_game2_1)))  = (Int(GUICtrlRead($Player1_score_game2_2))+Int(GUICtrlRead($Player2_score_game2_2))+Int(GUICtrlRead($Player3_score_game2_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+$ScoreTeam1_func+=0.5
+$ScoreTeam2_func+=0.5
+
+ElseIf (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game2_1))+Int(GUICtrlRead($Player2_score_game2_1))+Int(GUICtrlRead($Player3_score_game2_1)))  > (Int(GUICtrlRead($Player1_score_game2_2))+Int(GUICtrlRead($Player2_score_game2_2))+Int(GUICtrlRead($Player3_score_game2_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+
+	$ScoreTeam1_func+=1
+	Else
+$ScoreTeam2_func+=1
+EndIf
+
+If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game3_1))+Int(GUICtrlRead($Player2_score_game3_1))+Int(GUICtrlRead($Player3_score_game3_1)))  = (Int(GUICtrlRead($Player1_score_game3_2))+Int(GUICtrlRead($Player2_score_game3_2))+Int(GUICtrlRead($Player3_score_game3_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+$ScoreTeam1_func+=0.5
+$ScoreTeam2_func+=0.5
+ElseIf (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game3_1))+Int(GUICtrlRead($Player2_score_game3_1))+Int(GUICtrlRead($Player3_score_game3_1)))  > (Int(GUICtrlRead($Player1_score_game3_2))+Int(GUICtrlRead($Player2_score_game3_2))+Int(GUICtrlRead($Player3_score_game3_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+
+
+	$ScoreTeam1_func+=1
+	Else
+$ScoreTeam2_func+=1
+	EndIf
+
+;%%%%%%%%%%%%%%%%%
+;ask aria if handicap is times 3 or not
+;%%%%%%%%%%%%%%%%%;
+;now calc total pins to see who will get extra 3 points
+
+$totalPins_Plus_handicap_team1=(Int(GUICtrlRead($HandicapPlayer1_1)) + Int(GUICtrlRead($HandicapPlayer2_1)) + Int(GUICtrlRead($HandicapPlayer3_1)))*3 + Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
+$totalPins_Plus_handicap_team2=(Int(GUICtrlRead($HandicapPlayer1_2)) + Int(GUICtrlRead($HandicapPlayer2_2)) + Int(GUICtrlRead($HandicapPlayer3_2)))*3 + Int(GUICtrlRead($Player1_Score_Game1_2))+Int(GUICtrlRead($Player1_Score_Game2_2))+Int(GUICtrlRead($Player1_Score_Game3_2))+ Int(GUICtrlRead($Player2_Score_Game1_2))+Int(GUICtrlRead($Player2_Score_Game2_2))+Int(GUICtrlRead($Player2_Score_Game3_2))+ Int(GUICtrlRead($Player3_Score_Game1_2))+Int(GUICtrlRead($Player3_Score_Game2_2))+Int(GUICtrlRead($Player3_Score_Game3_2))
+
+
+If $totalPins_Plus_handicap_team1=$totalPins_Plus_handicap_team2 Then
+	$ScoreTeam1_func+=1
+$ScoreTeam2_func+=1
+ElseIf $totalPins_Plus_handicap_team1>$totalPins_Plus_handicap_team2 Then
+	$ScoreTeam1_func+=2
+Else
+	$ScoreTeam2_func+=2
+EndIf
+
+
+If Int(GUICtrlRead($Player1_Score_Game1_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player1_Score_Game1_1))>224 Then
+	$ScoreTeam1_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player1_Score_Game2_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player1_Score_Game2_1))>224 Then
+	$ScoreTeam1_func+=0.5
+	EndIf
+
+
+	If Int(GUICtrlRead($Player1_Score_Game3_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player1_Score_Game3_1))>224 Then
+	$ScoreTeam1_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player2_Score_Game1_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player2_Score_Game1_1))>224 Then
+	$ScoreTeam1_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player2_Score_Game2_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player2_Score_Game2_1))>224 Then
+	$ScoreTeam1_func+=0.5
+	EndIf
+
+
+	If Int(GUICtrlRead($Player2_Score_Game3_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player2_Score_Game3_1))>224 Then
+	$ScoreTeam1_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player3_Score_Game1_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player3_Score_Game1_1))>224 Then
+	$ScoreTeam1_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player3_Score_Game2_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player3_Score_Game2_1))>224 Then
+	$ScoreTeam1_func+=0.5
+	EndIf
+
+
+	If Int(GUICtrlRead($Player3_Score_Game3_1))>249 Then
+	$ScoreTeam1_func+=1
+	ElseIf Int(GUICtrlRead($Player3_Score_Game3_1))>224 Then
+	$ScoreTeam1_func+=0.5
+EndIf
+
+;===;
+If Int(GUICtrlRead($Player1_Score_Game1_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player1_Score_Game1_2))>224 Then
+	$ScoreTeam2_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player1_Score_Game2_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player1_Score_Game2_2))>224 Then
+	$ScoreTeam2_func+=0.5
+	EndIf
+
+
+	If Int(GUICtrlRead($Player1_Score_Game3_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player1_Score_Game3_2))>224 Then
+	$ScoreTeam2_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player2_Score_Game1_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player2_Score_Game1_2))>224 Then
+	$ScoreTeam2_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player2_Score_Game2_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player2_Score_Game2_2))>224 Then
+	$ScoreTeam2_func+=0.5
+	EndIf
+
+
+	If Int(GUICtrlRead($Player2_Score_Game3_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player2_Score_Game3_2))>224 Then
+	$ScoreTeam2_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player3_Score_Game1_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player3_Score_Game1_2))>224 Then
+	$ScoreTeam2_func+=0.5
+EndIf
+
+If Int(GUICtrlRead($Player3_Score_Game2_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player3_Score_Game2_2))>224 Then
+	$ScoreTeam2_func+=0.5
+	EndIf
+
+
+	If Int(GUICtrlRead($Player3_Score_Game3_2))>249 Then
+	$ScoreTeam2_func+=1
+	ElseIf Int(GUICtrlRead($Player3_Score_Game3_2))>224 Then
+	$ScoreTeam2_func+=0.5
+EndIf
+
+
+;===;
+
+GUICtrlSetData($ScoreTeam1,$ScoreTeam1_func)
+GUICtrlSetData($ScoreTeam2,$ScoreTeam2_func)
+
+EndFunc
+
+
+Func calculateHandicap()
+;========;
+If GUICtrlRead($Player1_AVG_1)<>"" Then
+
+$CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player1_AVG_1)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
+
+	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player1_AVG_1)))<0 Then
+	$CalculatedHandicap=0
+	EndIf
+
+GUICtrlSetData($HandicapPlayer1_1,$CalculatedHandicap)
+EndIf
+;========;
+If GUICtrlRead($Player2_AVG_1)<>"" Then
+
+$CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player2_AVG_1)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
+
+	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player2_AVG_1)))<0 Then
+	$CalculatedHandicap=0
+	EndIf
+
+GUICtrlSetData($HandicapPlayer2_1,$CalculatedHandicap)
+EndIf
+;========;
+If GUICtrlRead($Player3_AVG_1)<>"" Then
+
+$CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player3_AVG_1)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
+
+	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player3_AVG_1)))<0 Then
+	$CalculatedHandicap=0
+	EndIf
+
+GUICtrlSetData($HandicapPlayer3_1,$CalculatedHandicap)
+EndIf
+;============;
+;========;
+If GUICtrlRead($Player1_AVG_2)<>"" Then
+
+$CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player1_AVG_2)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
+
+	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player1_AVG_2)))<0 Then
+	$CalculatedHandicap=0
+	EndIf
+
+GUICtrlSetData($HandicapPlayer1_2,$CalculatedHandicap)
+EndIf
+;========;
+If GUICtrlRead($Player2_AVG_2)<>"" Then
+
+$CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player2_AVG_2)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
+
+	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player2_AVG_2)))<0 Then
+	$CalculatedHandicap=0
+	EndIf
+
+GUICtrlSetData($HandicapPlayer2_2,$CalculatedHandicap)
+EndIf
+;========;
+If GUICtrlRead($Player3_AVG_2)<>"" Then
+
+$CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player3_AVG_2)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
+
+	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player3_AVG_2)))<0 Then
+	$CalculatedHandicap=0
+	EndIf
+
+GUICtrlSetData($HandicapPlayer3_2,$CalculatedHandicap)
+EndIf
+;============;
+
+EndFunc
+
+
 
 
