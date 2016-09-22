@@ -36,6 +36,6 @@ Lampel 666
 135
 final Score:
 teamNumber: 9
-2points
+5points
 teamNumber: 11
-2points
+0points

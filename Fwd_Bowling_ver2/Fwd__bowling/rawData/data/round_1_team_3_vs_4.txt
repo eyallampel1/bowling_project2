@@ -2,7 +2,7 @@ round 1
 teamNumber: 3
 ללי בוב
 150
-150
+250
 150
 round 1
 teamNumber: 3
@@ -34,8 +34,8 @@ teamNumber: 4
 200
 210
 220
-final score:
+final Score:
 teamNumber: 3
-0points
+2points
 teamNumber: 4
-6points
+4points

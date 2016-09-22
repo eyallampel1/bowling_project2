@@ -1,7 +1,7 @@
 round 1
 teamNumber: 1
 אייל למפל
-170
+225
 100
 100
 round 1
@@ -36,6 +36,6 @@ teamNumber: 2
 150
 final Score:
 teamNumber: 1
-0points
+1.5points
 teamNumber: 2
-5points
+4points

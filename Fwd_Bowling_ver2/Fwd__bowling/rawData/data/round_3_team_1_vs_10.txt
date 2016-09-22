@@ -36,6 +36,6 @@ Lampel 333
 
 final Score:
 teamNumber: 1
-6points
+5points
 teamNumber: 10
 0points

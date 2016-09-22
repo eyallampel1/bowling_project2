@@ -3,7 +3,7 @@ teamNumber: 7
 Lampel 7
 160
 190
-180
+280
 round 1
 teamNumber: 7
 Lampel 8
@@ -34,8 +34,8 @@ Lampel 12
 240
 250
 260
-final score:
+final Score:
 teamNumber: 7
 1points
 teamNumber: 8
-3points
+8points

@@ -36,6 +36,6 @@ Lampel 6
 180
 final Score:
 teamNumber: 2
-4points
+0points
 teamNumber: 6
-4points
+5points

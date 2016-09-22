@@ -36,6 +36,6 @@ Lampel 15
 
 final Score:
 teamNumber: 3
-6points
+5points
 teamNumber: 9
 0points

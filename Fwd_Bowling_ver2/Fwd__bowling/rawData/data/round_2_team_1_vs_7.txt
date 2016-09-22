@@ -36,6 +36,6 @@ Lampel 9
 142
 final Score:
 teamNumber: 1
-2points
+3points
 teamNumber: 7
-2points
+3points

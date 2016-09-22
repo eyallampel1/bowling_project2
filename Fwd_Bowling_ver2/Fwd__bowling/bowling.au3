@@ -11,6 +11,7 @@
 #include <StaticConstants.au3>
 #include <File.au3>
 #include <MsgBoxConstants.au3>
+#include <Math.au3>
 ;#include "bowlingTableTry.au3"
 #include "rawData/GUIListViewEx.au3"
 
@@ -19,6 +20,9 @@
 $Form1_1 = GUICreate("Ahsdod Bowling", 1127, 575, 196, 106)
 $CreateTablesButton = GUICtrlCreateButton("Create tables", 378, 520, 75, 25)
 $insertDataButton = GUICtrlCreateButton("Enter Data", 610, 520, 75, 25)
+
+
+
 $Label15 = GUICtrlCreateLabel("Round Number", 894, 39, 86, 17)
 $RoundNumberInput = GUICtrlCreateInput("", 907, 58, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 $PrintGamesCurrentDateButton = GUICtrlCreateButton("Print Round", 472, 520, 123, 25)
@@ -64,6 +68,8 @@ $Label18 = GUICtrlCreateLabel("Game 3", 436, 362, 43, 17)
 $TeamPlayer2Name_2 = GUICtrlCreateInput("", 613, 416, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label19 = GUICtrlCreateLabel("Handicap", 381, 362, 51, 17)
 $Label22 = GUICtrlCreateLabel("Team Number", 432, 301, 75, 17)
+$MissingPlayersInTeam2_Label= GUICtrlCreateLabel("Missing Players=3"&@CRLF&"Team2 - Technical Lost", 187, 301, 175, 57)
+GUICtrlSetFont($MissingPlayersInTeam2_Label,Default,700 )
 $TeamNumber_2_inputbox = GUICtrlCreateInput("", 440, 325, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label24 = GUICtrlCreateLabel("Score", 243, 489, 28, 17)
 
@@ -84,6 +90,8 @@ $TeamPlayer2Name_1 = GUICtrlCreateInput("", 613, 165, 153, 21, BitOR($GUI_SS_DEF
 $TeamPlayer3Name_1 = GUICtrlCreateInput("", 613, 195, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label8 = GUICtrlCreateLabel("Handicap", 378, 111, 51, 17)
 $Label11 = GUICtrlCreateLabel("Team Number", 429, 50, 75, 17)
+$MissingPlayersInTeam1_Label= GUICtrlCreateLabel("Missing Players=3"&@CRLF&"Team1 - Technical Lost", 187, 50, 175, 57)
+GUICtrlSetFont($MissingPlayersInTeam1_Label,Default,700 )
 $TeamNumber_1_inputbox = GUICtrlCreateInput("", 437, 74, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label14 = GUICtrlCreateLabel("Score", 240, 238, 28, 17)
 $Label1 = GUICtrlCreateLabel("Player AVG", 318, 111, 59, 17)
@@ -105,6 +113,11 @@ $LeagueYear_Label = GUICtrlCreateLabel("League year:", 189, 14, 70, 17)
 $LeagueYear_InputBox = GUICtrlCreateInput("2016-2017", 261, 12, 97, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 $LeagueName_Label = GUICtrlCreateLabel("League Name:", 495, 14, 70, 17)
 $LeagueName_inputBox = GUICtrlCreateInput("עמותת כדורת אשדוד", 567, 12, 185, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+$Operation_Mode_Label = GUICtrlCreateLabel("Operation Mode:", 45, 200, 98, 17)
+$Operation_Mode_Label2 = GUICtrlCreateLabel("NORMAL", 65, 220, 98, 17)
+GUICtrlSetFont($Operation_Mode_Label2,Default,700 )
+$DeleteALLScoresButton = GUICtrlCreateButton("Restart - League"&@CRLF&"Delete All Scores", 950, 520, 130, 45, $BS_MULTILINE)
+
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -114,6 +127,11 @@ GUICtrlSetState($Player1_score_game1_1, $GUI_FOCUS)
 GUIRegisterMsg($WM_COMMAND, "WM_COMMAND")
 ;readFromTextFile()
 Global $NextIndex=0
+Global $DO_SCORE_CALCULATION=1
+Global $readmeFlage=1
+Global $Team1_Missing_Players=0
+Global $Team2_Missing_Players=0
+
 
 $LeagueInformationArray=0
 _FileReadToArray(@ScriptDir&"\rawData\League_Information.txt",$LeagueInformationArray)
@@ -139,8 +157,8 @@ While 1
         Case $CreateTablesButton
 			;startFunction()
 		;	MsgBox(0,"",@SCRIPTDIR&"\rawData\"&"dataToExcel.exe")
-		;Run(@SCRIPTDIR&"\rawData\"&"dataToExcel.exe","")
-		Run('"' & @AutoItExe & '" /AutoIt3ExecuteScript "' & @SCRIPTDIR&"\rawData\"&"dataToExcel.au3"& ' " ', "", @SW_SHOW, 0)
+		Run(@SCRIPTDIR&"\rawData\"&"dataToExcel.exe","")
+		;Run('"' & @AutoItExe & '" /AutoIt3ExecuteScript "' & @SCRIPTDIR&"\rawData\"&"dataToExcel.au3"& ' " ', "", @SW_SHOW, 0)
 		Case $InsertPlayersNamesInitialInsertButton
 			;	MsgBox(0,"",@SCRIPTDIR&"\rawData")
 Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
@@ -169,7 +187,10 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 		;CalculateAverage()
 		Case $Player1_score_game2_1 ;or $Player1_score_game2_1
 		;CalculateAverage()
-		;Case $Player1_score_game3_1 ;or $Player1_score_game2_1
+		Case $DeleteALLScoresButton
+		deleteAll_Scores()
+
+;Case $Player1_score_game3_1 ;or $Player1_score_game2_1
 		;CalculateAverage()
 		Case $Player1_score_game3_1
 		;	CalculateAverage()
@@ -628,6 +649,11 @@ If $roundNumber="" Then
 MsgBox(0,"You Have To Enter Round Number","You Did not entered round number")
 $NextIndex=0
 Else
+createTeam_Points_TextFile()
+	createPlayerAvgTextFile()
+
+
+
 $roundTextFile=FileOpen(@ScriptDir&"\rawData\data\roundNumber.txt",2)
 FileWriteLine($roundTextFile,"round "&$roundNumber)
 
@@ -732,13 +758,26 @@ GUICtrlSetData($Player3_score_game3_2 ,"")
 GUICtrlSetData($ScoreTeam1 ,"" )
 GUICtrlSetData($ScoreTeam2 ,"" )
 
+GUICtrlSetData($Player1_AVG_1,"")
+GUICtrlSetData($Player2_AVG_1,"")
+GUICtrlSetData($Player3_AVG_1,"")
+GUICtrlSetData($Player1_AVG_2,"")
+GUICtrlSetData($Player2_AVG_2,"")
+GUICtrlSetData($Player3_AVG_2,"")
+
+GUICtrlSetData($HandicapPlayer1_1,"")
+GUICtrlSetData($HandicapPlayer2_1,"")
+GUICtrlSetData($HandicapPlayer3_1,"")
+GUICtrlSetData($HandicapPlayer1_2,"")
+GUICtrlSetData($HandicapPlayer2_2,"")
+GUICtrlSetData($HandicapPlayer3_2,"")
 
 EndFunc
 
 Func RoundNumberInput_function()
 
-	If  GUICtrlRead( $RoundNumberInput)="1" Then
-
+	If  ((GUICtrlRead( $RoundNumberInput)="1") And ($NextIndex=0) And $readmeFlage=1) Then
+$readmeFlage=0
 MsgBox(0,"READ ME","In the first and the second rounds"&@CRLF&"You need to manually add players LAST YEAR averages"&@CRLF&"This is for Handicap calculation."&@CRLF&"After the second round the system will calculate the real player average" )
 	EndIf
 	$returnArray=0
@@ -1088,9 +1127,38 @@ Func WM_COMMAND($hWnd, $Msg, $wParam, $lParam)
     Switch $nNotifyCode
 		Case $EN_UPDATE
 			calculateHandicap()
+
         $PreviousTitle=GUICtrlRead($nID-1)
 ;MsgBox(0,"-1",$PreviousTitle)
 ;If $CurrentTitle<>"2016-2017" Then
+If GUICtrlRead($nID)="E" Then
+	$DO_SCORE_CALCULATION=0
+	GUICtrlSetData($Operation_Mode_Label2,"EDIT")
+	MsgBox(0,"EDIT MODE","THIS IS EDIT MODE , YOU CAN ENTER ANY DATA YOU WANT ,"&@CRLF& "HIT 'ENTER DATA' TO SAVE"&@CRLF&"NO CALCULATION WILL BE MADE IN EDIT MODE "&@CRLF&"THE ONLY WAY TO EXIT EDIT MODE IS BY EXITING THE PROGRAM")
+	GUICtrlSetStyle($ScoreTeam1 ,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($ScoreTeam2 ,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($HandicapPlayer1_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($HandicapPlayer2_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($HandicapPlayer3_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($HandicapPlayer1_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($HandicapPlayer2_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetStyle($HandicapPlayer3_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+	GUICtrlSetData($nID,"")
+EndIf
+
+If GUICtrlRead($nID)="H" Then
+	If $DO_SCORE_CALCULATION=1 Then
+	GUICtrlSetData($Operation_Mode_Label2,"HASLAMA")
+	MsgBox(0,"HASLAMA MODE","The system is entering HASLAMA Mode , NO SCORE CALCULATION WILL BE MADE!!"&@CRLF&"You can return to normal mode by pressing H again")
+	$DO_SCORE_CALCULATION=0
+	Else
+	GUICtrlSetData($Operation_Mode_Label2,"NORMAL")
+	MsgBox(0,"NORMAL MODE","The system is Returning to normal Mode")
+	$DO_SCORE_CALCULATION=1
+	EndIf
+	 GUICtrlSetData($nID,"")
+EndIf
+
 If ($PreviousTitle<>"League year:") Then;;igonre warning for this input boxes
 	If ($PreviousTitle<>"League Name:") Then
             If StringLen(GUICtrlRead($nID)) = 3 Then
@@ -1102,9 +1170,9 @@ $checkIfDecimalNumber=StringSplit($checkIfDecimalNumber,".")
 						MsgBox(0,"ERROR","Only LAMPEL can score more then 300")
 						GUICtrlSetState($nID, $GUI_FOCUS)
 
-					ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
-					    MsgBox(0,"ERROR","ONLY numbers are allowed")
-						GUICtrlSetState($nID, $GUI_FOCUS)
+				;	ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
+				;	    MsgBox(0,"ERROR","ONLY numbers are allowed")
+				;		GUICtrlSetState($nID, $GUI_FOCUS)
 					Else
 		;				calculateScore()
 						GUICtrlSetState($nID+1, $GUI_FOCUS)
@@ -1119,6 +1187,17 @@ EndFunc
 
 Func calculateScore()
 ;InputBox ( "title", "prompt")
+$Team1_Missing_Players=0
+$Team2_Missing_Players=0
+
+If GUICtrlRead($Player1_score_game1_1)="" Then
+$Player1_1_missing=1
+$Team1_Missing_Players+=1
+
+EndIf
+
+If $DO_SCORE_CALCULATION=1 Then
+
 $ScoreTeam1_func=0
 $ScoreTeam2_func=0
 
@@ -1296,6 +1375,10 @@ EndIf
 GUICtrlSetData($ScoreTeam1,$ScoreTeam1_func)
 GUICtrlSetData($ScoreTeam2,$ScoreTeam2_func)
 
+EndIf
+
+
+
 EndFunc
 
 
@@ -1373,4 +1456,153 @@ EndFunc
 
 
 
+Func createPlayerAvgTextFile()
 
+
+
+;$PlayersAVG_TextFile=FileOpen(@ScriptDir&"\rawData\data\PlayersAVG.txt",2)
+;FileWriteLine($PlayersAVG_TextFile,"round "&$roundNumber)
+
+
+
+EndFunc
+
+Func createTeam_Points_TextFile()
+
+
+;=============================team points;=================================
+;==========================================================================
+Local $TeamPointsArray[11][100]
+Local $TeamHighest3GameTotalArray[11][100]
+Local $TeamHighest1GameTotalArray[11][100]
+
+
+
+$teamNum_1= GUICtrlRead($TeamNumber_1_inputbox)
+$teamNum_2= GUICtrlRead($TeamNumber_2_inputbox)
+$roundNumberr=GUICtrlRead($RoundNumberInput)
+$Team_Points_1=GUICtrlRead($ScoreTeam1)
+$Team_Points_2=GUICtrlRead($ScoreTeam2)
+
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points.txt",$TeamPointsArray,0,",")
+
+If Not(IsArray($TeamPointsArray)) Then
+	FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Teams_Points.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points.txt",$TeamPointsArray,0,",")
+EndIf
+
+$TeamPointsArray[ Int($teamNum_1) ][Int($roundNumberr)]=$Team_Points_1
+$TeamPointsArray[ Int($teamNum_2) ][Int($roundNumberr)]=$Team_Points_2
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points.txt",$TeamPointsArray,Default,Default,",")
+
+;=============================team points;=================================
+;==========================================================================
+
+
+
+
+
+;=============================team - highest- 3 games;=================================
+;======================================================================================
+
+
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
+If Not(IsArray($TeamHighest3GameTotalArray)) Then
+FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
+EndIf
+
+If $Team1_Missing_Players=0 Then ;;;highest 3 games can be earned ONLY if all Players in a certin team has arrived!!!!
+$totalPins_WIthout_handicap_team1=Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
+Else
+$totalPins_WIthout_handicap_team1=0
+EndIf
+
+
+If $Team2_Missing_Players=0 Then ;;;highest 3 games can be earned ONLY if all Players in a certin team has arrived!!!!
+$totalPins_WIthout_handicap_team2= Int(GUICtrlRead($Player1_Score_Game1_2))+Int(GUICtrlRead($Player1_Score_Game2_2))+Int(GUICtrlRead($Player1_Score_Game3_2))+ Int(GUICtrlRead($Player2_Score_Game1_2))+Int(GUICtrlRead($Player2_Score_Game2_2))+Int(GUICtrlRead($Player2_Score_Game3_2))+ Int(GUICtrlRead($Player3_Score_Game1_2))+Int(GUICtrlRead($Player3_Score_Game2_2))+Int(GUICtrlRead($Player3_Score_Game3_2))
+Else
+$totalPins_WIthout_handicap_team2=0
+EndIf
+
+
+$TeamHighest3GameTotalArray[ Int($teamNum_1) ][Int($roundNumberr)]=$totalPins_WIthout_handicap_team1
+$TeamHighest3GameTotalArray[ Int($teamNum_2) ][Int($roundNumberr)]=$totalPins_WIthout_handicap_team2
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,Default,Default,",")
+
+;_ArrayDisplay($TeamHighest3GameTotalArray)
+
+
+;=============================team - highest- 3 games;=================================
+;======================================================================================
+
+
+
+;=============================team - highest- 1 game total;=================================
+;======================================================================================
+
+
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,0,",")
+If Not(IsArray($TeamHighest1GameTotalArray)) Then
+FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,0,",")
+EndIf
+
+If $Team1_Missing_Players=0 Then ;;;highest 3 games can be earned ONLY if all Players in a certin team has arrived!!!!
+$totalPinsSigalGame1_WIthout_handicap_team1=Int(GUICtrlRead($Player1_Score_Game1_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))
+$totalPinsSigalGame2_WIthout_handicap_team1=Int(GUICtrlRead($Player1_Score_Game2_1))+ Int(GUICtrlRead($Player2_Score_Game2_1))+ Int(GUICtrlRead($Player3_Score_Game2_1))
+$totalPinsSigalGame3_WIthout_handicap_team1=Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game3_1))
+$Team1_max_between1_2=_Max($totalPinsSigalGame1_WIthout_handicap_team1,$totalPinsSigalGame2_WIthout_handicap_team1)
+$Team1_Max_total_pins_for_a_single_game_in_this_round=_Max($Team1_max_between1_2,$totalPinsSigalGame3_WIthout_handicap_team1)
+
+
+
+Else
+$Team1_Max_total_pins_for_a_single_game_in_this_round=0
+EndIf
+
+
+If $Team2_Missing_Players=0 Then ;;;highest 3 games can be earned ONLY if all Players in a certin team has arrived!!!!
+$totalPinsSigalGame1_WIthout_handicap_team2=Int(GUICtrlRead($Player1_Score_Game1_2))+ Int(GUICtrlRead($Player2_Score_Game1_2))+ Int(GUICtrlRead($Player3_Score_Game1_2))
+$totalPinsSigalGame2_WIthout_handicap_team2=Int(GUICtrlRead($Player1_Score_Game2_2))+ Int(GUICtrlRead($Player2_Score_Game2_2))+ Int(GUICtrlRead($Player3_Score_Game2_2))
+$totalPinsSigalGame3_WIthout_handicap_team2=Int(GUICtrlRead($Player1_Score_Game3_2))+ Int(GUICtrlRead($Player2_Score_Game3_2))+ Int(GUICtrlRead($Player3_Score_Game3_2))
+
+$Team2_max_between1_2=_Max($totalPinsSigalGame1_WIthout_handicap_team2,$totalPinsSigalGame2_WIthout_handicap_team2)
+$Team2_Max_total_pins_for_a_single_game_in_this_round=_Max($Team2_max_between1_2,$totalPinsSigalGame3_WIthout_handicap_team2)
+Else
+$Team2_Max_total_pins_for_a_single_game_in_this_round=0
+EndIf
+
+
+$TeamHighest1GameTotalArray[ Int($teamNum_1) ][Int($roundNumberr)]=$Team1_Max_total_pins_for_a_single_game_in_this_round
+$TeamHighest1GameTotalArray[ Int($teamNum_2) ][Int($roundNumberr)]=$Team2_Max_total_pins_for_a_single_game_in_this_round
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,Default,Default,",")
+
+_ArrayDisplay($TeamHighest1GameTotalArray)
+
+
+;=============================team - highest- 1 game total;=================================
+;======================================================================================
+
+
+EndFunc
+
+
+Func deleteAll_Scores()
+        $user_answer=MsgBox(1,"Delete all scores","Are You sure You want do delete all scores and start a new league ?")
+
+		If $user_answer=1 Then;user pressed yes
+
+		$user_answer2=MsgBox(1,"Confirm Delete","CAUTION This Process cannot be undo "&@CRLF&"I will save a backup of Score files IN"&@crlf&@ScriptDir&@CRLF&"Continue??")
+				If $user_answer2=1 Then
+
+				EndIf
+		EndIf
+
+
+
+
+EndFunc

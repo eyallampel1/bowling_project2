@@ -36,6 +36,6 @@ Lampel 3
 105
 final Score:
 teamNumber: 4
-3points
+0points
 teamNumber: 5
-3points
+5points

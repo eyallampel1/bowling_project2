@@ -38,4 +38,4 @@ final Score:
 teamNumber: 6
 0points
 teamNumber: 7
-6points
+5points

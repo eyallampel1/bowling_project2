@@ -34,8 +34,8 @@ Lampel 6
 160
 180
 190
-final score:
+final Score:
 teamNumber: 5
-8points
+7points
 teamNumber: 6
 0points

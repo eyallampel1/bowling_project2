@@ -36,6 +36,6 @@ Lampel 666
 190
 final Score:
 teamNumber: 4
-3points
+2.5points
 teamNumber: 11
-3points
+2.5points
