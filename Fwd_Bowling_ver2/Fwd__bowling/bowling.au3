@@ -17,7 +17,8 @@
 
 ;======;
 #Region ### START Koda GUI section ### Form=D:\bowling_project2\Fwd_Bowling_ver2\Fwd__bowling\bowling.kxf
-$Form1_1 = GUICreate("Ahsdod Bowling", 1127, 575, 196, 106)
+$Form1_1 = GUICreate("Lampel Bowling", 1127, 575, 196, 106)
+GUISetIcon(@ScriptDir&"\pic\download.ico")
 $CreateTablesButton = GUICtrlCreateButton("Create tables", 378, 520, 75, 25)
 $insertDataButton = GUICtrlCreateButton("Enter Data", 610, 520, 75, 25)
 
@@ -58,6 +59,9 @@ $Player3_AVG_2 = GUICtrlCreateInput("", 327, 446, 49, 21, BitOR($GUI_SS_DEFAULT_
 $HandicapPlayer1_2 = GUICtrlCreateInput("", 380, 386, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $HandicapPlayer2_2 = GUICtrlCreateInput("", 380, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $HandicapPlayer3_2 = GUICtrlCreateInput("", 380, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+
+$TotalTeam_input_2 = GUICtrlCreateInput("", 190, 370, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TotalTeam_Label_2 = GUICtrlCreateLabel("Total Pins", 243, 370, 78, 47)
 $ScoreTeam2 = GUICtrlCreateInput("", 190, 484, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $TeamPlayer3Name_2 = GUICtrlCreateInput("", 613, 446, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $TeamPlayer1Name_2 = GUICtrlCreateInput("", 613, 386, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
@@ -71,7 +75,18 @@ $Label22 = GUICtrlCreateLabel("Team Number", 432, 301, 75, 17)
 $MissingPlayersInTeam2_Label= GUICtrlCreateLabel("Missing Players=3"&@CRLF&"Team2 - Technical Lost", 187, 301, 175, 57)
 GUICtrlSetFont($MissingPlayersInTeam2_Label,Default,700 )
 $TeamNumber_2_inputbox = GUICtrlCreateInput("", 440, 325, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-$Label24 = GUICtrlCreateLabel("Score", 243, 489, 28, 17)
+$Score_label_2 = GUICtrlCreateLabel("Score", 243, 489, 28, 17)
+
+$Game3_Total_Score_2 = GUICtrlCreateInput("", 433, 476, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Game2_Total_Score_2 = GUICtrlCreateInput("", 486, 476, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Game1_Total_Score_2 = GUICtrlCreateInput("", 539, 476, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TeamGameTotal_label_2 = GUICtrlCreateLabel("   Game"&@CRLF&"Total Pins", 592, 474, 90, 37)
+
+
+$Game3_Total_Score_1 = GUICtrlCreateInput("", 430, 225, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Game2_Total_Score_1 = GUICtrlCreateInput("", 483, 225, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$Game1_Total_Score_1 = GUICtrlCreateInput("", 536, 225, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TeamGameTotal_label_1 = GUICtrlCreateLabel("   Game"&@CRLF&"Total Pins", 589, 223, 90, 37)
 
 $Label7 = GUICtrlCreateLabel("Player AVG", 321, 362, 59, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
@@ -94,6 +109,8 @@ $MissingPlayersInTeam1_Label= GUICtrlCreateLabel("Missing Players=3"&@CRLF&"Team
 GUICtrlSetFont($MissingPlayersInTeam1_Label,Default,700 )
 $TeamNumber_1_inputbox = GUICtrlCreateInput("", 437, 74, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label14 = GUICtrlCreateLabel("Score", 240, 238, 28, 17)
+
+
 $Label1 = GUICtrlCreateLabel("Player AVG", 318, 111, 59, 17)
 
 GUICtrlCreateGroup("", -99, -99, 1, 1)
@@ -117,6 +134,13 @@ $Operation_Mode_Label = GUICtrlCreateLabel("Operation Mode:", 45, 200, 98, 17)
 $Operation_Mode_Label2 = GUICtrlCreateLabel("NORMAL", 65, 220, 98, 17)
 GUICtrlSetFont($Operation_Mode_Label2,Default,700 )
 $DeleteALLScoresButton = GUICtrlCreateButton("Restart - League"&@CRLF&"Delete All Scores", 950, 520, 130, 45, $BS_MULTILINE)
+
+$TotalTeam_plus_handicap_input_2 = GUICtrlCreateInput("", 190, 434, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TotalTeam_plus_handicap_Label_2 = GUICtrlCreateLabel("Total Pins"&@CRLF&"       +"&@CRLF&" Handicap", 243, 424, 78, 47)
+$TotalTeam_plus_handicap_input_1 = GUICtrlCreateInput("", 187, 178, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TotalTeam_plus_handicap_Label_1 = GUICtrlCreateLabel("Total Pins"&@CRLF&"       +"&@CRLF&" Handicap", 243, 167, 78, 47)
+$TotalTeam_input_1 = GUICtrlCreateInput("", 187, 118, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+$TotalTeam_Label_1 = GUICtrlCreateLabel("Total Pins", 243, 118, 68, 47)
 
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
@@ -179,14 +203,12 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 			InsertDataButton()
 		Case $RoundNumberInput
 		RoundNumberInput_function()
-		calculateScore()
+		GUICtrlSetState($Player1_score_game1_1, $GUI_FOCUS)
+;		calculateScore()
 
 		Case $PrintGamesCurrentDateButton
 			PrintRoundGames()
-		Case $Player1_score_game1_1 ;or $Player1_score_game2_1
-		;CalculateAverage()
-		Case $Player1_score_game2_1 ;or $Player1_score_game2_1
-		;CalculateAverage()
+
 		Case $DeleteALLScoresButton
 		deleteAll_Scores()
 
@@ -197,8 +219,8 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 		Case $editRoundScoresButton
 			Run(@SCRIPTDIR&"\rawData\data\" &"view_or_edit_scores.exe",@SCRIPTDIR)
 
-		Case $HandicapPlayer1_1 Or $HandicapPlayer2_1 Or $HandicapPlayer3_1 Or $HandicapPlayer1_2 Or $HandicapPlayer2_2 Or $HandicapPlayer3_2
-			calculateScore()
+	;	Case $HandicapPlayer1_1 Or $HandicapPlayer2_1 Or $HandicapPlayer3_1 Or $HandicapPlayer1_2 Or $HandicapPlayer2_2 Or $HandicapPlayer3_2
+		;	calculateScore()
 
 
 	EndSwitch
@@ -1127,7 +1149,8 @@ Func WM_COMMAND($hWnd, $Msg, $wParam, $lParam)
     Switch $nNotifyCode
 		Case $EN_UPDATE
 			calculateHandicap()
-
+			checkHowManyPlayerArePlayingInEaxhTeam()
+			calculateScore()
         $PreviousTitle=GUICtrlRead($nID-1)
 ;MsgBox(0,"-1",$PreviousTitle)
 ;If $CurrentTitle<>"2016-2017" Then
@@ -1167,15 +1190,30 @@ $checkIfDecimalNumber=StringSplit($checkIfDecimalNumber,".")
 			If $checkIfDecimalNumber[0]<>2 Then;only if not decimal number
 					If (Int(GUICtrlRead($nID))>300 Or Int(GUICtrlRead($nID))<0 ) Then
 
+							If ($PreviousTitle<>"Score") Then
+								If ($PreviousTitle<>("Total Pins"&@CRLF&"       +"&@CRLF&" Handicap")) Then
+									If $PreviousTitle<>"Restart - League"&@CRLF&"Delete All Scores" Then
+						;MsgBox(0,"-1",$PreviousTitle)
 						MsgBox(0,"ERROR","Only LAMPEL can score more then 300")
 						GUICtrlSetState($nID, $GUI_FOCUS)
-
-				;	ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
-				;	    MsgBox(0,"ERROR","ONLY numbers are allowed")
-				;		GUICtrlSetState($nID, $GUI_FOCUS)
+							EndIf
+								EndIf
+								   EndIf
+					ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
+					    MsgBox(0,"ERROR","ONLY numbers are allowed")
+						GUICtrlSetState($nID, $GUI_FOCUS)
 					Else
-		;				calculateScore()
+
+		;MsgBox(0,"N+1=",GUICtrlRead($nID+1))
+		;Sleep(10)
+
+
+
+
 						GUICtrlSetState($nID+1, $GUI_FOCUS)
+
+
+
 					EndIf
 			EndIf
 			EndIf
@@ -1187,52 +1225,75 @@ EndFunc
 
 Func calculateScore()
 ;InputBox ( "title", "prompt")
-$Team1_Missing_Players=0
-$Team2_Missing_Players=0
+;$Team1_Missing_Players=0
+;$Team2_Missing_Players=0
 
-If GUICtrlRead($Player1_score_game1_1)="" Then
-$Player1_1_missing=1
-$Team1_Missing_Players+=1
+;If GUICtrlRead($Player1_score_game1_1)="" Then
+;$Player1_1_missing=1
+;$Team1_Missing_Players+=1
 
-EndIf
+;EndIf
 
-If $DO_SCORE_CALCULATION=1 Then
+ If $DO_SCORE_CALCULATION=1 Then
 
 $ScoreTeam1_func=0
 $ScoreTeam2_func=0
 
 
 
-If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  = (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
-$ScoreTeam1_func+=0.5
-$ScoreTeam2_func+=0.5
-ElseIf  ( (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  > (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
 
-	$ScoreTeam1_func+=1
-	Else
+If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  = (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+		If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
+		$ScoreTeam1_func+=0.5
+		EndIf
+
+		If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
+		$ScoreTeam2_func+=0.5
+		EndIf
+
+ElseIf  ( (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  > (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+		If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
+	    $ScoreTeam1_func+=1
+	    EndIf
+		Else
+		If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam2_func+=1
+EndIf
 EndIf
 
 If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game2_1))+Int(GUICtrlRead($Player2_score_game2_1))+Int(GUICtrlRead($Player3_score_game2_1)))  = (Int(GUICtrlRead($Player1_score_game2_2))+Int(GUICtrlRead($Player2_score_game2_2))+Int(GUICtrlRead($Player3_score_game2_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam1_func+=0.5
+EndIf
+If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam2_func+=0.5
-
+EndIf
 ElseIf (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game2_1))+Int(GUICtrlRead($Player2_score_game2_1))+Int(GUICtrlRead($Player3_score_game2_1)))  > (Int(GUICtrlRead($Player1_score_game2_2))+Int(GUICtrlRead($Player2_score_game2_2))+Int(GUICtrlRead($Player3_score_game2_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
-
+If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 	$ScoreTeam1_func+=1
-	Else
+	EndIf
+Else
+	If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam2_func+=1
+EndIf
 EndIf
 
 If (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game3_1))+Int(GUICtrlRead($Player2_score_game3_1))+Int(GUICtrlRead($Player3_score_game3_1)))  = (Int(GUICtrlRead($Player1_score_game3_2))+Int(GUICtrlRead($Player2_score_game3_2))+Int(GUICtrlRead($Player3_score_game3_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
+If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam1_func+=0.5
+EndIf
+If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam2_func+=0.5
+EndIf
 ElseIf (   (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game3_1))+Int(GUICtrlRead($Player2_score_game3_1))+Int(GUICtrlRead($Player3_score_game3_1)))  > (Int(GUICtrlRead($Player1_score_game3_2))+Int(GUICtrlRead($Player2_score_game3_2))+Int(GUICtrlRead($Player3_score_game3_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
 
-
+If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 	$ScoreTeam1_func+=1
-	Else
+	EndIf
+Else
+	If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam2_func+=1
+EndIf
 	EndIf
 
 ;%%%%%%%%%%%%%%%%%
@@ -1240,17 +1301,38 @@ $ScoreTeam2_func+=1
 ;%%%%%%%%%%%%%%%%%;
 ;now calc total pins to see who will get extra 3 points
 
-$totalPins_Plus_handicap_team1=(Int(GUICtrlRead($HandicapPlayer1_1)) + Int(GUICtrlRead($HandicapPlayer2_1)) + Int(GUICtrlRead($HandicapPlayer3_1)))*3 + Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
-$totalPins_Plus_handicap_team2=(Int(GUICtrlRead($HandicapPlayer1_2)) + Int(GUICtrlRead($HandicapPlayer2_2)) + Int(GUICtrlRead($HandicapPlayer3_2)))*3 + Int(GUICtrlRead($Player1_Score_Game1_2))+Int(GUICtrlRead($Player1_Score_Game2_2))+Int(GUICtrlRead($Player1_Score_Game3_2))+ Int(GUICtrlRead($Player2_Score_Game1_2))+Int(GUICtrlRead($Player2_Score_Game2_2))+Int(GUICtrlRead($Player2_Score_Game3_2))+ Int(GUICtrlRead($Player3_Score_Game1_2))+Int(GUICtrlRead($Player3_Score_Game2_2))+Int(GUICtrlRead($Player3_Score_Game3_2))
+ $totalPins__team1= Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
+$totalPins__team2= Int(GUICtrlRead($Player1_Score_Game1_2))+Int(GUICtrlRead($Player1_Score_Game2_2))+Int(GUICtrlRead($Player1_Score_Game3_2))+ Int(GUICtrlRead($Player2_Score_Game1_2))+Int(GUICtrlRead($Player2_Score_Game2_2))+Int(GUICtrlRead($Player2_Score_Game3_2))+ Int(GUICtrlRead($Player3_Score_Game1_2))+Int(GUICtrlRead($Player3_Score_Game2_2))+Int(GUICtrlRead($Player3_Score_Game3_2))
+
+
+ $totalPins_Plus_handicap_team1=(Int(GUICtrlRead($HandicapPlayer1_1)) + Int(GUICtrlRead($HandicapPlayer2_1)) + Int(GUICtrlRead($HandicapPlayer3_1)))*3 + Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
+ $totalPins_Plus_handicap_team2=(Int(GUICtrlRead($HandicapPlayer1_2)) + Int(GUICtrlRead($HandicapPlayer2_2)) + Int(GUICtrlRead($HandicapPlayer3_2)))*3 + Int(GUICtrlRead($Player1_Score_Game1_2))+Int(GUICtrlRead($Player1_Score_Game2_2))+Int(GUICtrlRead($Player1_Score_Game3_2))+ Int(GUICtrlRead($Player2_Score_Game1_2))+Int(GUICtrlRead($Player2_Score_Game2_2))+Int(GUICtrlRead($Player2_Score_Game3_2))+ Int(GUICtrlRead($Player3_Score_Game1_2))+Int(GUICtrlRead($Player3_Score_Game2_2))+Int(GUICtrlRead($Player3_Score_Game3_2))
+
+$total_Team_game1_1=Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game1_1))
+$total_Team_game2_1=Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game2_1))
+$total_Team_game3_1=Int(GUICtrlRead($Player1_Score_Game3_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
+$total_Team_game1_2=Int(GUICtrlRead($Player1_Score_Game1_2))+Int(GUICtrlRead($Player2_Score_Game1_2))+Int(GUICtrlRead($Player3_Score_Game1_2))
+$total_Team_game2_2=Int(GUICtrlRead($Player1_Score_Game2_2))+Int(GUICtrlRead($Player2_Score_Game2_2))+Int(GUICtrlRead($Player3_Score_Game2_2))
+$total_Team_game3_2=Int(GUICtrlRead($Player1_Score_Game3_2))+Int(GUICtrlRead($Player2_Score_Game3_2))+Int(GUICtrlRead($Player3_Score_Game3_2))
+
 
 
 If $totalPins_Plus_handicap_team1=$totalPins_Plus_handicap_team2 Then
+	If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 	$ScoreTeam1_func+=1
+	EndIf
+	If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 $ScoreTeam2_func+=1
+EndIf
+
 ElseIf $totalPins_Plus_handicap_team1>$totalPins_Plus_handicap_team2 Then
+	If Not($Team1_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 	$ScoreTeam1_func+=2
-Else
+	EndIf
+	Else
+	If Not($Team2_Missing_Players>1) Then;;THIS IS A TECHNICAL LOSS - TEAM CANT GET Points in this mode
 	$ScoreTeam2_func+=2
+	EndIf
 EndIf
 
 
@@ -1369,13 +1451,29 @@ If Int(GUICtrlRead($Player3_Score_Game2_2))>249 Then
 	$ScoreTeam2_func+=0.5
 EndIf
 
+;ElseIf  ( (Int(GUICtrlRead($HandicapPlayer1_1))+Int(GUICtrlRead($HandicapPlayer2_1))+Int(GUICtrlRead($HandicapPlayer3_1))+Int(GUICtrlRead($Player1_score_game1_1))+Int(GUICtrlRead($Player2_score_game1_1))+Int(GUICtrlRead($Player3_score_game1_1)))  > (Int(GUICtrlRead($Player1_score_game1_2))+Int(GUICtrlRead($Player2_score_game1_2))+Int(GUICtrlRead($Player3_score_game1_2))+Int(GUICtrlRead($HandicapPlayer1_2))+Int(GUICtrlRead($HandicapPlayer2_2))+Int(GUICtrlRead($HandicapPlayer3_2))) ) Then
 
-;===;
+
+
 
 GUICtrlSetData($ScoreTeam1,$ScoreTeam1_func)
 GUICtrlSetData($ScoreTeam2,$ScoreTeam2_func)
 
-EndIf
+GUICtrlSetData($TotalTeam_plus_handicap_input_1,$totalPins_Plus_handicap_team1)
+GUICtrlSetData($TotalTeam_input_2,$totalPins__team2)
+GUICtrlSetData($TotalTeam_plus_handicap_input_2,$totalPins_Plus_handicap_team2)
+GUICtrlSetData($TotalTeam_input_1,$totalPins__team1)
+GUICtrlSetData($Game1_Total_Score_1,$total_Team_game1_1)
+GUICtrlSetData($Game2_Total_Score_1,$total_Team_game2_1)
+GUICtrlSetData($Game3_Total_Score_1,$total_Team_game3_1)
+GUICtrlSetData($Game1_Total_Score_2,$total_Team_game1_2)
+GUICtrlSetData($Game2_Total_Score_2,$total_Team_game2_2)
+GUICtrlSetData($Game3_Total_Score_2,$total_Team_game3_2)
+
+
+
+
+ EndIf
 
 
 
@@ -1393,6 +1491,9 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	EndIf
 
 GUICtrlSetData($HandicapPlayer1_1,$CalculatedHandicap)
+Else
+GUICtrlSetData($HandicapPlayer1_1,"")
+
 EndIf
 ;========;
 If GUICtrlRead($Player2_AVG_1)<>"" Then
@@ -1404,6 +1505,8 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	EndIf
 
 GUICtrlSetData($HandicapPlayer2_1,$CalculatedHandicap)
+Else
+GUICtrlSetData($HandicapPlayer2_1,"")
 EndIf
 ;========;
 If GUICtrlRead($Player3_AVG_1)<>"" Then
@@ -1415,6 +1518,8 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	EndIf
 
 GUICtrlSetData($HandicapPlayer3_1,$CalculatedHandicap)
+Else
+GUICtrlSetData($HandicapPlayer3_1,"")
 EndIf
 ;============;
 ;========;
@@ -1427,6 +1532,8 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	EndIf
 
 GUICtrlSetData($HandicapPlayer1_2,$CalculatedHandicap)
+Else
+GUICtrlSetData($HandicapPlayer1_2,"")
 EndIf
 ;========;
 If GUICtrlRead($Player2_AVG_2)<>"" Then
@@ -1438,6 +1545,8 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	EndIf
 
 GUICtrlSetData($HandicapPlayer2_2,$CalculatedHandicap)
+Else
+GUICtrlSetData($HandicapPlayer2_2,"")
 EndIf
 ;========;
 If GUICtrlRead($Player3_AVG_2)<>"" Then
@@ -1449,6 +1558,12 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	EndIf
 
 GUICtrlSetData($HandicapPlayer3_2,$CalculatedHandicap)
+
+Else
+GUICtrlSetData($HandicapPlayer3_2,"")
+
+
+
 EndIf
 ;============;
 
@@ -1581,7 +1696,7 @@ $TeamHighest1GameTotalArray[ Int($teamNum_2) ][Int($roundNumberr)]=$Team2_Max_to
 
 _FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,Default,Default,",")
 
-_ArrayDisplay($TeamHighest1GameTotalArray)
+;_ArrayDisplay($TeamHighest1GameTotalArray)
 
 
 ;=============================team - highest- 1 game total;=================================
@@ -1595,14 +1710,95 @@ Func deleteAll_Scores()
         $user_answer=MsgBox(1,"Delete all scores","Are You sure You want do delete all scores and start a new league ?")
 
 		If $user_answer=1 Then;user pressed yes
+                   $backupFolderName=InputBox("BACKUP Folder Name","Please Enter BACKUP Folder Name"&@CRLF&"It Can be in Hebrew"&@CRLF&"It Can contain Spaces"&@CRLF&"WARNING if you already have a BACKUP Folder with the same name all data will be overwriten"&@CRLF&"I will NOT delete Players Name"&@CRLF&"I will NOT delete Game schedule" ,Default,Default,Default,220)
+		If $backupFolderName<>"" Then
 
-		$user_answer2=MsgBox(1,"Confirm Delete","CAUTION This Process cannot be undo "&@CRLF&"I will save a backup of Score files IN"&@crlf&@ScriptDir&@CRLF&"Continue??")
+		$user_answer2=MsgBox(1,"Confirm Delete","CAUTION This Process cannot be undo "&@CRLF&"I will save a backup of Score files IN"&@crlf&@ScriptDir&"\rawData\data\"&$backupFolderName&@CRLF&"Continue??")
 				If $user_answer2=1 Then
-
+				DirCreate(@ScriptDir&"\rawData\data\"&$backupFolderName)
+				;FileMove(@ScriptDir&"\rawData\data\"
 				EndIf
 		EndIf
-
+EndIf
 
 
 
 EndFunc
+
+
+
+
+Func checkHowManyPlayerArePlayingInEaxhTeam()
+;Global $Team1_Missing_Players=0
+;Global $Team2_Missing_Players=0
+
+$Player1_1_is_missing=0
+$Player2_1_is_missing=0
+$Player3_1_is_missing=0
+$Player1_2_is_missing=0
+$Player2_2_is_missing=0
+$Player3_2_is_missing=0
+
+If GUICtrlRead($Player1_score_game1_1)="" And GUICtrlRead($Player1_score_game2_1)="" And GUICtrlRead($Player1_score_game3_1)="" Then
+$Player1_1_is_missing=1
+Else
+	$Player1_1_is_missing=0
+EndIf
+
+If GUICtrlRead($Player2_score_game1_1)="" And GUICtrlRead($Player2_score_game2_1)="" And GUICtrlRead($Player2_score_game3_1)="" Then
+$Player2_1_is_missing=1
+Else
+	$Player2_1_is_missing=0
+EndIf
+
+If GUICtrlRead($Player3_score_game1_1)="" And GUICtrlRead($Player3_score_game2_1)="" And GUICtrlRead($Player3_score_game3_1)="" Then
+$Player3_1_is_missing=1
+Else
+	$Player3_1_is_missing=0
+EndIf
+
+$Team1_Missing_Players=$Player1_1_is_missing+$Player2_1_is_missing+$Player3_1_is_missing
+
+
+
+If GUICtrlRead($Player1_score_game1_2)="" And GUICtrlRead($Player1_score_game2_2)="" And GUICtrlRead($Player1_score_game3_2)="" Then
+$Player1_2_is_missing=1
+Else
+	$Player1_2_is_missing=0
+EndIf
+
+If GUICtrlRead($Player2_score_game1_2)="" And GUICtrlRead($Player2_score_game2_2)="" And GUICtrlRead($Player2_score_game3_2)="" Then
+$Player2_2_is_missing=1
+Else
+	$Player2_2_is_missing=0
+EndIf
+
+If GUICtrlRead($Player3_score_game1_2)="" And GUICtrlRead($Player3_score_game2_2)="" And GUICtrlRead($Player3_score_game3_2)="" Then
+$Player3_2_is_missing=1
+Else
+	$Player3_2_is_missing=0
+EndIf
+
+$Team2_Missing_Players=$Player1_2_is_missing+$Player2_2_is_missing+$Player3_2_is_missing
+
+
+If $Team1_Missing_Players=3 Or $Team1_Missing_Players=2 Then
+GUICtrlSetData($MissingPlayersInTeam1_Label, "Missing Players="&$Team1_Missing_Players&@CRLF&"Team1 - Technical Lost")
+ElseIf $Team1_Missing_Players=1 Then
+GUICtrlSetData($MissingPlayersInTeam1_Label, "Missing Players="&$Team1_Missing_Players&@CRLF&"Team1 - Take AVG Of the Missing Player (Minus 10)")
+ElseIf $Team1_Missing_Players=0 Then
+GUICtrlSetData($MissingPlayersInTeam1_Label, "Missing Players="&$Team1_Missing_Players&@CRLF&"Team1 - Normal Scoring")
+EndIf
+
+
+If $Team2_Missing_Players=3 Or $Team2_Missing_Players=2 Then
+GUICtrlSetData($MissingPlayersInTeam2_Label, "Missing Players="&$Team2_Missing_Players&@CRLF&"Team2 - Technical Lost")
+ElseIf $Team2_Missing_Players=1 Then
+GUICtrlSetData($MissingPlayersInTeam2_Label, "Missing Players="&$Team2_Missing_Players&@CRLF&"Team2 - Take AVG Of the Missing Player (Minus 10)")
+ElseIf $Team2_Missing_Players=0 Then
+GUICtrlSetData($MissingPlayersInTeam2_Label, "Missing Players="&$Team2_Missing_Players&@CRLF&"Team2 - Normal Scoring")
+EndIf
+
+
+EndFunc
+

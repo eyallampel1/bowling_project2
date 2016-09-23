@@ -938,7 +938,7 @@ _FileReadToArray(@ScriptDir&"\data\Teams_Points_Highest_1_Game_total.txt",$TeamH
 $TeamHighest3GameTotalArray=0
 _FileReadToArray(@ScriptDir&"\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
 
-_ArrayDisplay($TeamHighest1GameTotalArray)
+;_ArrayDisplay($TeamHighest1GameTotalArray)
 
 
 ;_ArrayDisplay($TeamPointsArray)
@@ -966,40 +966,61 @@ Next
 ;Local $teamNumberCol2[50]=["","1","","","2","","","3","","","4","","","5","","","6","","","7","","","8","","","9","","","10","","","11",""]
 ;Local $team_acumelated_score_array_spread[50]=["",$team_acumelated_score_array[0],"","",$team_acumelated_score_array[1],"","",$team_acumelated_score_array[2],"","",$team_acumelated_score_array[3],"","",$team_acumelated_score_array[4],"","",$team_acumelated_score_array[5],"","",$team_acumelated_score_array[6],"","",$team_acumelated_score_array[7],"","",$team_acumelated_score_array[8],"","",$team_acumelated_score_array[9],"","",$team_acumelated_score_array[10],""]
 
-$TeamHighest1GameTotalArray_dummy=_ArrayExtract($TeamHighest1GameTotalArray,1,1,1,69)
-;MsgBox(0,"error="&@error,$TeamHighest1GameTotalArray_dummy)
-;_ArrayDisplay($TeamHighest1GameTotalArray_dummy)
-$team_acumelated_Max1Game_array_to_excel=_ArrayMax($TeamHighest1GameTotalArray_dummy,0)
-MsgBox(0,"max1gamt1=",$team_acumelated_Max1Game_array_to_excel)
+
+;;===this is group best 1 game calculation
+;$maxTeamSingleGameArray=0
+
+For $j=1 To 11
+$TeamHighest1GameTotalArray_dummy=_ArrayExtract($TeamHighest1GameTotalArray,$j,$j,1,69)
+$maxTeamSingleGame=0
+For $i=0 To 68
+
+If Number($TeamHighest1GameTotalArray_dummy[0][$i])>$maxTeamSingleGame Then
+	$maxTeamSingleGame=Number($TeamHighest1GameTotalArray_dummy[0][$i])
+EndIf
+
+Next
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$maxTeamSingleGame,"D"&($j+7))
+$maxTeamSingleGame=0
+Next
+
+;;;;;this is best group 1 game calculation
+
+;;===this is group best 3 game calculation
+;$maxTeam3GameArray=0
+
+For $j=1 To 11
+$TeamHighest3GameTotalArray_dummy=_ArrayExtract($TeamHighest3GameTotalArray,$j,$j,1,69)
+$maxTeam3Game=0
+For $i=0 To 68
+
+If Number($TeamHighest3GameTotalArray_dummy[0][$i])>$maxTeam3Game Then
+	$maxTeam3Game=Number($TeamHighest3GameTotalArray_dummy[0][$i])
+EndIf
+
+Next
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$maxTeam3Game,"E"&($j+7))
+$maxTeam3Game=0
+Next
+
+;;;;;this is best group 3 game calculation
+
 
 
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$teamNumberCol,"B8")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$team_acumelated_score_array,"F8")
-;got this from web - very good
-;For $col=0 To 70;70 round is more then enogh
-;	For $row=0 To 11
 
-;~ For $i=8 to 39 Step 3
-;~ $excelObject.Activesheet.Range("A"&$i&":A"&($i+2)).MergeCells = TRUE
-;~ $excelObject.Activesheet.Range("B"&$i&":B"&($i+2)).MergeCells = TRUE
-;~ $excelObject.Activesheet.Range("C"&$i&":C"&($i+2)).MergeCells = TRUE
-;~ $excelObject.Activesheet.Range("D"&$i&":D"&($i+2)).MergeCells = TRUE
-;~ $excelObject.Activesheet.Range("E"&$i&":E"&($i+2)).MergeCells = TRUE
-;~ $excelObject.Activesheet.Range("F"&$i&":F"&($i+2)).MergeCells = TRUE
-;~ Next
-
-;$excelObject.Activesheet.Range("B11:B13").MergeCells = TRUE
-;$excelObject.Activesheet.Range("F8:F10").MergeCells = TRUE
 Local $names_team[11]
 
 For $i=0 To 10
 $names_team[$i]=$returnArray[6*$i+4]&" "&@CRLF&$returnArray[6*$i+6]&" "&@CRLF&$returnArray[6*$i+8]
-;$names_team[1]=$returnArray[10]&" "&@CRLF&$returnArray[12]&" "&@CRLF&$returnArray[14]
+
 Next
 
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$names_team,"C8")
-;_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$names_team2,"C9")
-;_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$positionCol,"C8")  ;DUMMY DELETE THIS!
+
 
 
 _Excel_RangeSort($excelObject,$excelObject.ActiveSheet,"F8:A18","F:F",$xlDescending)
