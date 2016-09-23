@@ -34,7 +34,7 @@ Lampel 333
 160
 170
 180
-final score:
+final Score:
 teamNumber: 9
 7points
 teamNumber: 10

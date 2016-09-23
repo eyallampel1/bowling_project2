@@ -1,5 +1,5 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Icon=pic\images.ico
+#AutoIt3Wrapper_Icon=..\pic\download.ico
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <Excel.au3>
 #include <ButtonConstants.au3>
@@ -46,9 +46,10 @@ EndIf
 ; *****************************************************************************
 ; Insert 7 sheets after the last sheet and name them
 ; *****************************************************************************
-_Excel_SheetAdd($excelObject, -1, False,7, "ϊεφΰεϊ ΰιωιεϊ|θαμϊ ξιχεν χαεφεϊ|παηψϊ δωαες|ωιΰιν ΰιωιιν - ξωηχ αεγγ|ωιΰιν ΰιωιιν - ωμιωιιδ|ωιΰ χαεφϊι - ξωηχ αεγγ|ϊελπιϊ ξωηχιν")
-;_Excel_SheetAdd($excelObject, -1, False,7, "ϊεφΰεϊ ΰιωιεϊ|χαεφϊι|παηψϊ δωαες|ωιΰιν ΰιωιιν - ξωηχ αεγγ|ωιΰιν ΰιωιιν - ωμιωιιδ|θαμϊ ξιχεν χαεφεϊ|ϊελπιϊ ξωηχιν")
-;_Excel_SheetAdd($excelObject, -1, False,7, "ϊεφΰεϊ ΰιωιεϊ |χαεφϊι|παηψϊ δωαες| ωιΰιν ΰιωιιν|θαμϊ ξιχεν χαεφεϊ|χαεφεϊ εξξεφςιν|ϊελπιϊ ξωηχιν")
+_Excel_SheetAdd($excelObject, -1, False,8, "ΧªΧ•Χ¦ΧΧ•Χª ΧΧ™Χ©Χ™Χ•Χª|ΧΧ‘ΧΧª ΧΧ™Χ§Χ•Χ Χ§Χ‘Χ•Χ¦Χ•Χª|Χ Χ‘Χ—Χ¨Χª Χ”Χ©Χ‘Χ•ΧΆ|Χ©Χ™ΧΧ™Χ™Χ ΧΧ™Χ©Χ™Χ™Χ - ΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“|Χ©Χ™ΧΧ™Χ ΧΧ™Χ©Χ™Χ™Χ - Χ©ΧΧ™Χ©Χ™Χ™Χ”|Χ©Χ™Χ Χ§Χ‘Χ•Χ¦ΧªΧ™ - ΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“ |Χ©Χ™Χ Χ§Χ‘Χ•Χ¦ΧªΧ™ - Χ©ΧΧ™Χ©Χ™Χ™Χ”|ΧªΧ•Χ›Χ Χ™Χª ΧΧ©Χ—Χ§Χ™Χ")
+;_Excel_SheetAdd($excelObject, -1, False,7, "ΧªΧ•Χ¦ΧΧ•Χª ΧΧ™Χ©Χ™Χ•Χª|ΧΧ‘ΧΧª ΧΧ™Χ§Χ•Χ Χ§Χ‘Χ•Χ¦Χ•Χª|Χ Χ‘Χ—Χ¨Χª Χ”Χ©Χ‘Χ•ΧΆ|Χ©Χ™ΧΧ™Χ ΧΧ™Χ©Χ™Χ™Χ - ΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“|Χ©Χ™ΧΧ™Χ ΧΧ™Χ©Χ™Χ™Χ - Χ©ΧΧ™Χ©Χ™Χ™Χ”|Χ©Χ™Χ Χ§Χ‘Χ•Χ¦ΧªΧ™ - ΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“|ΧªΧ•Χ›Χ Χ™Χª ΧΧ©Χ—Χ§Χ™Χ")
+;_Excel_SheetAdd($excelObject, -1, False,7, "ΧªΧ•Χ¦ΧΧ•Χª ΧΧ™Χ©Χ™Χ•Χª|Χ§Χ‘Χ•Χ¦ΧªΧ™|Χ Χ‘Χ—Χ¨Χª Χ”Χ©Χ‘Χ•ΧΆ|Χ©Χ™ΧΧ™Χ ΧΧ™Χ©Χ™Χ™Χ - ΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“|Χ©Χ™ΧΧ™Χ ΧΧ™Χ©Χ™Χ™Χ - Χ©ΧΧ™Χ©Χ™Χ™Χ”|ΧΧ‘ΧΧª ΧΧ™Χ§Χ•Χ Χ§Χ‘Χ•Χ¦Χ•Χª|ΧªΧ•Χ›Χ Χ™Χª ΧΧ©Χ—Χ§Χ™Χ")
+;_Excel_SheetAdd($excelObject, -1, False,7, "ΧªΧ•Χ¦ΧΧ•Χª ΧΧ™Χ©Χ™Χ•Χª |Χ§Χ‘Χ•Χ¦ΧªΧ™|Χ Χ‘Χ—Χ¨Χª Χ”Χ©Χ‘Χ•ΧΆ| Χ©Χ™ΧΧ™Χ ΧΧ™Χ©Χ™Χ™Χ|ΧΧ‘ΧΧª ΧΧ™Χ§Χ•Χ Χ§Χ‘Χ•Χ¦Χ•Χª|Χ§Χ‘Χ•Χ¦Χ•Χª Χ•ΧΧΧ•Χ¦ΧΆΧ™Χ|ΧªΧ•Χ›Χ Χ™Χª ΧΧ©Χ—Χ§Χ™Χ")
 _Excel_SheetDelete($excelObject,1)
 _Excel_SheetDelete($excelObject,1)
 _Excel_SheetDelete($excelObject,1)
@@ -83,8 +84,8 @@ $excelObject.Activesheet.Range("A7:H7").Interior.ColorIndex= 45 ;orange color in
 ;$excelObject.Activesheet.Range("O5:P5").MergeCells = TRUE
 ;$excelObject.Activesheet.Range("Q5:R5").MergeCells = TRUE
 
-;Local $Row_A5[18]=["ξιχεν ΰιωι","ων δωηχο","ξρτψ χαεφδ","ξρτψ ηαψ","ξωηχ βαεδ","ωμιωιδ βαεδδ","ξρτψ ξωηχιν","ρδλ τιπιν","ξξεφς ΰιωι"]
-Local $Row_A7[18]=["ξιχεν ΰιωι","ων δωηχο","ξρτψ χαεφδ","ξωηχ βαεδ","ωμιωιδ βαεδδ","ξρτψ ξωηχιν","ρδλ τιπιν","ξξεφς ΰιωι"]
+;Local $Row_A5[18]=["ΧΧ™Χ§Χ•Χ ΧΧ™Χ©Χ™","Χ©Χ Χ”Χ©Χ—Χ§Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","ΧΧ΅Χ¤Χ¨ Χ—Χ‘Χ¨","ΧΧ©Χ—Χ§ Χ’Χ‘Χ•Χ”","Χ©ΧΧ™Χ©Χ™Χ” Χ’Χ‘Χ•Χ”Χ”","ΧΧ΅Χ¤Χ¨ ΧΧ©Χ—Χ§Χ™Χ","Χ΅Χ”Χ› Χ¤Χ™Χ Χ™Χ","ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ©Χ™"]
+Local $Row_A7[18]=["ΧΧ™Χ§Χ•Χ ΧΧ™Χ©Χ™","Χ©Χ Χ”Χ©Χ—Χ§Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","ΧΧ©Χ—Χ§ Χ’Χ‘Χ•Χ”","Χ©ΧΧ™Χ©Χ™Χ” Χ’Χ‘Χ•Χ”Χ”","ΧΧ΅Χ¤Χ¨ ΧΧ©Χ—Χ§Χ™Χ","Χ΅Χ”Χ› Χ¤Χ™Χ Χ™Χ","ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ©Χ™"]
 _ArrayTranspose($Row_A7)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$Row_A7,"A7")
 ;_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$Row_A5,"A5")
@@ -369,6 +370,7 @@ Next
 ;_ArrayDisplay($positionCol)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$positionCol,"A8")  ;Player Position
 If @error Then Exit MsgBox(0,"Error in Object","error number: "&@error)
+
 ;all the with is just for the border around each cell
 
 
@@ -432,15 +434,15 @@ _FileReadToArray(@ScriptDir&"\Game_Schedule.txt",$returnArray22);read text file 
 $returnArray22=StringSplit($returnArray22[$CurrentRound],"|")
 $RoundDate=$returnArray22[2]
 
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ςεπδ","F1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","F1")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"F2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξηζεψ","E2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","E2")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"D2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ϊΰψικ","E3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","E3")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$returnArray22[2],"D3")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ρδ""λ ωηχπιν","E4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","E4")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"D4")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξξεφς μιβδ","E5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","E5")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"=FIXED(AVERAGEIF(H8:H"&$numberOfPlayers+7&',"<>0"'&"))","D5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
 $excelObject.Activesheet.Range("E1:D1").MergeCells = TRUE
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"D1")
@@ -480,7 +482,7 @@ FileWriteLine($LeagueAverageTextFile,$LeagueAverage)
 ;=========================================================
 ;=========================================================
 ;;;==========================this is games schedual sheet
-$excelObject.Sheets (7).Select
+$excelObject.Sheets (8).Select
 
 
 $excelObject.Activesheet.Rows("1:700").Font.Bold= TRUE
@@ -496,11 +498,11 @@ _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[
 
 
 $excelObject.Activesheet.Range("E2:J2").MergeCells = TRUE
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ϊελπιϊ ξηζεψι ξωηχιν","E2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧ•Χ›Χ Χ™Χª ΧΧ—Χ–Χ•Χ¨Χ™ ΧΧ©Χ—Χ§Χ™Χ","E2")
 
 
-Local $A4_row[14]=["ξρμεμιν","","1","2","3","4","5","6","7","8","9","10","11","12"]
-Local $A5_row[14]=["ξηζεψ","ϊΰψικ","χαεφεϊ","","χαεφεϊ","","χαεφεϊ","","χαεφεϊ","","χαεφεϊ","","χαεφεϊ",""]
+Local $A4_row[14]=["ΧΧ΅ΧΧ•ΧΧ™Χ","","1","2","3","4","5","6","7","8","9","10","11","12"]
+Local $A5_row[14]=["ΧΧ—Χ–Χ•Χ¨","ΧªΧΧ¨Χ™Χ","Χ§Χ‘Χ•Χ¦Χ•Χª","","Χ§Χ‘Χ•Χ¦Χ•Χª","","Χ§Χ‘Χ•Χ¦Χ•Χª","","Χ§Χ‘Χ•Χ¦Χ•Χª","","Χ§Χ‘Χ•Χ¦Χ•Χª","","Χ§Χ‘Χ•Χ¦Χ•Χª",""]
 _ArrayTranspose($A4_row)
 _ArrayTranspose($A5_row)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$A4_row,"A4")
@@ -599,22 +601,22 @@ $excelObject.Activesheet.Range("A7:H7").Interior.ColorIndex= 45 ;orange color in
 
 
 
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ςεπδ","F1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","F1")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"F2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξηζεψ","E2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","E2")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"D2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ϊΰψικ","E3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","E3")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$RoundDate,"D3")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ρδ""λ ωηχπιν","E4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","E4")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"D4")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξξεφς μιβδ","E5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","E5")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueAverage,"D5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
 $excelObject.Activesheet.Range("E1:D1").MergeCells = TRUE
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"D1")
 
 
 
-Local $A7_row[14]=["ξιχεν","ων δωηχο","ξρτψ χαεφδ","ξωηχ ψΰωεο","ξωηχ ωπι","ξωηχ ωμιωι","ξξεφς μξηζεψ"," ρδλ τιπιν μξηζεψ"]
+Local $A7_row[14]=["ΧΧ™Χ§Χ•Χ","Χ©Χ Χ”Χ©Χ—Χ§Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","ΧΧ©Χ—Χ§ Χ¨ΧΧ©Χ•Χ","ΧΧ©Χ—Χ§ Χ©Χ Χ™","ΧΧ©Χ—Χ§ Χ©ΧΧ™Χ©Χ™","ΧΧΧ•Χ¦ΧΆ ΧΧΧ—Χ–Χ•Χ¨"," Χ΅Χ”Χ› Χ¤Χ™Χ Χ™Χ ΧΧΧ—Χ–Χ•Χ¨"]
 
 
 
@@ -675,6 +677,49 @@ _Excel_RangeSort($excelObject,$excelObject.ActiveSheet,"H8:A1000","H:H",$xlDesce
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$positionCol,"A8")  ;Player Position
 $excelObject.ActiveSheet.Columns().AutoFit
 
+;all the with is just for the border around each cell
+
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(7)
+	If @error Then Exit MsgBox(0,"Error in Object","error number: "&@error)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+
+;MsgBox(0,"",@error)
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(8)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(9)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(10)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(11)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(12)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
 
 ;======================================================================
 ;=========================================================
@@ -709,22 +754,22 @@ $excelObject.Activesheet.Range("A7:E7").Interior.ColorIndex= 45 ;orange color in
 
 
 
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ςεπδ","D1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","D1")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"D2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξηζεψ","C2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","C2")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"B2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ϊΰψικ","C3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","C3")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$RoundDate,"B3")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ρδ""λ ωηχπιν","C4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","C4")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"B4")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξξεφς μιβδ","C5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","C5")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueAverage,"B5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
 $excelObject.Activesheet.Range("C1:B1").MergeCells = TRUE
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"B1")
 
 
 
-Local $A7_row[6]=["ξιχεν","ων δωηχο","ξρτψ χαεφδ","ξρτψ ξωηχιν","ωιΰ μξωηχ αεγγ"]
+Local $A7_row[6]=["ΧΧ™Χ§Χ•Χ","Χ©Χ Χ”Χ©Χ—Χ§Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","ΧΧ΅Χ¤Χ¨ ΧΧ©Χ—Χ§Χ™Χ","Χ©Χ™Χ ΧΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“"]
 
 
 
@@ -774,6 +819,50 @@ _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$positionCol,"A8")  ;Pla
 
 $excelObject.ActiveSheet.Columns().AutoFit
 
+;all the with is just for the border around each cell
+
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(7)
+	If @error Then Exit MsgBox(0,"Error in Object","error number: "&@error)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+
+;MsgBox(0,"",@error)
+
+With $excelObject.Activesheet.Range("A7:E"&$numberOfPlayers+7).Borders(8)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:E"&$numberOfPlayers+7).Borders(9)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:E"&$numberOfPlayers+7).Borders(10)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:E"&$numberOfPlayers+7).Borders(11)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:E"&$numberOfPlayers+7).Borders(12)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
 ;======================================================================
 ;=========================================================
 ;=========================================================
@@ -804,22 +893,22 @@ $excelObject.Activesheet.Range("A7:F7").Interior.ColorIndex= 45 ;orange color in
 
 
 
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ςεπδ","D1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","D1")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"D2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξηζεψ","C2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","C2")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"B2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ϊΰψικ","C3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","C3")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$RoundDate,"B3")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ρδ""λ ωηχπιν","C4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","C4")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"B4")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξξεφς μιβδ","C5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","C5")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueAverage,"B5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
 $excelObject.Activesheet.Range("C1:B1").MergeCells = TRUE
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"B1")
 
 
 
-Local $A7_row[6]=["ξιχεν","ων δωηχο","ξρτψ χαεφδ","ξρτψ ξωηχιν","ξξεφς ωμιωιιϊ ξωηχιν","ωιΰ ωμιωιιϊ ξωηχιν"]
+Local $A7_row[6]=["ΧΧ™Χ§Χ•Χ","Χ©Χ Χ”Χ©Χ—Χ§Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","ΧΧ΅Χ¤Χ¨ ΧΧ©Χ—Χ§Χ™Χ","ΧΧΧ•Χ¦ΧΆ Χ©ΧΧ™Χ©Χ™Χ™Χª ΧΧ©Χ—Χ§Χ™Χ","Χ©Χ™Χ Χ©ΧΧ™Χ©Χ™Χ™Χª ΧΧ©Χ—Χ§Χ™Χ"]
 
 
 
@@ -874,7 +963,49 @@ _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$positionCol,"A8")  ;Pla
 $excelObject.ActiveSheet.Columns().AutoFit
 
 
+;all the with is just for the border around each cell
 
+
+With $excelObject.Activesheet.Range("A7:H"&$numberOfPlayers+7).Borders(7)
+	If @error Then Exit MsgBox(0,"Error in Object","error number: "&@error)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+
+;MsgBox(0,"",@error)
+
+With $excelObject.Activesheet.Range("A7:F"&$numberOfPlayers+7).Borders(8)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:F"&$numberOfPlayers+7).Borders(9)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:F"&$numberOfPlayers+7).Borders(10)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:F"&$numberOfPlayers+7).Borders(11)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:F"&$numberOfPlayers+7).Borders(12)
+.LineStyle=$xlContinuous;21;21
+.Weight = 2;21
+.ColorIndex=1
+EndWith
 
 
 
@@ -910,21 +1041,21 @@ $excelObject.Activesheet.Range("A7:F7").Interior.ColorIndex= 45 ;orange color in
 ;$excelObject.Activesheet.Columns("C").ColumnWidth=40
 
 
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ςεπδ","D1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","D1")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"D2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξηζεψ","C2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","C2")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"B2")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ϊΰψικ","C3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","C3")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$RoundDate,"B3")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ρδ""λ ωηχπιν","C4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","C4")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"B4")
-_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ξξεφς μιβδ","C5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","C5")
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueAverage,"B5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
 $excelObject.Activesheet.Range("C1:B1").MergeCells = TRUE
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"B1")
 
 
-Local $A7_row[6]=["ξιχεν","ξρτψ χαεφδ","ωξεϊ ωηχπιν","ωιΰ ξωηχ","ωιΰ ωμιωιιϊ ξωηχιν","πχεγεϊ"]
+Local $A7_row[6]=["ΧΧ™Χ§Χ•Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","Χ©ΧΧ•Χª Χ©Χ—Χ§Χ Χ™Χ","Χ©Χ™Χ ΧΧ©Χ—Χ§","Χ©Χ™Χ Χ©ΧΧ™Χ©Χ™Χ™Χª ΧΧ©Χ—Χ§Χ™Χ","Χ Χ§Χ•Χ“Χ•Χª"]
 
 _ArrayTranspose($A7_row)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$A7_row,"A7")
@@ -1023,11 +1154,304 @@ _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$names_team,"C8")
 
 
 
+;;;just border around each cell
+Global $DOWN_BORDER=9
+Global $UP_BORDER=8
+Global $LEFT_BORDER=7
+Global $RIGHT_BORDER=10
+
+
+With $excelObject.Activesheet.Range("A7:F18").Borders($RIGHT_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:F18").Borders($UP_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:F18").Borders($LEFT_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:F18").Borders($DOWN_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:F18").Borders(11)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:F18").Borders(12)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+;this is just border around each cell in the sheet
+
+
+;return to orig sheet
+$excelObject.Sheets (2).Select
 _Excel_RangeSort($excelObject,$excelObject.ActiveSheet,"F8:A18","F:F",$xlDescending)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$teamNumberCol,"A8")
 
 
+
 $excelObject.ActiveSheet.Columns().AutoFit
+
+;======================================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;;;==========================this is Teams Standing sheet
+
+
+;======================================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;;;==========================this is Teams best single game total sheet
+$excelObject.Sheets (6).Select
+$openExcel.Activesheet.Rows("8:8").Select
+$openExcel.ActiveWindow.FreezePanes= TRUE
+;==
+
+$excelObject.Activesheet.Rows("1:7").Font.Bold= TRUE
+$excelObject.Activesheet.Rows("1:7").Font.Size= 14
+$excelObject.Activesheet.Rows("1:2000").HorizontalAlignment = -4108 ;center text in cell
+$excelObject.Activesheet.Columns("A:D").VerticalAlignment = -4108 ;center text in cell
+$excelObject.Activesheet.Range("A7:D7").Interior.ColorIndex= 45 ;orange color in cell
+;$excelObject.Activesheet.Columns("C").ColumnWidth=40
+
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","D1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"D2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","C2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"B2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","C3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$RoundDate,"B3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","C4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"B4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","C5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueAverage,"B5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
+$excelObject.Activesheet.Range("C1:B1").MergeCells = TRUE
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"B1")
+
+Local $A7_row[6]=["ΧΧ™Χ§Χ•Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","Χ©ΧΧ•Χª Χ©Χ—Χ§Χ Χ™Χ","Χ©Χ™Χ Χ§Χ‘Χ•Χ¦ΧªΧ™ - ΧΧ©Χ—Χ§ Χ‘Χ•Χ“Χ“"]
+
+
+_ArrayTranspose($A7_row)
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$A7_row,"A7")
+
+
+For $j=1 To 11
+$TeamHighest1GameTotalArray_dummy=_ArrayExtract($TeamHighest1GameTotalArray,$j,$j,1,69)
+$maxTeamSingleGame=0
+For $i=0 To 68
+
+If Number($TeamHighest1GameTotalArray_dummy[0][$i])>$maxTeamSingleGame Then
+	$maxTeamSingleGame=Number($TeamHighest1GameTotalArray_dummy[0][$i])
+EndIf
+
+Next
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$maxTeamSingleGame,"D"&($j+7))
+$maxTeamSingleGame=0
+Next
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$names_team,"C8")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$teamNumberCol,"B8")
+
+_Excel_RangeSort($excelObject,$excelObject.ActiveSheet,"D8:A18","D:D",$xlDescending)
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$teamNumberCol,"A8")
+
+
+;;;just border around each cell
+Global $DOWN_BORDER=9
+Global $UP_BORDER=8
+Global $LEFT_BORDER=7
+Global $RIGHT_BORDER=10
+
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($RIGHT_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($UP_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($LEFT_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($DOWN_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:D18").Borders(11)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:D18").Borders(12)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+;this is just border around each cell in the sheet
+
+$excelObject.ActiveSheet.Columns().AutoFit
+
+;======================================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;;;==========================this is Teams best single game total sheet
+
+
+;======================================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;=========================================================
+;;;==========================this is Teams best 3 game total sheet
+$excelObject.Sheets (7).Select
+$openExcel.Activesheet.Rows("8:8").Select
+$openExcel.ActiveWindow.FreezePanes= TRUE
+;==
+
+$excelObject.Activesheet.Rows("1:7").Font.Bold= TRUE
+$excelObject.Activesheet.Rows("1:7").Font.Size= 14
+$excelObject.Activesheet.Rows("1:2000").HorizontalAlignment = -4108 ;center text in cell
+$excelObject.Activesheet.Columns("A:D").VerticalAlignment = -4108 ;center text in cell
+$excelObject.Activesheet.Range("A7:D7").Interior.ColorIndex= 45 ;orange color in cell
+;$excelObject.Activesheet.Columns("C").ColumnWidth=40
+
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΆΧ•Χ Χ”","D1")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[1],"D2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧ—Χ–Χ•Χ¨","C2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$CurrentRound,"B2")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧªΧΧ¨Χ™Χ","C3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$RoundDate,"B3")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"Χ΅Χ”""Χ› Χ©Χ—Χ§Χ Χ™Χ","C4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$numberOfPlayers,"B4")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,"ΧΧΧ•Χ¦ΧΆ ΧΧ™Χ’Χ”","C5")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueAverage,"B5");FIXED is to show only 2 decimal points , AVEREGEIF DO AVERAGE SCORE WITHOUT CALC 0
+$excelObject.Activesheet.Range("C1:B1").MergeCells = TRUE
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$LeagueInformationArray[2],"B1")
+
+Local $A7_row[6]=["ΧΧ™Χ§Χ•Χ","ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”","Χ©ΧΧ•Χª Χ©Χ—Χ§Χ Χ™Χ","Χ©Χ™Χ Χ§Χ‘Χ•Χ¦ΧªΧ™ - Χ©ΧΧ™Χ©Χ™Χ™Χª ΧΧ©Χ—Χ§Χ™Χ"]
+
+
+_ArrayTranspose($A7_row)
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$A7_row,"A7")
+
+
+For $j=1 To 11
+$TeamHighest3GameTotalArray_dummy=_ArrayExtract($TeamHighest3GameTotalArray,$j,$j,1,69)
+$maxTeam3Game=0
+For $i=0 To 68
+
+If Number($TeamHighest3GameTotalArray_dummy[0][$i])>$maxTeam3Game Then
+	$maxTeam3Game=Number($TeamHighest3GameTotalArray_dummy[0][$i])
+EndIf
+
+Next
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$maxTeam3Game,"D"&($j+7))
+$maxTeam3Game=0
+Next
+
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$names_team,"C8")
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$teamNumberCol,"B8")
+
+_Excel_RangeSort($excelObject,$excelObject.ActiveSheet,"D8:A18","D:D",$xlDescending)
+_Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$teamNumberCol,"A8")
+
+
+;;;just border around each cell
+Global $DOWN_BORDER=9
+Global $UP_BORDER=8
+Global $LEFT_BORDER=7
+Global $RIGHT_BORDER=10
+
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($RIGHT_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($UP_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($LEFT_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:D18").Borders($DOWN_BORDER)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+With $excelObject.Activesheet.Range("A7:D18").Borders(11)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+
+
+With $excelObject.Activesheet.Range("A7:D18").Borders(12)
+.LineStyle=$xlContinuous;21;21
+.Weight = 3;21
+.ColorIndex=1
+EndWith
+;this is just border around each cell in the sheet
+
+$excelObject.ActiveSheet.Columns().AutoFit
+
 
 
 
@@ -1040,9 +1464,7 @@ $excelObject.ActiveSheet.Columns().AutoFit
 ;=========================================================
 ;=========================================================
 ;=========================================================
-;;;==========================this is Teams Standing sheet
-
-
+;;;==========================this is Teams best 3 game total sheet
 
 $excelObject.Sheets (1).Select
 ;save file end

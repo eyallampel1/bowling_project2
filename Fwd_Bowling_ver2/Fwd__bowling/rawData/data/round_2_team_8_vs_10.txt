@@ -34,7 +34,7 @@ Lampel 333
 135
 150
 150
-final Score:
+final score:
 teamNumber: 8
 5points
 teamNumber: 10

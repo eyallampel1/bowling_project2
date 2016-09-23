@@ -34,7 +34,7 @@ teamNumber: 4
 200
 210
 220
-final score:
+final Score:
 teamNumber: 3
 2points
 teamNumber: 4

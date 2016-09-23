@@ -37,14 +37,14 @@ teamNumber: 12
 round 1
 teamNumber: 11
 Lampel 444
-122
+225
 133
 144
 round 1
 teamNumber: 11
 Lampel 555
 155
-156
+260
 167
 round 1
 teamNumber: 11

@@ -34,7 +34,7 @@ Lampel 333
 
 
 
-final Score:
+final score:
 teamNumber: 1
 5points
 teamNumber: 10

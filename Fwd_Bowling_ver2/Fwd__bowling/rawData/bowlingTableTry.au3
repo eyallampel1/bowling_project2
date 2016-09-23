@@ -1,5 +1,5 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Icon=pic\download.ico
+#AutoIt3Wrapper_Icon=..\pic\images.ico
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <GuiConstantsEx.au3>
 #include <WindowsConstants.au3>
@@ -45,9 +45,9 @@ Next
 
 $hListView_Right = _GUICtrlListView_Create($hGUI, "", 100, 10, 230, 330, BitOR($LVS_DEFAULT, $WS_BORDER))
 _GUICtrlListView_SetExtendedListViewStyle($hListView_Right, $LVS_EX_FULLROWSELECT)
-_GUICtrlListView_AddColumn($hListView_Right, "ων δωηχο", 130)
-_GUICtrlListView_AddColumn($hListView_Right, "ξρτψ χαεφδ", 83);add column
-;_GUICtrlListView_AddColumn($hListView_Right, "δΰπγιχΰτ", 83)
+_GUICtrlListView_AddColumn($hListView_Right, "Χ©Χ Χ”Χ©Χ—Χ§Χ", 130)
+_GUICtrlListView_AddColumn($hListView_Right, "ΧΧ΅Χ¤Χ¨ Χ§Χ‘Χ•Χ¦Χ”", 83);add column
+;_GUICtrlListView_AddColumn($hListView_Right, "Χ”ΧΧ Χ“Χ™Χ§ΧΧ¤", 83)
 
 _GUICtrlListView_SetTextBkColor($hListView_Right, 0xFFFFFF)
 _GUICtrlListView_JustifyColumn($hListView_Right,1,2)
@@ -120,7 +120,7 @@ $return=0
 			_GUIListViewEx_SaveListView($iLV_Right_Index,@ScriptDir&"\TeamDivder3.txt")
 			;FileOpen(@ScriptDir&"\TeamDivder3.txt",1)
 			_FileReadToArray(@ScriptDir&"\TeamDivder3.txt",$return)
-		;	_FileWriteToLine(@ScriptDir&"\TeamDivder3.txt",1,"δλπρδ",TRUE)
+		;	_FileWriteToLine(@ScriptDir&"\TeamDivder3.txt",1,"Χ”Χ›Χ Χ΅Χ”",TRUE)
 		;_ArrayDisplay($return)
 		$fileRowCount=UBound($return)
 Local $todelete="0-3;" & $fileRowCount-4 & "-" & $fileRowCount-1
@@ -184,7 +184,7 @@ _ArrayDelete($return,$RowsTodelete5)
 EndIf
 
 For $i=0 To round(UBound($return)/4)-1
-$return[4*$i]="χαεφδ " & $return[4*$i]
+$return[4*$i]="Χ§Χ‘Χ•Χ¦Χ” " & $return[4*$i]
 Next
 ;_ArrayDisplay($return)
 ;_ArrayDisplay($return)

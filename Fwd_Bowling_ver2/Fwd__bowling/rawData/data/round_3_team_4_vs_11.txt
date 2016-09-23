@@ -34,7 +34,7 @@ Lampel 666
 109
 109
 190
-final Score:
+final score:
 teamNumber: 4
 2.5points
 teamNumber: 11

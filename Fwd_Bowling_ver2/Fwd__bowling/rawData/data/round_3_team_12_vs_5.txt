@@ -37,9 +37,9 @@ teamNumber: 12
 round 3
 teamNumber: 5
 Lampel 1
-
-
-
+180
+120
+238
 round 3
 teamNumber: 5
 Lampel 2

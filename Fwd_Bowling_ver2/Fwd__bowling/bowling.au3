@@ -1224,15 +1224,6 @@ EndFunc
 
 
 Func calculateScore()
-;InputBox ( "title", "prompt")
-;$Team1_Missing_Players=0
-;$Team2_Missing_Players=0
-
-;If GUICtrlRead($Player1_score_game1_1)="" Then
-;$Player1_1_missing=1
-;$Team1_Missing_Players+=1
-
-;EndIf
 
  If $DO_SCORE_CALCULATION=1 Then
 
@@ -1608,6 +1599,104 @@ EndIf
 
 $TeamPointsArray[ Int($teamNum_1) ][Int($roundNumberr)]=$Team_Points_1
 $TeamPointsArray[ Int($teamNum_2) ][Int($roundNumberr)]=$Team_Points_2
+
+
+;;next lines is to give 5 point to the team that playes against team12 if 2 player atlist from that team hase arrived
+; round_1_team_12_vs_11.txt  - example file
+
+For $whoIsAgainstTeam12=1 To 11
+$returnArray333=0
+_FileReadToArray(@ScriptDir&"\rawData\data\round_"&$roundNumberr&"_team_12_vs_"&$whoIsAgainstTeam12&".txt",$returnArray333);read text file into an array
+$whoIsAgainstTeam12_index=_ArraySearch($returnArray333,"teamNumber: "&$whoIsAgainstTeam12);this gives 38
+If IsArray($returnArray333) Then
+ExitLoop
+EndIf
+
+Next
+
+$teamMembers_ThatArrived_against_Team12=0
+
+If IsArray($returnArray333) Then
+
+If $returnArray333[$whoIsAgainstTeam12_index+2]<>"" Or $returnArray333[$whoIsAgainstTeam12_index+3]<>"" Or $returnArray333[$whoIsAgainstTeam12_index+4]<>"" Then
+	$teamMembers_ThatArrived_against_Team12+=1
+EndIf
+
+If $returnArray333[$whoIsAgainstTeam12_index+8]<>"" Or $returnArray333[$whoIsAgainstTeam12_index+9]<>"" Or $returnArray333[$whoIsAgainstTeam12_index+10]<>"" Then
+	$teamMembers_ThatArrived_against_Team12+=1
+EndIf
+
+If $returnArray333[$whoIsAgainstTeam12_index+14]<>"" Or $returnArray333[$whoIsAgainstTeam12_index+15]<>"" Or $returnArray333[$whoIsAgainstTeam12_index+16]<>"" Then
+	$teamMembers_ThatArrived_against_Team12+=1
+EndIf
+
+$bonosPoints=0
+;;calc bonos points of the team against team 12
+If Int($returnArray333[$whoIsAgainstTeam12_index+2])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+2])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+2]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+3])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+3])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+3]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+4])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+4])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+4]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+8])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+8])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+8]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+9])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+9])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+9]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+10])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+10])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+10]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+14])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+14])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+14]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+15])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+15])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+15]>249 Then
+	$bonosPoints+=1
+EndIf
+
+If Int($returnArray333[$whoIsAgainstTeam12_index+16])>224 And Int($returnArray333[$whoIsAgainstTeam12_index+16])<250 Then
+	$bonosPoints+=0.5
+ElseIf $returnArray333[$whoIsAgainstTeam12_index+16]>249 Then
+	$bonosPoints+=1
+EndIf
+
+
+;MsgBox(0,"N of player vs 12",$teamMembers_ThatArrived_against_Team12)
+
+If $teamMembers_ThatArrived_against_Team12>1 Then
+$TeamPointsArray[Int($whoIsAgainstTeam12)  ][Int($roundNumberr)]=5+$bonosPoints
+Else
+$TeamPointsArray[Int($whoIsAgainstTeam12)  ][Int($roundNumberr)]=0++$bonosPoints
+
+EndIf
+;_ArrayDisplay($TeamPointsArray)
+EndIf
 
 _FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points.txt",$TeamPointsArray,Default,Default,",")
 
