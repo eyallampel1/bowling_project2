@@ -1,0 +1,41 @@
+round 4
+teamNumber: 8
+Lampel 10
+
+
+
+round 4
+teamNumber: 8
+Lampel 11
+
+
+
+round 4
+teamNumber: 8
+Lampel 12
+
+
+
+round 4
+teamNumber: 5
+Lampel 1
+
+
+
+round 4
+teamNumber: 5
+Lampel 2
+
+
+
+round 4
+teamNumber: 5
+Lampel 3
+
+
+
+final Score:
+teamNumber: 8
+0points
+teamNumber: 5
+0points

@@ -1,0 +1,41 @@
+round 3
+teamNumber: 2
+ון קופם
+190
+
+
+round 3
+teamNumber: 2
+אריה סיגנר
+
+
+
+round 3
+teamNumber: 2
+דוטרקי
+
+
+
+round 3
+teamNumber: 8
+Lampel 10
+
+
+
+round 3
+teamNumber: 8
+Lampel 11
+
+
+
+round 3
+teamNumber: 8
+Lampel 12
+
+
+190
+final Score:
+teamNumber: 2
+0points
+teamNumber: 8
+0points

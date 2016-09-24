@@ -1,0 +1,41 @@
+round 1
+teamNumber: 5
+Lampel 1
+300
+300
+160
+round 1
+teamNumber: 5
+Lampel 2
+170
+170
+180
+round 1
+teamNumber: 5
+Lampel 3
+190
+180
+180
+round 1
+teamNumber: 6
+Lampel 4
+140
+120
+120
+round 1
+teamNumber: 6
+Lampel 5
+110
+100
+150
+round 1
+teamNumber: 6
+Lampel 6
+160
+180
+190
+final Score:
+teamNumber: 5
+7points
+teamNumber: 6
+0points

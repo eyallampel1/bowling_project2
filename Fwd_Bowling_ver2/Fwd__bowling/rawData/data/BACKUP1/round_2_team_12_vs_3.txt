@@ -1,0 +1,54 @@
+round 2
+teamNumber: 12
+דקורדובי עופר
+140
+122
+122
+round 2
+teamNumber: 12
+אוריון אייל
+111
+122
+122
+round 2
+teamNumber: 12
+מרלי סימו
+111
+122
+122
+round 2
+teamNumber: 12
+פסח עדן
+111
+111
+111
+round 2
+teamNumber: 12
+TWELVE
+111
+150
+185
+round 2
+teamNumber: 12
+שפירא בר
+111
+140
+180
+round 2
+teamNumber: 3
+ללי בוב
+111
+120
+170
+round 2
+teamNumber: 3
+דני הרוש
+111
+111
+160
+round 2
+teamNumber: 3
+ירון כהן
+123
+249
+150

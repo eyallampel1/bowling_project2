@@ -672,7 +672,7 @@ MsgBox(0,"You Have To Enter Round Number","You Did not entered round number")
 $NextIndex=0
 Else
 createTeam_Points_TextFile()
-	createPlayerAvgTextFile()
+createPlayerAvgTextFile()
 
 
 
@@ -1581,7 +1581,7 @@ Func createTeam_Points_TextFile()
 Local $TeamPointsArray[11][100]
 Local $TeamHighest3GameTotalArray[11][100]
 Local $TeamHighest1GameTotalArray[11][100]
-
+Local $PersonalScoresArray[11][1000]
 
 
 $teamNum_1= GUICtrlRead($TeamNumber_1_inputbox)
@@ -1599,6 +1599,12 @@ EndIf
 
 $TeamPointsArray[ Int($teamNum_1) ][Int($roundNumberr)]=$Team_Points_1
 $TeamPointsArray[ Int($teamNum_2) ][Int($roundNumberr)]=$Team_Points_2
+
+
+
+
+
+;$PersonalScoresArray[ Int($teamNum_2) ][Int($gameNumber)]=$Team_Points_2
 
 
 ;;next lines is to give 5 point to the team that playes against team12 if 2 player atlist from that team hase arrived
@@ -1700,6 +1706,106 @@ EndIf
 
 _FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points.txt",$TeamPointsArray,Default,Default,",")
 
+;==================================================================================================================================
+;;;;;;;;;;;;;;;;;;;;;;personalll scores
+;;;NEXT LINES Take player scores and put it in a table , all data will be taken from her!!!
+_FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresArray,0,",")
+
+If Not(IsArray($PersonalScoresArray)) Then
+	FileCopy(@ScriptDir&"\rawData\"&"Personal_Scores_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Personal_Scores.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresArray,0,",")
+EndIf
+;_ArrayDisplay($PersonalScoresArray)
+
+;$round1_SPAN=1,10,19,28  ;;round+    ;9(round-1)+1
+;$round2_SPAN=2,11,20,29
+;$round3_SPAN=3,12,21,30
+
+
+;;;DONT FORGET TO CACL TEAM 12 AND AGAINST 12
+
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+1]=Int(GUICtrlRead($Player1_Score_Game1_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+2]=Int(GUICtrlRead($Player1_Score_Game2_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+3]=Int(GUICtrlRead($Player1_Score_Game3_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+4]=Int(GUICtrlRead($Player2_Score_Game1_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+5]=Int(GUICtrlRead($Player2_Score_Game2_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+6]=Int(GUICtrlRead($Player2_Score_Game3_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+7]=Int(GUICtrlRead($Player3_Score_Game1_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+8]=Int(GUICtrlRead($Player3_Score_Game2_1))
+$PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+9]=Int(GUICtrlRead($Player3_Score_Game3_1))
+
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+1]=Int(GUICtrlRead($Player1_Score_Game1_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+2]=Int(GUICtrlRead($Player1_Score_Game2_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+3]=Int(GUICtrlRead($Player1_Score_Game3_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+4]=Int(GUICtrlRead($Player2_Score_Game1_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+5]=Int(GUICtrlRead($Player2_Score_Game2_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+6]=Int(GUICtrlRead($Player2_Score_Game3_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+7]=Int(GUICtrlRead($Player3_Score_Game1_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+8]=Int(GUICtrlRead($Player3_Score_Game2_2))
+$PersonalScoresArray[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+9]=Int(GUICtrlRead($Player3_Score_Game3_2))
+
+
+If IsArray($returnArray333) Then
+
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+1]=$returnArray333[$whoIsAgainstTeam12_index+2]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+2]=$returnArray333[$whoIsAgainstTeam12_index+3]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+3]=$returnArray333[$whoIsAgainstTeam12_index+4]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+4]=$returnArray333[$whoIsAgainstTeam12_index+8]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+5]=$returnArray333[$whoIsAgainstTeam12_index+9]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+6]=$returnArray333[$whoIsAgainstTeam12_index+10]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+7]=$returnArray333[$whoIsAgainstTeam12_index+14]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+8]=$returnArray333[$whoIsAgainstTeam12_index+15]
+   $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+9]=$returnArray333[$whoIsAgainstTeam12_index+16]
+
+;;now fill team 12
+ ;  $PersonalScoresArray[ 12 ][(Int($roundNumberr)-1)*9+1]=$returnArray333[$whoIsAgainstTeam12_index+2]
+
+
+EndIf
+;_ArrayDisplay($returnArray333,$whoIsAgainstTeam12_index)
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresArray,Default,Default,",")
+;_ArrayDisplay($PersonalScoresArray)
+Local $PlayerAvg_Array[12][100]
+For $abcd=1 to 11
+
+$dummy=_ArrayExtract($PersonalScoresArray,$abcd,$abcd,1,248)
+
+$DivideBy=3
+$rr=0
+
+For $I_index=0 To 230 Step 3
+	;MsgBox(0,"",$dummy[0][$I_index]&" "&$dummy[0][$I_index+1]&" "&$dummy[0][$I_index+2])
+	If Number($dummy[0][$I_index])=0 Then
+	$DivideBy-=1
+	EndIf
+
+	If Number($dummy[0][$I_index+1])=0 Then
+	$DivideBy-=1
+	EndIf
+
+
+	If Number($dummy[0][$I_index+2])=0 Then
+	$DivideBy-=1
+	EndIf
+If 	$DivideBy<>0 Then
+	$PlayerAvg_Array[$abcd][$rr+(Int($roundNumberr)-1)*6]=(Number($dummy[0][$I_index])+Number($dummy[0][$I_index+1])+Number($dummy[0][$I_index+2]))/$DivideBy
+Else
+	$PlayerAvg_Array[$abcd][$rr+(Int($roundNumberr)-1)*6]=0
+EndIf
+
+$rr+=1
+$DivideBy=3
+Next
+;$PlayerAvg_Array[$teamNum_1][100]
+Next
+
+If IsArray($PlayerAvg_Array) Then
+_FileWriteFromArray(@ScriptDir&"\rawData\data\AVG_Scores.txt",$PlayerAvg_Array,Default,Default,",")
+EndIf
+
+;_ArrayDisplay($dummy)
+;_ArrayDisplay(($PlayerAvg_Array))
 ;=============================team points;=================================
 ;==========================================================================
 
