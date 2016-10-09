@@ -14,7 +14,7 @@
 #include <Math.au3>
 ;#include "bowlingTableTry.au3"
 #include "rawData/GUIListViewEx.au3"
-
+#include<String.au3>
 ;======;
 #Region ### START Koda GUI section ### Form=D:\bowling_project2\Fwd_Bowling_ver2\Fwd__bowling\bowling.kxf
 $Form1_1 = GUICreate("Lampel Bowling", 1127, 575, 196, 106)
@@ -60,6 +60,8 @@ $HandicapPlayer1_2 = GUICtrlCreateInput("", 380, 386, 49, 21, BitOR($GUI_SS_DEFA
 $HandicapPlayer2_2 = GUICtrlCreateInput("", 380, 416, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $HandicapPlayer3_2 = GUICtrlCreateInput("", 380, 446, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 
+$HandicapTeam2_Total = GUICtrlCreateInput("", 380, 476, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+
 $TotalTeam_input_2 = GUICtrlCreateInput("", 190, 370, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $TotalTeam_Label_2 = GUICtrlCreateLabel("Total Pins", 243, 370, 78, 47)
 $ScoreTeam2 = GUICtrlCreateInput("", 190, 484, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
@@ -95,6 +97,9 @@ $Group1 = GUICtrlCreateGroup("", 173, 39, 609, 225)
 $HandicapPlayer1_1 = GUICtrlCreateInput("", 377, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $HandicapPlayer2_1 = GUICtrlCreateInput("", 377, 165, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $HandicapPlayer3_1 = GUICtrlCreateInput("", 377, 195, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+
+$HandicapTeam1_Total = GUICtrlCreateInput("", 377, 225, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+
 $ScoreTeam1 = GUICtrlCreateInput("", 187, 233, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $TeamPlayer1Name_1 = GUICtrlCreateInput("", 613, 135, 153, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $Label2 = GUICtrlCreateLabel("Game 2", 486, 111, 43, 17)
@@ -139,6 +144,7 @@ $TotalTeam_plus_handicap_input_2 = GUICtrlCreateInput("", 190, 434, 49, 21, BitO
 $TotalTeam_plus_handicap_Label_2 = GUICtrlCreateLabel("Total Pins"&@CRLF&"       +"&@CRLF&" Handicap", 243, 424, 78, 47)
 $TotalTeam_plus_handicap_input_1 = GUICtrlCreateInput("", 187, 178, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $TotalTeam_plus_handicap_Label_1 = GUICtrlCreateLabel("Total Pins"&@CRLF&"       +"&@CRLF&" Handicap", 243, 167, 78, 47)
+
 $TotalTeam_input_1 = GUICtrlCreateInput("", 187, 118, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
 $TotalTeam_Label_1 = GUICtrlCreateLabel("Total Pins", 243, 118, 68, 47)
 
@@ -206,14 +212,23 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 			;InseartDateButton()
 			Run(@SCRIPTDIR&"\rawData\"&"Game_schedule_gui.exe",@SCRIPTDIR)
 		Case $insertDataButton
+
+			GUICtrlSetState($insertDataButton,$GUI_DISABLE)
 			InsertDataButton()
+			GUICtrlSetState($insertDataButton,$GUI_ENABLE)
+
 		Case $RoundNumberInput
+
 		RoundNumberInput_function()
+
+
+
 		GUICtrlSetState($Player1_score_game1_1, $GUI_FOCUS)
 ;		calculateScore()
 
 		Case $PrintGamesCurrentDateButton
-			PrintRoundGames()
+			Run(@SCRIPTDIR&"\rawData\"&"printing_excel_data.exe",@SCRIPTDIR)
+			;PrintRoundGames()
 
 		Case $DeleteALLScoresButton
 		deleteAll_Scores()
@@ -223,6 +238,7 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 		Case $Player1_score_game3_1
 		;	CalculateAverage()
 		Case $editRoundScoresButton
+			InsertDataButton()
 			Run(@SCRIPTDIR&"\rawData\data\" &"view_or_edit_scores.exe",@SCRIPTDIR)
 
 	;	Case $HandicapPlayer1_1 Or $HandicapPlayer2_1 Or $HandicapPlayer3_1 Or $HandicapPlayer1_2 Or $HandicapPlayer2_2 Or $HandicapPlayer3_2
@@ -547,7 +563,6 @@ Switch $UserSelectedTeamNumber
 		GUICtrlSetData($TeamPlayer2Name_2,$returnArray[$Team5Position+2])
 		GUICtrlSetData($TeamPlayer3Name_2,$returnArray[$Team5Position+3])
 	Case "6"
-
        GUICtrlSetData($TeamPlayer1Name_2,$returnArray[$Team6Position+1])
 		GUICtrlSetData($TeamPlayer2Name_2,$returnArray[$Team6Position+2])
 		GUICtrlSetData($TeamPlayer3Name_2,$returnArray[$Team6Position+3])
@@ -637,7 +652,7 @@ $Player2_Score_1[2]=GUICtrlRead($TeamPlayer2Name_1)
 $Player2_Score_1[3]=GUICtrlRead($Player2_score_game1_1 )
 $Player2_Score_1[4]=GUICtrlRead($Player2_score_game2_1 )
 $Player2_Score_1[5]=GUICtrlRead($Player2_score_game3_1 )
-
+;_ArrayDisplay($Player2_Score_1)
 $Player3_Score_1[0]="round " & $roundNumber
 $Player3_Score_1[1]="teamNumber: " & $teamNumber_1
 $Player3_Score_1[2]=GUICtrlRead($TeamPlayer3Name_1)
@@ -747,20 +762,20 @@ FileClose($ScoreTextFile)
 
 EndIf
 RoundNumberInput_function()
+
+
 deleteScore()
 
 setScoreAtEditBox_TakeFrom_RawData_Files();look her
-
+;MsgBox(0,"PPP",$roundNumber)
 If  Number($roundNumber)>2  Then
-;MsgBox(0,"PPP","")
-GUICtrlSetStyle($Player1_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-GUICtrlSetStyle($Player2_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-GUICtrlSetStyle($Player3_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-GUICtrlSetStyle($Player1_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-GUICtrlSetStyle($Player2_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-GUICtrlSetStyle($Player3_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
-GUICtrlSetState($Player1_score_game1_1, $GUI_FOCUS)
-TakePlayerAVGFromTextFile_DisplayOnWindow()
+
+$roundNumber=GUICtrlRead($RoundNumberInput)
+$teamNumber_1=GUICtrlRead($TeamNumber_1_inputbox)
+$teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
+;MsgBox(0,$teamNumber_1,$teamNumber_2)
+TakePlayerAVGFromTextFile_DisplayOnWindow($roundNumber,$teamNumber_1,$teamNumber_2)
+;calculateAVGAndPutOnProg()
 EndIf
 
 EndFunc
@@ -814,6 +829,9 @@ GUICtrlSetData($HandicapPlayer3_2,"")
 EndFunc
 
 Func RoundNumberInput_function()
+
+
+
 
 	If  ((GUICtrlRead( $RoundNumberInput)="1") And ($NextIndex=0) And $readmeFlage=1) Then
 $readmeFlage=0
@@ -1075,6 +1093,15 @@ EndSwitch
 writeToInputBoxesOfTeam1_From_TeamDividerTextFile()
 writeToInputBoxesOfTeam2_From_TeamDividerTextFile()
 setScoreAtEditBox_TakeFrom_RawData_Files();;;look her
+
+$roundNumber=GUICtrlRead($RoundNumberInput)
+$teamNumber_1=GUICtrlRead($TeamNumber_1_inputbox)
+$teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
+;MsgBox(0,"befor function",$teamNumber_1)
+TakePlayerAVGFromTextFile_DisplayOnWindow($roundNumber,$teamNumber_1,$teamNumber_2)
+
+
+
 EndFunc
 
 Func PrintRoundGames()
@@ -1168,6 +1195,31 @@ Func WM_COMMAND($hWnd, $Msg, $wParam, $lParam)
 			calculateHandicap()
 			checkHowManyPlayerArePlayingInEaxhTeam()
 			calculateScore()
+
+
+			If  Number(GUICtrlRead($RoundNumberInput))>2  Then
+;MsgBox(0,"PPP","")
+GUICtrlSetStyle($Player1_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+GUICtrlSetStyle($Player2_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+GUICtrlSetStyle($Player3_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+GUICtrlSetStyle($Player1_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+GUICtrlSetStyle($Player2_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+GUICtrlSetStyle($Player3_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$ES_READONLY))
+
+
+
+;GUICtrlSetState($Player1_score_game1_1, $GUI_FOCUS)
+			Else
+	GUICtrlSetStyle($Player1_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+GUICtrlSetStyle($Player2_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+GUICtrlSetStyle($Player3_AVG_1,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+GUICtrlSetStyle($Player1_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+GUICtrlSetStyle($Player2_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+GUICtrlSetStyle($Player3_AVG_2,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
+
+
+			EndIf
+
         $PreviousTitle=GUICtrlRead($nID-1)
 ;MsgBox(0,"-1",$PreviousTitle)
 ;If $CurrentTitle<>"2016-2017" Then
@@ -1216,9 +1268,14 @@ $checkIfDecimalNumber=StringSplit($checkIfDecimalNumber,".")
 							EndIf
 								EndIf
 								   EndIf
-					ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
-					    MsgBox(0,"ERROR","ONLY numbers are allowed")
-						GUICtrlSetState($nID, $GUI_FOCUS)
+;~ 							ElseIf Not((StringIsDigit(GUICtrlRead($nID)))) Then
+;~ 								   If GUICtrlRead($nID-1)<>"Game 3" Then
+;~ 									    If GUICtrlRead($nID-1)<>"Handicap" Then
+;~ 								   MsgBox(0,"notanum",GUICtrlRead($nID+1))
+;~ 					             MsgBox(0,"ERROR","ONLY numbers are allowed")
+;~ 						          GUICtrlSetState($nID, $GUI_FOCUS)
+;~ 										EndIf
+;~ 										EndIf
 					Else
 
 		;MsgBox(0,"N+1=",GUICtrlRead($nID+1))
@@ -2121,6 +2178,9 @@ EndFunc
 
 Func calculateHandicap()
 ;========;
+$totalHandicapTeam1=0
+$totalHandicapTeam2=0
+
 If GUICtrlRead($Player1_AVG_1)<>"" Then
 
 $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player1_AVG_1)) )*( Int(GUICtrlRead($Handicap_Precent_InputBox))/100))
@@ -2129,6 +2189,7 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	$CalculatedHandicap=0
 	EndIf
 
+$totalHandicapTeam1+=$CalculatedHandicap
 GUICtrlSetData($HandicapPlayer1_1,$CalculatedHandicap)
 Else
 GUICtrlSetData($HandicapPlayer1_1,"")
@@ -2142,7 +2203,7 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player2_AVG_1)))<0 Then
 	$CalculatedHandicap=0
 	EndIf
-
+$totalHandicapTeam1+=$CalculatedHandicap
 GUICtrlSetData($HandicapPlayer2_1,$CalculatedHandicap)
 Else
 GUICtrlSetData($HandicapPlayer2_1,"")
@@ -2155,7 +2216,7 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player3_AVG_1)))<0 Then
 	$CalculatedHandicap=0
 	EndIf
-
+$totalHandicapTeam1+=$CalculatedHandicap
 GUICtrlSetData($HandicapPlayer3_1,$CalculatedHandicap)
 Else
 GUICtrlSetData($HandicapPlayer3_1,"")
@@ -2169,7 +2230,7 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player1_AVG_2)))<0 Then
 	$CalculatedHandicap=0
 	EndIf
-
+$totalHandicapTeam2+=$CalculatedHandicap
 GUICtrlSetData($HandicapPlayer1_2,$CalculatedHandicap)
 Else
 GUICtrlSetData($HandicapPlayer1_2,"")
@@ -2182,7 +2243,7 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player2_AVG_2)))<0 Then
 	$CalculatedHandicap=0
 	EndIf
-
+$totalHandicapTeam2+=$CalculatedHandicap
 GUICtrlSetData($HandicapPlayer2_2,$CalculatedHandicap)
 Else
 GUICtrlSetData($HandicapPlayer2_2,"")
@@ -2195,7 +2256,7 @@ $CalculatedHandicap=Round((Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRea
 	If (Int(GUICtrlRead($League_AVG_InputBox))-Int(GUICtrlRead($Player3_AVG_2)))<0 Then
 	$CalculatedHandicap=0
 	EndIf
-
+$totalHandicapTeam2+=$CalculatedHandicap
 GUICtrlSetData($HandicapPlayer3_2,$CalculatedHandicap)
 
 Else
@@ -2205,7 +2266,8 @@ GUICtrlSetData($HandicapPlayer3_2,"")
 
 EndIf
 ;============;
-
+GUICtrlSetData($HandicapTeam1_Total,$totalHandicapTeam1)
+GUICtrlSetData($HandicapTeam2_Total,$totalHandicapTeam2)
 EndFunc
 
 
@@ -2358,8 +2420,11 @@ _FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points.txt",$TeamPointsArray
 ;;;;;;;;;;;;;;;;;;;;;;personalll scores
 ;;;NEXT LINES Take player scores and put it in a table , all data will be taken from her!!!
 $PersonalScoresArray2=0
+;$PersonalAVGArray2=0
+
 _FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresArray,0,",")
 _FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores2.txt",$PersonalScoresArray2,0,",")
+;_FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
 
 
 If Not(IsArray($PersonalScoresArray)) Then
@@ -2368,9 +2433,14 @@ _FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresA
 EndIf
 
 If Not(IsArray($PersonalScoresArray2)) Then
-	FileCopy(@ScriptDir&"\rawData\"&"Personal_Scores_dont_delete_me_critical_file2.txt",@ScriptDir&"\rawData\data\Personal_Scores2.txt")
+	FileCopy(@ScriptDir&"\rawData\"&"Personal_Scores_dont_delete_me_critical_file3.txt",@ScriptDir&"\rawData\data\Personal_Scores2.txt")
 _FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores2.txt",$PersonalScoresArray2,0,",")
 EndIf
+
+;If Not(IsArray($PersonalAVGArray2)) Then
+;	FileCopy(@ScriptDir&"\rawData\"&"Personal_Scores_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\PersonalAVGArray2.txt")
+;_FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
+;EndIf
 
 ;_ArrayDisplay($PersonalScoresArray)
 
@@ -2380,7 +2450,7 @@ EndIf
 
 
 ;;;DONT FORGET TO CACL TEAM 12 AND AGAINST 12
-
+;_ArrayDisplay($PersonalScoresArray)
 $PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+1]=Int(GUICtrlRead($Player1_Score_Game1_1))
 $PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+2]=Int(GUICtrlRead($Player1_Score_Game2_1))
 $PersonalScoresArray[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+3]=Int(GUICtrlRead($Player1_Score_Game3_1))
@@ -2419,101 +2489,179 @@ If IsArray($returnArray333) Then
 
 
 EndIf
-;_ArrayDisplay($returnArray333,$whoIsAgainstTeam12_index)
 
-;_ArrayDisplay($PersonalScoresArray2)
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9]="T"&$teamNum_1&"-"&"P1"&"-"&Int(GUICtrlRead($Player1_Score_Game1_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+1]="T"&$teamNum_1&"-"&"P1"&"-"&Int(GUICtrlRead($Player1_Score_Game2_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+2]="T"&$teamNum_1&"-"&"P1"&"-"&Int(GUICtrlRead($Player1_Score_Game3_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+3]="T"&$teamNum_1&"-"&"P2"&"-"&Int(GUICtrlRead($Player2_Score_Game1_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+4]="T"&$teamNum_1&"-"&"P2"&"-"&Int(GUICtrlRead($Player2_Score_Game2_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+5]="T"&$teamNum_1&"-"&"P2"&"-"&Int(GUICtrlRead($Player2_Score_Game3_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+6]="T"&$teamNum_1&"-"&"P3"&"-"&Int(GUICtrlRead($Player3_Score_Game1_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+7]="T"&$teamNum_1&"-"&"P3"&"-"&Int(GUICtrlRead($Player3_Score_Game2_1))
-$PersonalScoresArray2[ Int($teamNum_1)-1 ][(Int($roundNumberr)-1)*9+8]="T"&$teamNum_1&"-"&"P3"&"-"&Int(GUICtrlRead($Player3_Score_Game3_1))
+$gameNume=1+3*(Int($roundNumberr)-1)
 
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9]="T"&$teamNum_2&"-"&"P1"&"-"&Int(GUICtrlRead($Player1_Score_Game1_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+1]="T"&$teamNum_2&"-"&"P1"&"-"&Int(GUICtrlRead($Player1_Score_Game2_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+2]="T"&$teamNum_2&"-"&"P1"&"-"&Int(GUICtrlRead($Player1_Score_Game3_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+3]="T"&$teamNum_2&"-"&"P2"&"-"&Int(GUICtrlRead($Player2_Score_Game1_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+4]="T"&$teamNum_2&"-"&"P2"&"-"&Int(GUICtrlRead($Player2_Score_Game2_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+5]="T"&$teamNum_2&"-"&"P2"&"-"&Int(GUICtrlRead($Player2_Score_Game3_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+6]="T"&$teamNum_2&"-"&"P3"&"-"&Int(GUICtrlRead($Player3_Score_Game1_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+7]="T"&$teamNum_2&"-"&"P3"&"-"&Int(GUICtrlRead($Player3_Score_Game2_2))
-$PersonalScoresArray2[ Int($teamNum_2)-1 ][(Int($roundNumberr)-1)*9+8]="T"&$teamNum_2&"-"&"P3"&"-"&Int(GUICtrlRead($Player3_Score_Game3_2))
+
+;;;;;;;TRY TRY TYRY TRY TRY
+;;;DONT FORGET TO CACL TEAM 12 AND AGAINST 12
+;_ArrayDisplay($PersonalScoresArray)
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+1]="T"&$teamNum_1&"-"&"P1"&"-"&"Game"&($gameNume)&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game1_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+2]="T"&$teamNum_1&"-"&"P1"&"-"&"Game"&($gameNume+1)&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game2_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+3]="T"&$teamNum_1&"-"&"P1"&"-"&"Game"&($gameNume+2)&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game3_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+4]="T"&$teamNum_1&"-"&"P2"&"-"&"Game"&($gameNume)&"-"&"S"&Int(GUICtrlRead($Player2_Score_Game1_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+5]="T"&$teamNum_1&"-"&"P2"&"-"&"Game"&($gameNume+1)&"-"&"S"&Int(GUICtrlRead($Player2_Score_Game2_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+6]="T"&$teamNum_1&"-"&"P2"&"-"&"Game"&($gameNume+2)&"-"&"S"&Int(GUICtrlRead($Player2_Score_Game3_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+7]="T"&$teamNum_1&"-"&"P3"&"-"&"Game"&($gameNume)&"-"&"S"&Int(GUICtrlRead($Player3_Score_Game1_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+8]="T"&$teamNum_1&"-"&"P3"&"-"&"Game"&($gameNume+1)&"-"&"S"&Int(GUICtrlRead($Player3_Score_Game2_1))&"-"
+$PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+9]="T"&$teamNum_1&"-"&"P3"&"-"&"Game"&($gameNume+2)&"-"&"S"&Int(GUICtrlRead($Player3_Score_Game3_1))&"-"
+
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+1]="T"&$teamNum_2&"-"&"P1"&"-"&"Game"&($gameNume)&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game1_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+2]="T"&$teamNum_2&"-"&"P1"&"-"&"Game"&($gameNume+1)&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game2_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+3]="T"&$teamNum_2&"-"&"P1"&"-"&"Game"&($gameNume+2)&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game3_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+4]="T"&$teamNum_2&"-"&"P2"&"-"&"Game"&($gameNume)&"-"&"S"&Int(GUICtrlRead($Player2_Score_Game1_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+5]="T"&$teamNum_2&"-"&"P2"&"-"&"Game"&($gameNume+1)&"-"&"S"&Int(GUICtrlRead($Player2_Score_Game2_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+6]="T"&$teamNum_2&"-"&"P2"&"-"&"Game"&($gameNume+2)&"-"&"S"&Int(GUICtrlRead($Player2_Score_Game3_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+7]="T"&$teamNum_2&"-"&"P3"&"-"&"Game"&($gameNume)&"-"&"S"&Int(GUICtrlRead($Player3_Score_Game1_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+8]="T"&$teamNum_2&"-"&"P3"&"-"&"Game"&($gameNume+1)&"-"&"S"&Int(GUICtrlRead($Player3_Score_Game2_2))&"-"
+$PersonalScoresArray2[ Int($teamNum_2) ][(Int($roundNumberr)-1)*9+9]="T"&$teamNum_2&"-"&"P3"&"-"&"Game"&($gameNume+2)&"-"&"S"&Int(GUICtrlRead($Player3_Score_Game3_2))&"-"
 
 
 If IsArray($returnArray333) Then
 
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9]="T"&$whoIsAgainstTeam12&"-"&"P1"&"-"&$returnArray333[$whoIsAgainstTeam12_index+2]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+1]="T"&$whoIsAgainstTeam12&"-"&"P1"&"-"&$returnArray333[$whoIsAgainstTeam12_index+3]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+2]="T"&$whoIsAgainstTeam12&"-"&"P1"&"-"&$returnArray333[$whoIsAgainstTeam12_index+4]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+3]="T"&$whoIsAgainstTeam12&"-"&"P2"&"-"&$returnArray333[$whoIsAgainstTeam12_index+8]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+4]="T"&$whoIsAgainstTeam12&"-"&"P2"&"-"&$returnArray333[$whoIsAgainstTeam12_index+9]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+5]="T"&$whoIsAgainstTeam12&"-"&"P2"&"-"&$returnArray333[$whoIsAgainstTeam12_index+10]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+6]="T"&$whoIsAgainstTeam12&"-"&"P3"&"-"&$returnArray333[$whoIsAgainstTeam12_index+14]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+7]="T"&$whoIsAgainstTeam12&"-"&"P3"&"-"&$returnArray333[$whoIsAgainstTeam12_index+15]
-   $PersonalScoresArray2[ Int($whoIsAgainstTeam12)-1 ][(Int($roundNumberr)-1)*9+8]="T"&$whoIsAgainstTeam12&"-"&"P3"&"-"&$returnArray333[$whoIsAgainstTeam12_index+16]
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+1]="T"&$whoIsAgainstTeam12&"-"&"P1"&"-"&"Game"&($gameNume)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+2]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+2]="T"&$whoIsAgainstTeam12&"-"&"P1"&"-"&"Game"&($gameNume+1)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+3]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+3]="T"&$whoIsAgainstTeam12&"-"&"P1"&"-"&"Game"&($gameNume+2)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+4]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+4]="T"&$whoIsAgainstTeam12&"-"&"P2"&"-"&"Game"&($gameNume)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+8]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+5]="T"&$whoIsAgainstTeam12&"-"&"P2"&"-"&"Game"&($gameNume+1)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+9]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+6]="T"&$whoIsAgainstTeam12&"-"&"P2"&"-"&"Game"&($gameNume+2)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+10]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+7]="T"&$whoIsAgainstTeam12&"-"&"P3"&"-"&"Game"&($gameNume)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+14]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+8]="T"&$whoIsAgainstTeam12&"-"&"P3"&"-"&"Game"&($gameNume+1)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+15]&"-"
+   $PersonalScoresArray2[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+9]="T"&$whoIsAgainstTeam12&"-"&"P3"&"-"&"Game"&($gameNume+2)&"-"&"S"&$returnArray333[$whoIsAgainstTeam12_index+16]&"-"
 
 ;;now fill team 12
- ;  $PersonalScoresArray2[ 12 ][(Int($roundNumberr)-1)*9+1]=$returnArray333[$whoIsAgainstTeam12_index+2]
+ ;  $PersonalScoresArray[ 12 ][(Int($roundNumberr)-1)*9+1]=$returnArray333[$whoIsAgainstTeam12_index+2]
 
 
 EndIf
 
+Local $PersonalScoresArray3=$PersonalScoresArray2
+_ArrayDelete($PersonalScoresArray3,"1-11")
+;_ArrayDisplay($PersonalScoresArray3)
+For $i=1 To 11
+	$a=_ArrayExtract($PersonalScoresArray2,$i,$i,0,UBound($PersonalScoresArray2,2)-1)
+        	_ArrayTranspose($a)
+       _ArraySort($a)
+            _ArrayTranspose($a)
+       _ArrayAdd($PersonalScoresArray3,$a)
+;
+;_ArrayDisplay($PersonalScoresArray3)
+ ; $PersonalScoresArray3[$i]=$a
+;
+Next
+;_ArrayDelete($PersonalScoresArray3,2)
+_ArrayColDelete($PersonalScoresArray3,0)
+ ; _ArrayDisplay($PersonalScoresArray3)
+
+$NEXTbATCH=0
+$BUMP=0
+$JUMP=0
+Local $PersonalArray[33][1000]
+;$PersonalArray[0][$gameNume]  ;this is player 1
+;For $row=1 To 11
+;	For $col=1 To 1000
 ;_ArrayDisplay($PersonalScoresArray2)
-;_ArrayDelete($PersonalScoresArray2,"0")
-;_ArrayColDelete($PersonalScoresArray2,"0")
-_FileWriteFromArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresArray,Default,Default,",")
-_FileWriteFromArray(@ScriptDir&"\rawData\data\Personal_Scores2.txt",$PersonalScoresArray2,Default,Default,",")
-_ArrayDisplay($PersonalScoresArray2)
+;MsgBox(0,"",$PersonalScoresArray2[$row][$col])
+$ThreePlayersAVG_Array=0
+For $TeamNumberIndex=1 To 11
+$ThreePlayerA=_ArrayExtract($PersonalScoresArray3,$TeamNumberIndex,$TeamNumberIndex,0,UBound($PersonalScoresArray3,2)-1);Int($roundNumberr)*9);
+;_ArrayDisplay($ThreePlayerA)
+$ThreePlayersAVG_Array=calculateAVGAndPutOnProg($ThreePlayerA,Int($roundNumberr))
 
-;;;from autoit forum
+Next
+;_ArrayDisplay($ThreePlayersAVG_Array)
+;~ $teamNummm=_StringBetween($PersonalScoresArray2[$row][$col],"T","-")
+;~ If IsArray($teamNummm) Then
+;~ $teamNummm=Number($teamNummm[0])
+;~ EndIf
+
+;~ $Playerrr=_StringBetween($PersonalScoresArray2[$row][$col],"P","-")
+;~ If IsArray($Playerrr) Then
+;~ $Playerrr=Number($Playerrr[0])
+;~ EndIf
+
+;~ $Game=_StringBetween($PersonalScoresArray2[$row][$col],"Game","-")
+;~ If IsArray($Game) Then
+;~ $Game=Number($Game[0])
+;~ EndIf
+
+;~ $SCOREEE=_StringBetween($PersonalScoresArray2[$row][$col],"S","-")
+;~ If IsArray($SCOREEE) Then
+;~ $SCOREEE=Number($SCOREEE[0])
+;~ EndIf
+
+;MsgBox(0,"",3*(Int($teamNummm)-1)+$Playerrr)
+
+;~ If Int($teamNummm)=0 Then
+;~ 	$NEXTbATCH=0
+;~ 	$JUMP=0
+;~ ExitLoop
+;~ EndIf
+
+;~ ;MsgBox(0,(UBound($PersonalArray)-1),(3*(Int($teamNummm)-1)+$Playerrr) )
+;~ If (UBound($PersonalArray)-1)>(3*(Int($teamNummm)-1)+$Playerrr) And (UBound($PersonalArray,2)-1)>($gameNume+$BUMP+$JUMP) Then
+;~ $PersonalArray[3*(Int($teamNummm)-1)+$Playerrr][$gameNume+$BUMP+$JUMP]=$SCOREEE
+;~ EndIf
+
+;~ ;_ArrayDisplay($PersonalArray)
+;~ $BUMP+=1
+;~ $NEXTbATCH+=1
+;~ 	If $BUMP=3 Then
+;~ 		$BUMP=0
+;~ 	EndIf
+
+;~ If $NEXTbATCH=9 Then
+;~ 	$JUMP+=3
+;~ EndIf
 
 
-
- $teams = 12;UBound($PersonalScoresArray2) ; nb teams
- $players = $teams * 3 ; total nb players
- $games =50; UBound($PersonalScoresArray2[0]) / 3 ; nb games
-
-  Local $res[$players][$games]
-;~ For $aa=0 To 10
-; $res[][]=$PersonalScoresArray2[0][$aa]
-
+	;Next
 ;Next
 
-$a=0
-For $i = 0 To $teams - 1
-	$a=_ArrayExtract($PersonalScoresArray2,$i,$i,0,200)
- _ArrayTranspose($a)
-_ArrayDisplay($a)
-	_ArraySort($a)
-	$return=_ArrayReverse($a)
-	MsgBox(0,"return="&$return&"error="&@error,"")
-	_ArrayTranspose($a)
 
-    _ArrayDisplay($a)
-
-	; MsgBox(0,"return="&$etrurm&"error="&@error,"")
-	 ;_ArrayDisplay($a,"b")   ; display each team array
-    For $j = 0 To (3 * $games) - 1 Step $games
-
-		For $n = 0 To $games - 1
-
-            $res[($i * 3) + $j / $games][$n] = $a[0][$j + $n]
-			;_ArrayDisplay($res,($i * 3) + $j / $games)
-        Next
-    Next
-Next
-
-;_ArrayDisplay($res)
+;_ArrayDisplay($PersonalArray)
+;$RowsToDelete="0"
+;_ArrayDelete($PersonalScoresArray2,$RowsToDelete)
+;_ArrayColDelete($PersonalScoresArray2,0)
 
 
+;~ $teams =12; UBound($a) ; nb teams
+;~ $players =36; $teams * 3 ; total nb players
+;~ $games =300; UBound($a[0]) / 3 ; nb games
 
-;;;;;
+;~ Local $res[$players][$games]
+
+;~ $a=0
+
+;~ For $i = 0 To $teams - 1
+;~ 	$a=_ArrayExtract($PersonalScoresArray2,$i,$i,0,UBound($PersonalScoresArray2,2)-500)
+;~ 	_ArrayTranspose($a)
+;~ ;	_ArrayDisplay($a)
+;~  _ArraySort($a)
+;~  _ArrayTranspose($a)
+;~ ;	_ArrayDisplay($a)
+;~ ;     _ArrayDisplay($a[$i])   ; display each team array
+;~     For $j = 0 To (3 * $games) - 1 Step $games
+;~         For $n = 0 To $games - 1
+;~ 	;		_ArrayDisplay( $res,$n)
+;~             $res[($i *3) + $j / $games][$n] = $a[0][$j + $n]
+;~         Next
+;~     Next
+;~ Next
+
+;~ _ArrayDisplay($res)
+
+;TRY TRY TRY RTY TRY TRY TRY TRY TRY\
 
 
 
+;_ArrayDisplay($returnArray333,$whoIsAgainstTeam12_index)
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Personal_Scores.txt",$PersonalScoresArray,Default,Default,",")
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Personal_Scores2.txt",$PersonalScoresArray2,Default,Default,",")
+
+
+;_ArrayDisplay($PersonalScoresArray2)
 Local $PlayerAvg_Array[12][100]
 
 
@@ -2526,8 +2674,8 @@ EndIf
 
 
 For $abcd=1 to 11
-
-$dummy=_ArrayExtract($PersonalScoresArray,$abcd,$abcd,1,248)
+;_ArrayDisplay($PersonalScoresArray)
+$dummy=_ArrayExtract($PersonalScoresArray,$abcd,$abcd,1,700)
 
 ;$RETURN=_ArrayDelete( $dummy,"0-"&String(Int($roundNumberr)-1)*9-1)
 ;MsgBox(0,"","0-"&String(Int($roundNumberr)-1)*9-1)
@@ -2536,8 +2684,10 @@ $DivideBy=3
 $rr=0
 
 
+If IsArray($dummy) Then
 
 For $I_index=0 To 230 Step 3
+	;_ArrayDisplay($dummy,$I_index+1+(Int($roundNumberr)-1)*9)
 	;MsgBox(0,"",$dummy[0][$I_index]&" "&$dummy[0][$I_index+1]&" "&$dummy[0][$I_index+2])
 	If Number($dummy[0][$I_index+(Int($roundNumberr)-1)*9])=0 Then
 	$DivideBy-=1
@@ -2562,7 +2712,7 @@ EndIf
 $rr+=1
 $DivideBy=3
 Next
-
+EndIf
 ;$PlayerAvg_Array[$teamNum_1][100]
 Next
 
@@ -2774,13 +2924,199 @@ EndIf
 
 EndFunc
 
-Func TakePlayerAVGFromTextFile_DisplayOnWindow()
-$AVGScoresArray=0
-_FileReadToArray(@ScriptDir&"\rawData\data\AVG_Scores.txt",$AVGScoresArray,0,",")
+Func TakePlayerAVGFromTextFile_DisplayOnWindow($roundNumber,$teamNumber_1,$teamNumber_2)
 
-If IsArray($AVGScoresArray) Then
-;_ArrayDisplay($AVGScoresArray)
+$roundNumber=GUICtrlRead($RoundNumberInput)
+$teamNumber_1=GUICtrlRead($TeamNumber_1_inputbox)
+$teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
+
+;msgbox(0,"insidefunc","")
+$PersonalAVGArray2=0
+_FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
+;_ArrayDisplay($PersonalAVGArray2,"read array")
+
+If Not(IsArray($PersonalAVGArray2)) Then
+
+	FileCopy(@ScriptDir&"\rawData\"&"Personal_Scores_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\PersonalAVGArray2.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
+EndIf
+
+;_ArrayDisplay($PersonalAVGArray2)
+
+;MsgBox(0,"teamnum1="&$teamNumber_1,"col="&3*$roundNumber-3)
+If $roundNumber>2 Then
+
+ GUICtrlSetData($Player1_AVG_1,$PersonalAVGArray2[ $teamNumber_1 ][3*$roundNumber-6])
+ GUICtrlSetData($Player2_AVG_1,$PersonalAVGArray2[ $teamNumber_1 ][3*$roundNumber-5])
+ GUICtrlSetData($Player3_AVG_1,$PersonalAVGArray2[ $teamNumber_1 ][3*$roundNumber-4])
+ GUICtrlSetData($Player1_AVG_2,$PersonalAVGArray2[ $teamNumber_2 ][3*$roundNumber-6])
+ GUICtrlSetData($Player2_AVG_2,$PersonalAVGArray2[ $teamNumber_2 ][3*$roundNumber-5])
+ GUICtrlSetData($Player3_AVG_2,$PersonalAVGArray2[ $teamNumber_2 ][3*$roundNumber-4])
+GUICtrlSetState($Player1_Score_Game1_1, $GUI_FOCUS)
+EndIf
+
+EndFunc
+
+
+
+
+Func calculateAVGAndPutOnProg($ThreePlayerScoresArray,$roundNum)
+$PersonalAVGArray2=0
+_FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
+;_ArrayDisplay($PersonalAVGArray2,"read array")
+
+If Not(IsArray($PersonalAVGArray2)) Then
+
+	FileCopy(@ScriptDir&"\rawData\"&"Personal_Scores_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\PersonalAVGArray2.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
+EndIf
+
+;_ArrayDisplay($PersonalAVGArray2)
+
+Local $ThreePlayersReturn[1][3]
+
+;_ArrayDisplay($ThreePlayerScoresArray)
+$Player1TOTAL=0
+$Player2TOTAL=0
+$Player3TOTAL=0
+
+$player1GamesPlayed=0
+$player2GamesPlayed=0
+$player3GamesPlayed=0
+
+$player1MissingGames=0
+$player2MissingGames=0
+$player3MissingGames=0
+
+$player1AVG=0
+$player2AVG=0
+$player3AVG=0
+
+For $col=0 To UBound($ThreePlayerScoresArray,2)-1
+
+If $ThreePlayerScoresArray[0][$col]="z" Then
+ExitLoop
+EndIf
+
+$teamNummm=_StringBetween($ThreePlayerScoresArray[0][$col],"T","-")
+If IsArray($teamNummm) Then
+$teamNummm=Number($teamNummm[0])
+EndIf
+
+$Playerrr=_StringBetween($ThreePlayerScoresArray[0][$col],"P","-")
+If IsArray($Playerrr) Then
+$Playerrr=Number($Playerrr[0])
+EndIf
+
+$Game=_StringBetween($ThreePlayerScoresArray[0][$col],"Game","-")
+If IsArray($Game) Then
+$Game=Number($Game[0])
+EndIf
+
+$SCOREEE=_StringBetween($ThreePlayerScoresArray[0][$col],"S","-")
+If IsArray($SCOREEE) Then
+$SCOREEE=Number($SCOREEE[0])
+EndIf
+
+;MsgBox(0,"teamnum="&$teamNummm,"playernum="&$Playerrr&" "&"gamenum="&$Game&" "&"score="&$SCOREEE)
+
+
+If $Playerrr=1 And ( $player1GamesPlayed+$player1MissingGames<($roundNum*3) ) Then
+
+$Player1TOTAL+=$SCOREEE
+
+If $SCOREEE<>0 Then
+$player1GamesPlayed+=1
+Else
+	$player1MissingGames+=1
 
 EndIf
 
+
+EndIf
+If $player1GamesPlayed<>0 Then
+$player1AVG=$Player1TOTAL/$player1GamesPlayed
+$player1AVG=StringFormat("%.2f",$player1AVG);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
+Else
+$player1AVG=StringFormat("%.2f",0);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
+
+EndIf
+;MsgBox(0,"player1total=",$Player1TOTAL&" GAMES PLAYED="&$player1GamesPlayed&" missing games="&$player1MissingGames&" PLAYER AVG="&$player1AVG)
+
+;==PLAYER2 AVG TO THIS ROUND CALC
+
+If $Playerrr=2 And ( $player2GamesPlayed+$player2MissingGames<($roundNum*3) ) Then
+
+$Player2TOTAL+=$SCOREEE
+
+If $SCOREEE<>0 Then
+$player2GamesPlayed+=1
+Else
+	$player2MissingGames+=1
+
+EndIf
+
+
+EndIf
+
+If $player2GamesPlayed<>0 Then
+$player2AVG=$Player2TOTAL/$player2GamesPlayed
+$player2AVG=StringFormat("%.2f",$player2AVG);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
+Else
+$player2AVG=StringFormat("%.2f",0);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
+EndIf
+;MsgBox(0,"player2total=",$Player2TOTAL&" GAMES PLAYED="&$player2GamesPlayed&" missing games="&$player2MissingGames&" PLAYER AVG="&$player2AVG)
+
+
+;===;==PLAYER3 AVG TO THIS ROUND CALC
+If $Playerrr=3 And ( $player3GamesPlayed+$player3MissingGames<($roundNum*3) ) Then
+
+$Player3TOTAL+=$SCOREEE
+
+If $SCOREEE<>0 Then
+$player3GamesPlayed+=1
+Else
+	$player3MissingGames+=1
+
+EndIf
+
+
+EndIf
+
+If $player3GamesPlayed<>0 Then
+$player3AVG=$Player3TOTAL/$player3GamesPlayed
+$player3AVG=StringFormat("%.2f",$player3AVG);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
+Else
+	$player3AVG=StringFormat("%.2f",0);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
+	EndIf
+;MsgBox(0,"player3total=",$Player3TOTAL&" GAMES PLAYED="&$player3GamesPlayed&" missing games="&$player3MissingGames&" PLAYER AVG="&$player3AVG)
+
+
+Next
+
+;MsgBox(0,"teamnumber="&$teamNummm,"PLAYER1 AVG="&$player1AVG&" PLAYER2 AVG="&$player2AVG&" PLAYER3 AVG="&$player3AVG)
+$ThreePlayersReturn[0][0]=$player1AVG
+$ThreePlayersReturn[0][1]=$player2AVG
+$ThreePlayersReturn[0][2]=$player3AVG
+;_ArrayDisplay($ThreePlayersReturn)
+;_ArrayDisplay($PersonalAVGArray2)
+$PersonalAVGArray2[ $teamNummm ][3*$roundNum-3]=$player1AVG
+$PersonalAVGArray2[ $teamNummm ][3*$roundNum-2]=$player2AVG
+$PersonalAVGArray2[ $teamNummm ][3*$roundNum-1]=$player3AVG
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,Default,Default,",")
+
+
+;Return $ThreePlayersReturn
+
+
+;If $roundNum>2 Then ;only after round 2 start calc avg
+
+;EndIf
+
+;$p1Index=_ArraySearch($a,"-P1-",Default,Default,Default,1)
+;$p2Index=_ArraySearch($a,"-P2-",Default,Default,Default,1)
+;$p3Index=_ArraySearch($a,"-P3-",Default,Default,Default,1)
+
+;MsgBox(0,$p1Index,$p2Index&" "&$p3Index)
 EndFunc

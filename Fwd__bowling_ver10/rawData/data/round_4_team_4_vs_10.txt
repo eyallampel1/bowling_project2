@@ -1,0 +1,41 @@
+round 4
+teamNumber: 4
+פרגמין גולן
+222
+222
+222
+round 4
+teamNumber: 4
+פרלמן סמיון
+222
+222
+222
+round 4
+teamNumber: 4
+דיין איציק
+222
+222
+222
+round 4
+teamNumber: 10
+עעע עעע
+222
+222
+222
+round 4
+teamNumber: 10
+פפפ פפפ
+222
+222
+222
+round 4
+teamNumber: 10
+ררר ררר
+222
+222
+222
+final Score:
+teamNumber: 4
+5points
+teamNumber: 10
+0points

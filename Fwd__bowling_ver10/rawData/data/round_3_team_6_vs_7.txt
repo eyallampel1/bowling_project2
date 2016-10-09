@@ -1,0 +1,41 @@
+round 3
+teamNumber: 6
+דדד
+222
+222
+222
+round 3
+teamNumber: 6
+ההה
+222
+222
+222
+round 3
+teamNumber: 6
+ווו
+222
+222
+222
+round 3
+teamNumber: 7
+זזז
+222
+222
+222
+round 3
+teamNumber: 7
+חחח
+222
+222
+222
+round 3
+teamNumber: 7
+טטט
+222
+222
+222
+final score:
+teamNumber: 6
+5points
+teamNumber: 7
+0points

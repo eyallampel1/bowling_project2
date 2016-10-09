@@ -1,0 +1,41 @@
+round 2
+teamNumber: 2
+ון קופם
+
+
+
+round 2
+teamNumber: 2
+אריה סיגנר
+
+
+
+round 2
+teamNumber: 2
+דוטרקי
+
+
+
+round 2
+teamNumber: 6
+דדד
+
+
+
+round 2
+teamNumber: 6
+ההה
+
+
+
+round 2
+teamNumber: 6
+ווו
+
+
+
+final Score:
+teamNumber: 2
+2.5points
+teamNumber: 6
+2.5points

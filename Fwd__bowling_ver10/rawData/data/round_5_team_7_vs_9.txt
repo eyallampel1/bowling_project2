@@ -1,0 +1,41 @@
+round 5
+teamNumber: 7
+זזז
+
+
+
+round 5
+teamNumber: 7
+חחח
+
+
+
+round 5
+teamNumber: 7
+טטט
+
+
+
+round 5
+teamNumber: 9
+ממ מממ
+
+
+
+round 5
+teamNumber: 9
+נננ נננ
+
+
+
+round 5
+teamNumber: 9
+ססס ססס
+
+
+
+final Score:
+teamNumber: 7
+0points
+teamNumber: 9
+0points

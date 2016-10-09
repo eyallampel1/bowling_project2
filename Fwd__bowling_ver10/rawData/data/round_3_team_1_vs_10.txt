@@ -1,0 +1,41 @@
+round 3
+teamNumber: 1
+אייל למפל
+130
+130
+130
+round 3
+teamNumber: 1
+גבי למפל
+130
+130
+130
+round 3
+teamNumber: 1
+ברנס ליאור
+130
+130
+130
+round 3
+teamNumber: 10
+עעע עעע
+
+
+
+round 3
+teamNumber: 10
+פפפ פפפ
+
+
+
+round 3
+teamNumber: 10
+ררר ררר
+
+
+
+final score:
+teamNumber: 1
+0points
+teamNumber: 10
+0points

@@ -1,0 +1,41 @@
+round 1
+teamNumber: 5
+ראע ארטר
+180
+181
+80
+round 1
+teamNumber: 5
+בבב
+171
+191
+200
+round 1
+teamNumber: 5
+גגג
+200
+210
+220
+round 1
+teamNumber: 6
+דדד
+150
+150
+150
+round 1
+teamNumber: 6
+ההה
+140
+140
+120
+round 1
+teamNumber: 6
+ווו
+130
+150
+170
+final Score:
+teamNumber: 5
+5points
+teamNumber: 6
+0points

@@ -1,0 +1,41 @@
+round 4
+teamNumber: 3
+ללי בוב
+222
+222
+222
+round 4
+teamNumber: 3
+דני הרוש
+222
+222
+222
+round 4
+teamNumber: 3
+ירון כהן
+222
+222
+222
+round 4
+teamNumber: 1
+אייל למפל
+160
+160
+160
+round 4
+teamNumber: 1
+גבי למפל
+160
+160
+160
+round 4
+teamNumber: 1
+ברנס ליאור
+160
+160
+160
+final score:
+teamNumber: 3
+5points
+teamNumber: 1
+0points

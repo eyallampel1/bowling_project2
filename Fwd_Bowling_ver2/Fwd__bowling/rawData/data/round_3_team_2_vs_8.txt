@@ -34,7 +34,7 @@ Lampel 12
 
 
 190
-final Score:
+final score:
 teamNumber: 2
 0points
 teamNumber: 8

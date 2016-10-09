@@ -1,0 +1,41 @@
+round 1
+teamNumber: 3
+ללי בוב
+200
+200
+200
+round 1
+teamNumber: 3
+דני הרוש
+110
+110
+110
+round 1
+teamNumber: 3
+ירון כהן
+120
+120
+120
+round 1
+teamNumber: 4
+פרגמין גולן
+130
+130
+130
+round 1
+teamNumber: 4
+פרלמן סמיון
+140
+140
+140
+round 1
+teamNumber: 4
+דיין איציק
+150
+150
+150
+final Score:
+teamNumber: 3
+5points
+teamNumber: 4
+0points

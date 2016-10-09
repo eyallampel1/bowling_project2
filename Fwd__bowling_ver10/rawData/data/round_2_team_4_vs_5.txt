@@ -1,0 +1,41 @@
+round 2
+teamNumber: 4
+פרגמין גולן
+100
+100
+100
+round 2
+teamNumber: 4
+פרלמן סמיון
+100
+222
+222
+round 2
+teamNumber: 4
+דיין איציק
+222
+222
+222
+round 2
+teamNumber: 5
+ראע ארטר
+222
+222
+222
+round 2
+teamNumber: 5
+בבב
+222
+222
+222
+round 2
+teamNumber: 5
+גגג
+222
+222
+222
+final score:
+teamNumber: 4
+0points
+teamNumber: 5
+5points

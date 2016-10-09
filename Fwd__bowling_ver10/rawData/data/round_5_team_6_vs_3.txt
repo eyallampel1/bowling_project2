@@ -1,0 +1,41 @@
+round 5
+teamNumber: 6
+דדד
+
+
+
+round 5
+teamNumber: 6
+ההה
+
+
+
+round 5
+teamNumber: 6
+ווו
+
+
+
+round 5
+teamNumber: 3
+ללי בוב
+
+
+
+round 5
+teamNumber: 3
+דני הרוש
+
+
+
+round 5
+teamNumber: 3
+ירון כהן
+
+
+
+final Score:
+teamNumber: 6
+0points
+teamNumber: 3
+0points

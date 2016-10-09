@@ -1,0 +1,41 @@
+round 2
+teamNumber: 8
+ייי
+150
+150
+150
+round 2
+teamNumber: 8
+כככ כככ
+150
+150
+151
+round 2
+teamNumber: 8
+ללל ללל
+151
+151
+151
+round 2
+teamNumber: 10
+עעע עעע
+151
+151
+151
+round 2
+teamNumber: 10
+פפפ פפפ
+151
+151
+222
+round 2
+teamNumber: 10
+ררר ררר
+222
+222
+222
+final score:
+teamNumber: 8
+0points
+teamNumber: 10
+5points

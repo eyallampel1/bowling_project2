@@ -34,7 +34,7 @@ Lampel 9
 200
 200
 200
-final Score:
+final score:
 teamNumber: 6
 0points
 teamNumber: 7

@@ -1,0 +1,41 @@
+round 1
+teamNumber: 7
+זזז
+180
+180
+180
+round 1
+teamNumber: 7
+חחח
+180
+180
+180
+round 1
+teamNumber: 7
+טטט
+180
+180
+180
+round 1
+teamNumber: 8
+ייי
+180
+180
+180
+round 1
+teamNumber: 8
+כככ כככ
+180
+180
+180
+round 1
+teamNumber: 8
+ללל ללל
+180
+180
+180
+final Score:
+teamNumber: 7
+2.5points
+teamNumber: 8
+2.5points

@@ -1,0 +1,41 @@
+round 5
+teamNumber: 8
+ייי
+
+
+
+round 5
+teamNumber: 8
+כככ כככ
+
+
+
+round 5
+teamNumber: 8
+ללל ללל
+
+
+
+round 5
+teamNumber: 11
+ששש ששש
+
+
+
+round 5
+teamNumber: 11
+תת תתתתתת
+
+
+
+round 5
+teamNumber: 11
+אאא אאאא
+
+
+
+final Score:
+teamNumber: 8
+0points
+teamNumber: 11
+0points

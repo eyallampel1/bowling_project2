@@ -34,7 +34,7 @@ Lampel 3
 
 
 
-final Score:
+final score:
 teamNumber: 8
 0points
 teamNumber: 5

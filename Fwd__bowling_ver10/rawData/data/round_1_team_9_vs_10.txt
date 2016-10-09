@@ -1,0 +1,41 @@
+round 1
+teamNumber: 9
+ממ מממ
+190
+190
+109
+round 1
+teamNumber: 9
+נננ נננ
+190
+190
+190
+round 1
+teamNumber: 9
+ססס ססס
+190
+191
+190
+round 1
+teamNumber: 10
+עעע עעע
+190
+190
+190
+round 1
+teamNumber: 10
+פפפ פפפ
+150
+150
+150
+round 1
+teamNumber: 10
+ררר ררר
+160
+160
+160
+final Score:
+teamNumber: 9
+4points
+teamNumber: 10
+1points

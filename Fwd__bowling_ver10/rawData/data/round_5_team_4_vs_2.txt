@@ -1,0 +1,41 @@
+round 5
+teamNumber: 4
+פרגמין גולן
+
+
+
+round 5
+teamNumber: 4
+פרלמן סמיון
+
+
+
+round 5
+teamNumber: 4
+דיין איציק
+
+
+
+round 5
+teamNumber: 2
+ון קופם
+
+
+
+round 5
+teamNumber: 2
+אריה סיגנר
+
+
+
+round 5
+teamNumber: 2
+דוטרקי
+
+
+
+final Score:
+teamNumber: 4
+0points
+teamNumber: 2
+0points

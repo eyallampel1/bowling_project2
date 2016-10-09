@@ -1,0 +1,41 @@
+round 2
+teamNumber: 1
+אייל למפל
+240
+241
+120
+round 2
+teamNumber: 1
+גבי למפל
+200
+200
+200
+round 2
+teamNumber: 1
+ברנס ליאור
+200
+200
+200
+round 2
+teamNumber: 7
+זזז
+222
+222
+222
+round 2
+teamNumber: 7
+חחח
+222
+222
+222
+round 2
+teamNumber: 7
+טטט
+222
+222
+222
+final score:
+teamNumber: 1
+1points
+teamNumber: 7
+5points
