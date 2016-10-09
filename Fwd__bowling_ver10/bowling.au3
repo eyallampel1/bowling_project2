@@ -634,6 +634,25 @@ EndFunc
 
 ;===============================;
 Func InsertDataButton()
+	$teamNum_1= GUICtrlRead($TeamNumber_1_inputbox)
+$teamNum_2= GUICtrlRead($TeamNumber_2_inputbox)
+$roundNumberr=GUICtrlRead($RoundNumberInput)
+MsgBox(0,$teamNum_1,$teamNum_2)
+For $whoIsAgainstTeam12=1 To 11
+$returnArray333=0
+_FileReadToArray(@ScriptDir&"\rawData\data\round_"&$roundNumberr&"_team_12_vs_"&$whoIsAgainstTeam12&".txt",$returnArray333);read text file into an array
+$whoIsAgainstTeam12_index=_ArraySearch($returnArray333,"teamNumber: "&$whoIsAgainstTeam12);this gives 38
+If IsArray($returnArray333) Then
+ExitLoop
+EndIf
+Next
+
+If Int($roundNumberr)<3 Then
+
+firstANDsecRoundsetAVG(int($teamNum_1),int($teamNum_2),int($whoIsAgainstTeam12))
+EndIf
+
+
 	Local $Player1_Score_1[6] , $Player2_Score_1[6],$Player3_Score_1[6],$Player1_Score_2[6] , $Player2_Score_2[6],$Player3_Score_2[6]
 $roundNumber=GUICtrlRead($RoundNumberInput)
 $teamNumber_1=GUICtrlRead($TeamNumber_1_inputbox)
@@ -777,6 +796,9 @@ $teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
 TakePlayerAVGFromTextFile_DisplayOnWindow($roundNumber,$teamNumber_1,$teamNumber_2)
 ;calculateAVGAndPutOnProg()
 EndIf
+
+
+
 
 EndFunc
 ;===============================;
@@ -1099,6 +1121,24 @@ $teamNumber_1=GUICtrlRead($TeamNumber_1_inputbox)
 $teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
 ;MsgBox(0,"befor function",$teamNumber_1)
 TakePlayerAVGFromTextFile_DisplayOnWindow($roundNumber,$teamNumber_1,$teamNumber_2)
+
+$teamNum_1= GUICtrlRead($TeamNumber_1_inputbox)
+$teamNum_2= GUICtrlRead($TeamNumber_2_inputbox)
+$roundNumberr=GUICtrlRead($RoundNumberInput)
+
+For $whoIsAgainstTeam12=1 To 11
+$returnArray333=0
+_FileReadToArray(@ScriptDir&"\rawData\data\round_"&$roundNumberr&"_team_12_vs_"&$whoIsAgainstTeam12&".txt",$returnArray333);read text file into an array
+$whoIsAgainstTeam12_index=_ArraySearch($returnArray333,"teamNumber: "&$whoIsAgainstTeam12);this gives 38
+If IsArray($returnArray333) Then
+ExitLoop
+EndIf
+Next
+
+If Int($roundNumberr)<3 Then
+
+firstANDsecRoundsetAVG(int($teamNum_1),int($teamNum_2),int($whoIsAgainstTeam12))
+EndIf
 
 
 
@@ -2441,10 +2481,10 @@ _FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores2.txt",$PersonalScores
 EndIf
 
 
-If Int($roundNumberr)<3 Then
+;~ If Int($roundNumberr)<3 Then
 
-firstANDsecRoundsetAVG(int($teamNum_1),int($teamNum_2),int($whoIsAgainstTeam12))
-EndIf
+;~ firstANDsecRoundsetAVG(int($teamNum_1),int($teamNum_2),int($whoIsAgainstTeam12))
+;~ EndIf
 
 
 
@@ -3143,6 +3183,7 @@ EndFunc
 
 
 Func firstANDsecRoundsetAVG($teamNum_1,$teamNum_2,$whoIsAgainstTeam12)
+;MsgBox(0$teamNum_1,$teamNum_2)
 Local $FirstRoundPlayerAVG[11][100]
 
 
@@ -3152,27 +3193,24 @@ If Not(IsArray($FirstRoundPlayerAVG)) Then
 	FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\PlayerLastYearAVG.txt")
 _FileReadToArray(@ScriptDir&"\rawData\data\PlayerLastYearAVG.txt",$FirstRoundPlayerAVG,0,",")
 EndIf
-;_ArrayDisplay($FirstRoundPlayerAVG)
+_ArrayDisplay($FirstRoundPlayerAVG)
+$testIfEmpthy=StringTrimRight($FirstRoundPlayerAVG[$teamNum_1][0],2)
 
-If Not(IsNumber($FirstRoundPlayerAVG[$teamNum_1][0])) Then
-$FirstRoundPlayerAVG[$teamNum_1][0]=""
-$FirstRoundPlayerAVG[$teamNum_1][1]=""
-$FirstRoundPlayerAVG[$teamNum_1][2]=""
-$FirstRoundPlayerAVG[$teamNum_2][0]=""
-$FirstRoundPlayerAVG[$teamNum_2][1]=""
-$FirstRoundPlayerAVG[$teamNum_2][2]=""
 
-EndIf
+
+
+
+;~ If Not(IsNumber($FirstRoundPlayerAVG[$teamNum_1][0])) Then
+;~ $FirstRoundPlayerAVG[$teamNum_1][0]=""
+;~ $FirstRoundPlayerAVG[$teamNum_1][1]=""
+;~ $FirstRoundPlayerAVG[$teamNum_1][2]=""
+;~ $FirstRoundPlayerAVG[$teamNum_2][0]=""
+;~ $FirstRoundPlayerAVG[$teamNum_2][1]=""
+;~ $FirstRoundPlayerAVG[$teamNum_2][2]=""mkdir
+
+;~ EndIf
 ;;put to gui text content
-GUICtrlSetData($Player1_AVG_1,$FirstRoundPlayerAVG[$teamNum_1][0])
-GUICtrlSetData($Player2_AVG_1,$FirstRoundPlayerAVG[$teamNum_1][1])
-GUICtrlSetData($Player3_AVG_1,$FirstRoundPlayerAVG[$teamNum_1][2])
-
-GUICtrlSetData($Player1_AVG_2,$FirstRoundPlayerAVG[$teamNum_2][0])
-GUICtrlSetData($Player2_AVG_2,$FirstRoundPlayerAVG[$teamNum_2][1])
-GUICtrlSetData($Player3_AVG_2,$FirstRoundPlayerAVG[$teamNum_2][2])
-;===============================;
-
+;Sleep(5000)
 ;read from gui to text file
 $FirstRoundPlayerAVG[$teamNum_1][0]=GUICtrlRead($Player1_AVG_1)
 $FirstRoundPlayerAVG[$teamNum_1][1]=GUICtrlRead($Player2_AVG_1)
@@ -3182,7 +3220,22 @@ $FirstRoundPlayerAVG[$teamNum_2][0]=GUICtrlRead($Player1_AVG_2)
 $FirstRoundPlayerAVG[$teamNum_2][1]=GUICtrlRead($Player2_AVG_2)
 $FirstRoundPlayerAVG[$teamNum_2][2]=GUICtrlRead($Player3_AVG_2)
 
-_ArrayDisplay($FirstRoundPlayerAVG)
+
+If $testIfEmpthy<>"team" Then
+	;MsgBox(0,"in the func","")
+GUICtrlSetData($Player1_AVG_1,$FirstRoundPlayerAVG[$teamNum_1][0])
+GUICtrlSetData($Player2_AVG_1,$FirstRoundPlayerAVG[$teamNum_1][1])
+GUICtrlSetData($Player3_AVG_1,$FirstRoundPlayerAVG[$teamNum_1][2])
+
+GUICtrlSetData($Player1_AVG_2,$FirstRoundPlayerAVG[$teamNum_2][0])
+GUICtrlSetData($Player2_AVG_2,$FirstRoundPlayerAVG[$teamNum_2][1])
+GUICtrlSetData($Player3_AVG_2,$FirstRoundPlayerAVG[$teamNum_2][2])
+;===============================;
+EndIf
+
+
+
+;_ArrayDisplay($FirstRoundPlayerAVG)
 _FileWriteFromArray(@ScriptDir&"\rawData\data\PlayerLastYearAVG.txt",$FirstRoundPlayerAVG,Default,Default,",")
 
 
