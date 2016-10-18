@@ -1,9 +1,9 @@
 round 2
 teamNumber: 1
 אייל למפל
-240
-241
-120
+110
+110
+110
 round 2
 teamNumber: 1
 גבי למפל
@@ -34,8 +34,8 @@ teamNumber: 7
 222
 222
 222
-final score:
+final Score:
 teamNumber: 1
-1points
+0points
 teamNumber: 7
 5points

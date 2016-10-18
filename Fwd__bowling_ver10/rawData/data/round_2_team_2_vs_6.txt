@@ -34,8 +34,8 @@ teamNumber: 6
 150
 150
 150
-final score:
+final Score:
 teamNumber: 2
-2.5points
+5points
 teamNumber: 6
-2.5points
+0points

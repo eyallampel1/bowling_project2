@@ -34,7 +34,7 @@ teamNumber: 10
 160
 160
 160
-final Score:
+final score:
 teamNumber: 9
 4points
 teamNumber: 10

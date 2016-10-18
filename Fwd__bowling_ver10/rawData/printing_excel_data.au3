@@ -52,7 +52,7 @@ $PrintBefore_radioButton = GUICtrlCreateRadio("Before Sheets", 120, 216, 113, 17
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
-
+$showPreviewFlag=True ;show preview
 
 While 1
 	$nMsg = GUIGetMsg()
@@ -126,7 +126,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -145,7 +145,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -164,7 +164,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -183,7 +183,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -203,7 +203,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -222,7 +222,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -242,7 +242,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 
@@ -253,7 +253,8 @@ With $oWorkbook.Activesheet.PageSetup
 .PrintTitleRows="$1:$11"
 .PrintTitleColumns="$A:$N"
 .Zoom=False
-;.Orientation=$xlLandscape
+.Orientation=2;$xlLandscape
+.CenterHorizontally=True
   .FitToPagesWide =1
   .FitToPagesTall =1
   .Zoom =80
@@ -261,7 +262,7 @@ With $oWorkbook.Activesheet.PageSetup
 EndWith
 
 
-_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,True);,Default,Default,True,Default,"D:\TRY")
+_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 EndIf
 
 ProcessClose("excel.exe")
@@ -278,6 +279,26 @@ Func Print_Before_Function()
 
 If GUICtrlRead($Which_Round_To_Print_Before_input)="" Or GUICtrlRead($Which_Round_To_Print_Before_input)=" " Then
 MsgBox(16,"Please Enter a round number","You did not entered a round Number")
+Else;we enter her in case roundinput is not empty
+$Which_Round_To_Print_Before=Number(GUICtrlRead($Which_Round_To_Print_Before_input))-1;i take data from the previous round
+
+FileChangeDir(@scriptdir&"/../Output_Excel_Files/")
+$ExcelWantedFile=@WorkingDir&"\round"&$Which_Round_To_Print_Before&".xls"
+;MsgBox(0,"wanted file",$ExcelWantedFile)
+
+
+; *****************************************************************************
+; Open an existing workbook and return its object identifier.
+; *****************************************************************************
+;Local $sWorkbook =GUICtrlRead($browse_input); @ScriptDir & "\..\Output_Excel_Files\round1.xls"
+Local $oExcel = _Excel_Open()
+Local $oWorkbook = _Excel_BookOpen($oExcel, $ExcelWantedFile)
+If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
+;MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Workbook '" & $sWorkbook & "' has been opened successfully." & @CRLF & @CRLF & "Creation Date: " & $oWorkbook.BuiltinDocumentProperties("Creation Date").Value)
+
+
+
+
 EndIf
 
 EndFunc

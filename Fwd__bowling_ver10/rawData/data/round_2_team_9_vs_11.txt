@@ -34,8 +34,8 @@ teamNumber: 11
 222
 222
 222
-final score:
+final Score:
 teamNumber: 9
-2.5points
+5points
 teamNumber: 11
-2.5points
+0points

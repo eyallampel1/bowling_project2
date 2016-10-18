@@ -34,7 +34,7 @@ teamNumber: 11
 
 
 
-final score:
+final Score:
 teamNumber: 4
 0points
 teamNumber: 11

@@ -34,7 +34,7 @@ teamNumber: 6
 170
 170
 170
-final Score:
+final score:
 teamNumber: 5
 0points
 teamNumber: 6

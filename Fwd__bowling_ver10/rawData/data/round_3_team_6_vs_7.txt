@@ -34,7 +34,7 @@ teamNumber: 7
 222
 222
 222
-final score:
+final Score:
 teamNumber: 6
 5points
 teamNumber: 7
