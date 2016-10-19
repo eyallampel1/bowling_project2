@@ -186,7 +186,7 @@ EndIf
 For $i=0 To round(UBound($return)/4)-1
 $return[4*$i]="קבוצה " & $return[4*$i]
 Next
-;_ArrayDisplay($return)
+_ArrayDisplay($return)
 ;_ArrayDisplay($return)
 _FileWriteFromArray(@ScriptDir&"\TeamDivder.txt",$return)
 
