@@ -12,6 +12,7 @@
 #include <File.au3>
 #include <MsgBoxConstants.au3>
 #include <Math.au3>
+#include<String.au3>
 ;#include "bowlingTableTry.au3"
 ;#include "rawData/GUIListViewEx.au3"
 
@@ -275,11 +276,12 @@ EndFunc
 
 
 Func Print_Before_Function()
-
-
+;MsgBox(0,"",$msgtoLeague)
 If GUICtrlRead($Which_Round_To_Print_Before_input)="" Or GUICtrlRead($Which_Round_To_Print_Before_input)=" " Then
 MsgBox(16,"Please Enter a round number","You did not entered a round Number")
 Else;we enter her in case roundinput is not empty
+ProcessClose("excel.exe")
+$msgtoLeague=InputBox("Would You Like to say something to the league ? ","Ex:"&@CRLF&"מזל טוב לרגל.. "&@CRLF&"נא לשלם עד לתאריך ..."&@CRLF&@CRLF&@CRLF&"If you dont want to say anything just leave the field empty, And press OK",Default,Default,500)
 $Which_Round_To_Print_Before=Number(GUICtrlRead($Which_Round_To_Print_Before_input))-1;i take data from the previous round
 
 FileChangeDir(@scriptdir&"/../Output_Excel_Files/")
@@ -295,11 +297,158 @@ Local $oExcel = _Excel_Open()
 Local $oWorkbook = _Excel_BookOpen($oExcel, $ExcelWantedFile)
 If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
 ;MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Workbook '" & $sWorkbook & "' has been opened successfully." & @CRLF & @CRLF & "Creation Date: " & $oWorkbook.BuiltinDocumentProperties("Creation Date").Value)
+;MsgBox(0,"",@ScriptDir&"\data\before_Sheet.xlsx")
 
 
+
+$DataToCopy=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"D2:D5")
+;_ArrayDisplay($DataToCopy)
+$LeaueDate=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"F2")
+
+$oWorkbook.Sheets(4) .Select
+$RecordGame=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"E8")
+$RecordGame_PlayerName=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"B8")
+$oWorkbook.Sheets(5) .Select
+$RecordTotal=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"F8")
+$RecordTotal_PlayerName=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"B8")
+$oWorkbook.Sheets(6) .Select
+$RecordTotal_TEAM=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"D8")
+$RecordTotal_TEAM_Number=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"B8")
+$oWorkbook.Sheets(7) .Select
+$RecordTotal_3games_TEAM=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"D8")
+$RecordTotal_3games_TEAM_Number=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"B8")
+;_ArrayDisplay($RecordGame)
+Local $TeamPoints[11]
+Local $TEAM_INDEX[11]
+$oWorkbook.Sheets(2) .Select
+$TeamPointsSheetToArray=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"B7:F18")
+$TEAM_INDEX[0]=_ArraySearch($TeamPointsSheetToArray,"1",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[1]=_ArraySearch($TeamPointsSheetToArray,"2",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[2]=_ArraySearch($TeamPointsSheetToArray,"3",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[3]=_ArraySearch($TeamPointsSheetToArray,"4",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[4]=_ArraySearch($TeamPointsSheetToArray,"5",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[5]=_ArraySearch($TeamPointsSheetToArray,"6",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[6]=_ArraySearch($TeamPointsSheetToArray,"7",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[7]=_ArraySearch($TeamPointsSheetToArray,"8",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[8]=_ArraySearch($TeamPointsSheetToArray,"9",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[9]=_ArraySearch($TeamPointsSheetToArray,"10",Default,Default,Default,Default,Default,0)
+$TEAM_INDEX[10]=_ArraySearch($TeamPointsSheetToArray,"11",Default,Default,Default,Default,Default,0)
+
+
+$Player1=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[1]][1],"",@CRLF)
+$Player1=$Player1[0]
+$Player1LEN=StringLen($Player1)
+$Player2=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[1]][1],@CRLF,@CRLF)
+$Player2=$Player2[0]
+$Player2LEN=StringLen($Player2)
+$Player3=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[1]][1],@CRLF,"")
+$Player3=$Player3[0]
+;$Player3=StringStripCR($TeamPointsSheetToArray[$TEAM_INDEX[0]][1])
+$Player3=StringTrimLeft($Player3,$Player2LEN)
+$Player3=StringStripCR($Player3)
+
+
+
+
+Local $GameScheduleArray=0
+_FileReadToArray(@ScriptDir&"\Game_Schedule.txt",$GameScheduleArray,Default,"|")
+;_ArrayDisplay($GameScheduleArray)
+$DataToCopy[0]=$GameScheduleArray[$Which_Round_To_Print_Before+1][0]
+$DataToCopy[1]=$GameScheduleArray[$Which_Round_To_Print_Before+1][1]
+Local $teamA_vs_TeamB[5]
+$teamA_vs_TeamB[0]=$GameScheduleArray[$Which_Round_To_Print_Before+1][2]&" + "&$GameScheduleArray[$Which_Round_To_Print_Before+1][3]
+$teamA_vs_TeamB[1]=$GameScheduleArray[$Which_Round_To_Print_Before+1][4]&" + "&$GameScheduleArray[$Which_Round_To_Print_Before+1][5]
+$teamA_vs_TeamB[2]=$GameScheduleArray[$Which_Round_To_Print_Before+1][6]&" + "&$GameScheduleArray[$Which_Round_To_Print_Before+1][7]
+$teamA_vs_TeamB[3]=$GameScheduleArray[$Which_Round_To_Print_Before+1][8]&" + "&$GameScheduleArray[$Which_Round_To_Print_Before+1][9]
+$teamA_vs_TeamB[4]=$GameScheduleArray[$Which_Round_To_Print_Before+1][10]&" + "&$GameScheduleArray[$Which_Round_To_Print_Before+1][11]
+;_ArrayDisplay($teamA_vs_TeamB)
+;$GameScheduleArray[$Which_Round_To_Print_Before]
+
+Local $oBeforeSheet = _Excel_BookOpen($oExcel, @ScriptDir&"\data\before_Sheet.xlsx")
+If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
+
+For $i=1 To 5
+
+$Player1_A=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][1],"",@CRLF)
+$Player1_A=$Player1_A[0]
+$Player1LEN_A=StringLen($Player1_A)
+$Player2_A=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][1],@CRLF,@CRLF)
+$Player2_A=$Player2_A[0]
+$Player2LEN_A=StringLen($Player2_A)
+$Player3_A=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][1],@CRLF,"")
+$Player3_A=$Player3_A[0]
+;$Player3=StringStripCR($TeamPointsSheetToArray[$TEAM_INDEX[0]][1])
+$Player3_A=StringTrimLeft($Player3_A,$Player2LEN_A)
+;$Player3_A=StringStripCR($Player3_A)
+
+$Player1_B=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]]][1],"",@CRLF)
+$Player1_B=$Player1_B[0]
+$Player1LEN_B=StringLen($Player1_B)
+$Player2_B=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]]][1],@CRLF,@CRLF)
+$Player2_B=$Player2_B[0]
+$Player2LEN_B=StringLen($Player2_B)
+$Player3_B=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]]][1],@CRLF,"")
+$Player3_B=$Player3_B[0]
+;$Player3=StringStripCR($TeamPointsSheetToArray[$TEAM_INDEX[0]][1])
+$Player3_B=StringTrimLeft($Player3_B,$Player2LEN_B)
+;$Player3_B=StringStripCR($Player3_B)
+
+
+
+
+	$oBeforeSheet.Sheets(Int($i)) .Select
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataToCopy[0],"I8");this is round NUMBER
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataToCopy[1],"I5");this is round date
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataToCopy[3],"B9");this is LEAGUE AVG
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$LeaueDate,"I4");this is LEAGUE DATE
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$msgtoLeague,"A44");this is the msg to the league from input box
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordGame,"D6")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordGame_PlayerName,"F6")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordTotal,"D7")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordTotal_PlayerName,"F7")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordTotal_TEAM,"D4")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordTotal_TEAM_Number,"F4")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordTotal_3games_TEAM,"D5")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$RecordTotal_3games_TEAM_Number,"F5")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$teamA_vs_TeamB[$i-1],"I7");this is round NUMBER
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,"קבוצה "&$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i],"E10");this is round NUMBER
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,"קבוצה "&$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1],"E27");this is round NUMBER
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,"חתימת קפטן קבוצה "&$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]&":","B24");this is round NUMBER
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,"חתימת קפטן קבוצה "&$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]&":","B41");this is round NUMBER
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][4],"I12")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]]][4],"I29")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][3],"I11")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]]][3],"I28")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][2],"I10")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i+1]]][2],"I27")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1_A,"D15")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2_A,"D16")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player3_A,"D17")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1_B,"D32")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2_B,"D33")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player3_B,"D34")
+
+Next
+
+With $oBeforeSheet.Activesheet.PageSetup
+.PrintTitleRows="$1:$47"
+.PrintTitleColumns="$A:$K"
+.Zoom=False
+;.Orientation=2;$xlLandscape
+.CenterHorizontally=True
+  .FitToPagesWide =1
+  .FitToPagesTall =1
+  .Zoom =74
+; If .Zoom <30 Then .Zoom =76
+EndWith
+
+
+_Excel_Print($oExcel,$oBeforeSheet.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
 
 
 EndIf
+
+
 
 EndFunc
 

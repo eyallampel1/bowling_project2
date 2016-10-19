@@ -82,3 +82,17 @@ lanes 9 - 10
 4 vs 7
 lanes 11 - 12
 2 vs 12
+round 7
+05.09.16
+lanes 1 - 2
+1 vs 2
+lanes 3 - 4
+3 vs 4
+lanes 5 - 6
+5 vs 6
+lanes 7 - 8
+7 vs 8
+lanes 9 - 10
+9 vs 10
+lanes 11 - 12
+11 vs 12

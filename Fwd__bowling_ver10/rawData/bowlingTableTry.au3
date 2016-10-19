@@ -44,8 +44,6 @@ If @error Then
     Exit -1
 EndIf
 
-$iRval = _SQLite_GetTable2d(-1, "SELECT * FROM Personal_Table;", $aResult, $iRows, $iColumns)
-_ArrayDisplay($aResult)
 
 
 
@@ -219,7 +217,72 @@ EndIf
 For $i=0 To round(UBound($return)/4)-1
 $return[4*$i]="קבוצה " & $return[4*$i]
 Next
-_ArrayDisplay($return)
+
+
+;;;;;;;;THIS IS THE SQLITE EXAMPLE
+
+
+
+If Not _SQLite_Exec(-1, "DROP TABLE IF EXISTS Player_Name_And_Team ;") = $SQLITE_OK Then _
+        MsgBox($MB_SYSTEMMODAL, "SQLite Error", _SQLite_ErrMsg())
+
+
+If Not _SQLite_Exec(-1, "CREATE TABLE IF NOT EXISTS Player_Name_And_Team (Player_ID INTEGER PRIMARY KEY ,Team_Number integer,Player_Name text);") = $SQLITE_OK Then _
+        MsgBox($MB_SYSTEMMODAL, "SQLite Error", _SQLite_ErrMsg())
+
+
+
+Local $teamJump3Index=1
+Local $index_j=0
+For $i=1 To 43
+$index_j+=1
+$name="'"&$return[$i]&"'"
+
+
+;MsgBox(0,"","INSERT INTO Player_Name_And_Team (Team_Number,Player_Name) VALUES ("&$teamJump3Index&","&$return[$i]&");")
+If Not _SQLite_Exec(-1, "INSERT INTO Player_Name_And_Team (Team_Number,Player_Name) VALUES ("&$teamJump3Index&","&$name&");") = $SQLITE_OK Then _
+        MsgBox($MB_SYSTEMMODAL, "SQLite Error", _SQLite_ErrMsg())
+
+		If $index_j=3 Then
+		$teamJump3Index+=1
+		$index_j=0
+		$i+=1
+		EndIf
+
+Next
+
+Local $Team12Members[30];UBound($return)-44]
+$jk=0
+For $i=44 To UBound($return)-1
+$Team12Members[$jk]="'"&$return[$i]&"'"
+
+If $Team12Members[$jk]="'קבוצה 12'" Then
+_ArrayDelete($Team12Members,$jk)
+$jk-=1
+EndIf
+
+$jk+=1
+Next
+
+
+For $i=0 To 100
+
+If $Team12Members[$i]="" Then
+_ArrayDelete($Team12Members,$i&"-"&UBound($Team12Members)-1)
+ExitLoop
+EndIf
+
+Next
+
+
+For $i=0 To UBound($Team12Members)-1
+If Not _SQLite_Exec(-1, "INSERT INTO Player_Name_And_Team (Team_Number,Player_Name) VALUES (12,"&$Team12Members[$i]&");") = $SQLITE_OK Then _
+        MsgBox($MB_SYSTEMMODAL, "SQLite Error", _SQLite_ErrMsg())
+Next
+
+
+$iRval = _SQLite_GetTable2d(-1, "SELECT * FROM Player_Name_And_Team;", $aResult, $iRows, $iColumns)
+
 ;_ArrayDisplay($return)
 _FileWriteFromArray(@ScriptDir&"\TeamDivder.txt",$return)
 
