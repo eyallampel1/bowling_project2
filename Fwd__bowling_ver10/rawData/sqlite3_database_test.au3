@@ -24,7 +24,7 @@ If @error Then
     Exit -1
 EndIf
 
-If Not _SQLite_Exec(-1, "CREATE TABLE IF NOT EXISTS Personal_Table (ROWID integer primery key ,Player_ID integer,Team_Number integer,Player_Name text,Round_Date DATETIME,Round_Number integer ,Arrived_flag text,Haslama_flag text,Game1 integer,Game2 integer,Game3 integer ,Round_Total integer,Round_Max_Game integer,Round_AVG integer , Played_Against_Team integer,Best_Game integer,Best_Total integer,Player_AVG integer,Handicap text);") = $SQLITE_OK Then _
+If Not _SQLite_Exec(-1, "CREATE TABLE IF NOT EXISTS Personal_Table (ROWID integer primery key ,Player_ID integer,Team_Number integer,Player_Name text,Round_Date DATETIME,Round_Number integer ,Arrived_flag text,Haslama_flag text,Game1 integer,Game2 integer,Game3 integer ,Round_Total integer,Round_Max_Game integer,Round_AVG integer , Played_Against_Team integer,Best_Game integer,Best_Total integer,Player_AVG integer,Handicap text,Last_Year_AVG integer);") = $SQLITE_OK Then _
         MsgBox($MB_SYSTEMMODAL, "SQLite Error", _SQLite_ErrMsg())
 If Not _SQLite_Exec(-1, "INSERT INTO Personal_Table VALUES ('иии','43');") = $SQLITE_OK Then _
         MsgBox($MB_SYSTEMMODAL, "SQLite Error", _SQLite_ErrMsg())

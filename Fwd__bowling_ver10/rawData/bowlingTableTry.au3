@@ -8,13 +8,46 @@
 #include <ButtonConstants.au3>
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
-#include <WindowsConstants.au3>
 #include <Excel.au3>
 #include <DateTimeConstants.au3>
 #include <EditConstants.au3>
 #include <StaticConstants.au3>
 #include <File.au3>
 #include <MsgBoxConstants.au3>
+
+#include <SQLite.au3>
+#include <SQLite.dll.au3>
+
+
+;_SQLite_Startup(Default,Default,1  ;for local install
+
+
+ ;FileInstall("d:\autoit3\include\sqlite3.dll", @ScriptDir & "\", 1)
+
+;sqlite starting sequence - we fill names and id here
+Local $aResult, $iRows, $iColumns, $iRval
+ ;FileInstall("d:\autoit3\include\sqlite3.dll", @ScriptDir & "\", 1)
+Local $sSQliteDll = _SQLite_Startup()
+;Local $sSQliteDll =_SQLite_Startup(Default,Default,1  ;for local install
+
+If @error Then
+    MsgBox($MB_SYSTEMMODAL, "SQLite Error", "SQLite3.dll Can't be Loaded!" & @CRLF & @CRLF & _
+            "Not FOUND in @SystemDir, @WindowsDir, @ScriptDir, @WorkingDir, @LocalAppDataDir\AutoIt v3\SQLite")
+    Exit -1
+EndIf
+
+
+
+ _SQLite_Open("Personal_Round_Score.db")
+If @error Then
+    MsgBox($MB_SYSTEMMODAL, "SQLite Error", "Can't open or create a permanent Database!")
+    Exit -1
+EndIf
+
+$iRval = _SQLite_GetTable2d(-1, "SELECT * FROM Personal_Table;", $aResult, $iRows, $iColumns)
+_ArrayDisplay($aResult)
+
+
 
 ;Func _gui2()
 Global $iCount_Left = 1,$TeamRunningIndex=1,$TeamRunningIndex2=1, $iCount_Right = 20, $vData, $sMsg, $aLV_List_Left, $aLV_List_Right, $aRet, $iEditMode = 0
