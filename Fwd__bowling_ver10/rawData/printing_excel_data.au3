@@ -294,6 +294,10 @@ $ExcelWantedFile=@WorkingDir&"\round"&$Which_Round_To_Print_Before&".xls"
 ; *****************************************************************************
 ;Local $sWorkbook =GUICtrlRead($browse_input); @ScriptDir & "\..\Output_Excel_Files\round1.xls"
 Local $oExcel = _Excel_Open()
+
+If $Which_Round_To_Print_Before+1<>1 Then
+
+
 Local $oWorkbook = _Excel_BookOpen($oExcel, $ExcelWantedFile)
 If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
 ;MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Workbook '" & $sWorkbook & "' has been opened successfully." & @CRLF & @CRLF & "Creation Date: " & $oWorkbook.BuiltinDocumentProperties("Creation Date").Value)
@@ -335,18 +339,6 @@ $TEAM_INDEX[9]=_ArraySearch($TeamPointsSheetToArray,"10",Default,Default,Default
 $TEAM_INDEX[10]=_ArraySearch($TeamPointsSheetToArray,"11",Default,Default,Default,Default,Default,0)
 
 
-$Player1=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[1]][1],"",@CRLF)
-$Player1=$Player1[0]
-$Player1LEN=StringLen($Player1)
-$Player2=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[1]][1],@CRLF,@CRLF)
-$Player2=$Player2[0]
-$Player2LEN=StringLen($Player2)
-$Player3=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[1]][1],@CRLF,"")
-$Player3=$Player3[0]
-;$Player3=StringStripCR($TeamPointsSheetToArray[$TEAM_INDEX[0]][1])
-$Player3=StringTrimLeft($Player3,$Player2LEN)
-$Player3=StringStripCR($Player3)
-
 
 
 
@@ -364,12 +356,28 @@ $teamA_vs_TeamB[4]=$GameScheduleArray[$Which_Round_To_Print_Before+1][10]&" + "&
 ;_ArrayDisplay($teamA_vs_TeamB)
 ;$GameScheduleArray[$Which_Round_To_Print_Before]
 
+$oWorkbook.Sheets(1) .Select
+$DataForPlayersAVG=_Excel_RangeRead($oWorkbook,$oWorkbook.ActiveSheet,"B7:H40")
+
+$HandicapFile=0
+_FileReadToArray(@ScriptDir&"\League_Information.txt",$HandicapFile)
+
+
+$HandicapFile[3]=Number($HandicapFile[3]);user set avg
+$HandicapFile[4]=Number($HandicapFile[4]);precent
+EndIf
+
+If  $Which_Round_To_Print_Before+1=1 Then
+
+EndIf
+
 Local $oBeforeSheet = _Excel_BookOpen($oExcel, @ScriptDir&"\data\before_Sheet.xlsx")
 If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
 
 For $i=1 To 5
 
 $Player1_A=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][1],"",@CRLF)
+;MsgBox(0,"HER","HER")
 $Player1_A=$Player1_A[0]
 $Player1LEN_A=StringLen($Player1_A)
 $Player2_A=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][1],@CRLF,@CRLF)
@@ -394,6 +402,49 @@ $Player3_B=StringTrimLeft($Player3_B,$Player2LEN_B)
 ;$Player3_B=StringStripCR($Player3_B)
 
 
+;$STRING1=StringSplit(StringTrimLeft($Player3_A,2),"")
+;$STRING1=StringSplit($DataForPlayersAVG,"")
+;_ArrayDisplay($STRING1)
+
+$PLAYER1A_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimRight($Player1_A,1),Default,Default,Default,1,Default,0)
+$PLAYER2A_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimRight($Player2_A,1),Default,Default,Default,1,Default,0)
+$PLAYER3A_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimLeft($Player3_A,2),Default,Default,Default,1,Default,0)
+$PLAYER1B_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimRight($Player1_B,1),Default,Default,Default,1,Default,0)
+$PLAYER2B_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimRight($Player2_B,1),Default,Default,Default,1,Default,0)
+$PLAYER3B_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimLeft($Player3_B,2),Default,Default,Default,1,Default,0)
+
+$Player1A_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER1A_INDEX][6]))*($HandicapFile[4]/100))
+If $Player1A_Handicap<0 Then
+$Player1A_Handicap=0
+EndIf
+
+$Player2A_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER2A_INDEX][6]))*($HandicapFile[4]/100))
+If $Player2A_Handicap<0 Then
+$Player2A_Handicap=0
+EndIf
+
+$Player3A_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER3A_INDEX][6]))*($HandicapFile[4]/100))
+If $Player3A_Handicap<0 Then
+$Player3A_Handicap=0
+EndIf
+
+$Player1B_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER1B_INDEX][6]))*($HandicapFile[4]/100))
+If $Player1B_Handicap<0 Then
+$Player1B_Handicap=0
+EndIf
+
+$Player2B_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER2B_INDEX][6]))*($HandicapFile[4]/100))
+If $Player2B_Handicap<0 Then
+$Player2B_Handicap=0
+EndIf
+
+
+$Player3B_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER3B_INDEX][6]))*($HandicapFile[4]/100))
+If $Player3B_Handicap<0 Then
+$Player3B_Handicap=0
+EndIf
+;_ArrayDisplay($DataForPlayersAVG,"name="&$Player3_A&" index="&$PLAYER3A_INDEX)
+;$Player1_A_AVG=
 
 
 	$oBeforeSheet.Sheets(Int($i)) .Select
@@ -428,8 +479,24 @@ _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1_B,"D32")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2_B,"D33")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player3_B,"D34")
 
-Next
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER1A_INDEX][6],"B15")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER2A_INDEX][6],"B16")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER3A_INDEX][6],"B17")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER1B_INDEX][6],"B32")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER2B_INDEX][6],"B33")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER3B_INDEX][6],"B34")
 
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1A_Handicap,"C15")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2A_Handicap,"C16")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player3A_Handicap,"C17")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1B_Handicap,"C32")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2B_Handicap,"C33")
+_Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player3B_Handicap,"C34")
+
+;$DataForPlayersAVG
+
+
+;;ACTUAL PRINTING
 With $oBeforeSheet.Activesheet.PageSetup
 .PrintTitleRows="$1:$47"
 .PrintTitleColumns="$A:$K"
@@ -444,6 +511,11 @@ EndWith
 
 
 _Excel_Print($oExcel,$oBeforeSheet.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
+
+
+Next
+
+
 
 
 EndIf
