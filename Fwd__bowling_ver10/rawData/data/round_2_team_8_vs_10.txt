@@ -1,40 +1,40 @@
 round 2
 teamNumber: 8
-ייי
-150
-150
-150
+וידל כרמל
+180
+180
+180
 round 2
 teamNumber: 8
-כככ כככ
-150
-150
-151
+פסח אבי
+180
+180
+180
 round 2
 teamNumber: 8
-ללל ללל
-151
-151
-151
+תאודור זכי
+180
+180
+180
 round 2
 teamNumber: 10
-עעע עעע
-151
-151
-151
+לוי אמיר
+200
+200
+200
 round 2
 teamNumber: 10
-פפפ פפפ
-151
-151
-222
+סיגנר אריה
+200
+200
+200
 round 2
 teamNumber: 10
-ררר ררר
-222
-222
-222
-final Score:
+אברמוביץ יהודית
+200
+200
+200
+final score:
 teamNumber: 8
 0points
 teamNumber: 10

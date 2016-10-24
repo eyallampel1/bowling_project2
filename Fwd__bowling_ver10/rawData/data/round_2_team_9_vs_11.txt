@@ -1,40 +1,40 @@
 round 2
 teamNumber: 9
-ממ מממ
-222
-222
-222
+אריול אלכס
+190
+190
+190
 round 2
 teamNumber: 9
-נננ נננ
-222
-222
-222
+דרוויש אלי
+190
+190
+190
 round 2
 teamNumber: 9
-ססס ססס
-222
-222
-222
+סגל ראובן
+190
+190
+190
 round 2
 teamNumber: 11
-ששש ששש
-222
-222
-222
+הראל מור
+200
+200
+200
 round 2
 teamNumber: 11
-תת תתתתתת
-222
-222
-222
+וישינבצקי אנדריי
+200
+200
+200
 round 2
 teamNumber: 11
-אאא אאאא
-222
-222
-222
-final Score:
+המר גל
+200
+200
+200
+final score:
 teamNumber: 9
 5points
 teamNumber: 11

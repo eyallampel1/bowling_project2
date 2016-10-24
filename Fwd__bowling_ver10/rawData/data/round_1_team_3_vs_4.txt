@@ -1,41 +1,41 @@
 round 1
 teamNumber: 3
-ללי בוב
-200
-200
-200
+למפל גבי
+120
+120
+120
 round 1
 teamNumber: 3
-דני הרוש
-110
-110
-110
+דיין יניב
+120
+120
+120
 round 1
 teamNumber: 3
-ירון כהן
+בוקסדורף שאול
 120
 120
 120
 round 1
 teamNumber: 4
-פרגמין גולן
+בן בסט משה
 130
 130
 130
 round 1
 teamNumber: 4
-פרלמן סמיון
-140
-140
-140
+גבאי מאור
+130
+130
+130
 round 1
 teamNumber: 4
-דיין איציק
-150
-150
-150
-final score:
+פלנדין מרגריטה
+130
+130
+130
+final Score:
 teamNumber: 3
-5points
-teamNumber: 4
 0points
+teamNumber: 4
+5points

@@ -187,6 +187,7 @@ While 1
         Case $CreateTablesButton
 			;startFunction()
 		;	MsgBox(0,"",@SCRIPTDIR&"\rawData\"&"dataToExcel.exe")
+		GUICtrlSetState($CreateTablesButton,$GUI_DISABLE)
 		InsertDataButton()
 		InsertDataButton()
 		InsertDataButton()
@@ -194,6 +195,7 @@ While 1
 		InsertDataButton()
 
 		Run(@SCRIPTDIR&"\rawData\"&"dataToExcel.exe","")
+		GUICtrlSetState($CreateTablesButton,$GUI_ENABLE)
 		;Run('"' & @AutoItExe & '" /AutoIt3ExecuteScript "' & @SCRIPTDIR&"\rawData\"&"dataToExcel.au3"& ' " ', "", @SW_SHOW, 0)
 		Case $InsertPlayersNamesInitialInsertButton
 			;	MsgBox(0,"",@SCRIPTDIR&"\rawData")
@@ -238,9 +240,10 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 		Case $Player1_score_game3_1
 		;	CalculateAverage()
 		Case $editRoundScoresButton
+			GUICtrlSetState($editRoundScoresButton,$GUI_DISABLE)
 			InsertDataButton()
 			Run(@SCRIPTDIR&"\rawData\data\" &"view_or_edit_scores.exe",@SCRIPTDIR)
-
+			GUICtrlSetState($editRoundScoresButton,$GUI_ENABLE)
 	;	Case $HandicapPlayer1_1 Or $HandicapPlayer2_1 Or $HandicapPlayer3_1 Or $HandicapPlayer1_2 Or $HandicapPlayer2_2 Or $HandicapPlayer3_2
 		;	calculateScore()
 
@@ -2563,6 +2566,7 @@ $gameNume=1+3*(Int($roundNumberr)-1)
 ;;;DONT FORGET TO CACL TEAM 12 AND AGAINST 12
 ;_ArrayDisplay($PersonalScoresArray)
 ;(StringFormat('%03s', $gameNume) )
+
 $PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+1]="T"&$teamNum_1&"-"&"P1"&"-"&"Game"&(StringFormat('%03s',$gameNume))&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game1_1))&"-"
 $PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+2]="T"&$teamNum_1&"-"&"P1"&"-"&"Game"&(StringFormat('%03s',$gameNume+1))&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game2_1))&"-"
 $PersonalScoresArray2[ Int($teamNum_1) ][(Int($roundNumberr)-1)*9+3]="T"&$teamNum_1&"-"&"P1"&"-"&"Game"&(StringFormat('%03s',$gameNume+2))&"-"&"S"&Int(GUICtrlRead($Player1_Score_Game3_1))&"-"
@@ -2617,8 +2621,11 @@ For $i=1 To 11
 ;
 Next
 ;_ArrayDelete($PersonalScoresArray3,2)
-_ArrayColDelete($PersonalScoresArray3,0)
- ; _ArrayDisplay($PersonalScoresArray3)
+;_ArrayDisplay($PersonalScoresArray3)
+
+;_ArrayColDelete($PersonalScoresArray3,0);THIS IS IMPORTENT AND I DONT REMEMBER Y??? 23.10.16
+
+; _ArrayDisplay($PersonalScoresArray3)
 
 $NEXTbATCH=0
 $BUMP=0
@@ -2631,10 +2638,11 @@ Local $PersonalArray[33][1000]
 ;MsgBox(0,"",$PersonalScoresArray2[$row][$col])
 ;$ThreePlayersAVG_Array=0
 For $TeamNumberIndex=1 To 11
+
 $ThreePlayerA=_ArrayExtract($PersonalScoresArray3,$TeamNumberIndex,$TeamNumberIndex,0,UBound($PersonalScoresArray3,2)-1);Int($roundNumberr)*9);
 ;_ArrayDisplay($ThreePlayerA)
 ;$ThreePlayersAVG_Array=
-calculateAVGAndPutOnProg($ThreePlayerA,Int($roundNumberr))
+calculateAVGAndPutOnProg($ThreePlayerA,Int($roundNumberr),$TeamNumberIndex)
 
 Next
 
@@ -3030,7 +3038,7 @@ EndFunc
 
 
 
-Func calculateAVGAndPutOnProg($ThreePlayerScoresArray,$roundNum)
+Func calculateAVGAndPutOnProg($ThreePlayerScoresArray,$roundNum,$teamNummm)
 ;_ArrayDisplay($ThreePlayerScoresArray)
 $PersonalAVGArray2=0
 _FileReadToArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,0,",")
@@ -3065,14 +3073,15 @@ $player3AVG=0
 
 For $col=0 To UBound($ThreePlayerScoresArray,2)-1
 
-If $ThreePlayerScoresArray[0][$col]="z" Then
+If $ThreePlayerScoresArray[0][$col]="z"  Then
 ExitLoop
 EndIf
 
-$teamNummm=_StringBetween($ThreePlayerScoresArray[0][$col],"T","-")
-If IsArray($teamNummm) Then
-$teamNummm=Number($teamNummm[0])
-EndIf
+;~ $teamNummm=_StringBetween($ThreePlayerScoresArray[0][$col],"T","-")
+;~ If IsArray($teamNummm) Then
+;~ $teamNummm=Number($teamNummm[0])
+;~ EndIf
+
 
 $Playerrr=_StringBetween($ThreePlayerScoresArray[0][$col],"P","-")
 If IsArray($Playerrr) Then
@@ -3083,6 +3092,7 @@ $Game=_StringBetween($ThreePlayerScoresArray[0][$col],"Game","-")
 If IsArray($Game) Then
 $Game=Number($Game[0])
 EndIf
+
 
 $SCOREEE=_StringBetween($ThreePlayerScoresArray[0][$col],"S","-")
 If IsArray($SCOREEE) Then
@@ -3106,6 +3116,7 @@ EndIf
 
 EndIf
 If $player1GamesPlayed<>0 Then
+;	MsgBox(0,"p1total=",$Player1TOTAL)
 $player1AVG=$Player1TOTAL/$player1GamesPlayed
 $player1AVG=StringFormat("%.2f",$player1AVG);SHOW ONLY 2 POINT DECIMAL POINTS (AVERAGE PLAYER SCORE)
 Else
@@ -3171,10 +3182,15 @@ $ThreePlayersReturn[0][1]=$player2AVG
 $ThreePlayersReturn[0][2]=$player3AVG
 ;_ArrayDisplay($ThreePlayersReturn)
 ;_ArrayDisplay($PersonalAVGArray2)
+;If $roundNum<>1 Then
+
+
+
 $PersonalAVGArray2[ $teamNummm ][3*$roundNum-3]=$player1AVG
 $PersonalAVGArray2[ $teamNummm ][3*$roundNum-2]=$player2AVG
 $PersonalAVGArray2[ $teamNummm ][3*$roundNum-1]=$player3AVG
-
+;EndIf
+;_ArrayDisplay($PersonalAVGArray2)
 _FileWriteFromArray(@ScriptDir&"\rawData\data\PersonalAVGArray2.txt",$PersonalAVGArray2,Default,Default,",")
 
 

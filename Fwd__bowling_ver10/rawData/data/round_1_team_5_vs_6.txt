@@ -1,40 +1,40 @@
 round 1
 teamNumber: 5
-ראע ארטר
-160
-160
-160
+פינקר שלומי
+140
+140
+140
 round 1
 teamNumber: 5
-בבב
-160
-116
-160
+קארס אנדריי
+140
+140
+140
 round 1
 teamNumber: 5
-גגג
-160
-160
-160
+חבקין ברוך
+140
+140
+140
 round 1
 teamNumber: 6
-דדד
-170
-170
-170
+דיין איציק
+150
+150
+150
 round 1
 teamNumber: 6
-ההה
-170
-170
-170
+פרלמן סמיון
+150
+150
+150
 round 1
 teamNumber: 6
-ווו
-170
-170
-170
-final score:
+אוחיון חיים
+150
+150
+150
+final Score:
 teamNumber: 5
 0points
 teamNumber: 6

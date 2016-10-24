@@ -1,54 +1,36 @@
 round 1
 teamNumber: 12
 דקורדובי עופר
-
-
-
+200
+200
+200
 round 1
 teamNumber: 12
 אוריון אייל
-
-
-
+200
+200
+200
 round 1
 teamNumber: 12
 מרלי סימו
-
-
-
-round 1
-teamNumber: 12
-פסח עדן
-
-
-
-round 1
-teamNumber: 12
-ךךך ךךך
-
-
-
-round 1
-teamNumber: 12
-שפירא בר
-
-
-
+200
+200
+200
 round 1
 teamNumber: 11
-ששש ששש
-190
-190
-180
+הראל מור
+210
+210
+210
 round 1
 teamNumber: 11
-תת תתתתתת
-150
-150
-160
+וישינבצקי אנדריי
+210
+210
+210
 round 1
 teamNumber: 11
-אאא אאאא
-290
-290
-280
+המר גל
+210
+210
+210

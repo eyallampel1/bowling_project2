@@ -1,41 +1,41 @@
 round 1
 teamNumber: 1
-אייל למפל
+קסנטיני גבי
 100
 100
 100
 round 1
 teamNumber: 1
-גבי למפל
+קורלשוילי שי
 100
 100
 100
 round 1
 teamNumber: 1
-ברנס ליאור
+פרנסיס ניר
 100
 100
 100
 round 1
 teamNumber: 2
-ון קופם
-300
-300
-300
+דנינו ניצן
+110
+110
+110
 round 1
 teamNumber: 2
-אריה סיגנר
-300
-300
-300
+גארד ראובן
+110
+110
+110
 round 1
 teamNumber: 2
-דוטרקי
-300
-300
-300
+מלכיאלי גד
+110
+110
+110
 final Score:
 teamNumber: 1
 0points
 teamNumber: 2
-14points
+5points

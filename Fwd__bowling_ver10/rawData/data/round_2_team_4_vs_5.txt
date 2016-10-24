@@ -1,41 +1,41 @@
 round 2
 teamNumber: 4
-פרגמין גולן
-100
-100
-100
+בן בסט משה
+140
+140
+140
 round 2
 teamNumber: 4
-פרלמן סמיון
-100
-222
-222
+גבאי מאור
+140
+140
+140
 round 2
 teamNumber: 4
-דיין איציק
-222
-222
-222
+פלנדין מרגריטה
+140
+140
+140
 round 2
 teamNumber: 5
-ראע ארטר
-222
-222
-222
+פינקר שלומי
+150
+150
+150
 round 2
 teamNumber: 5
-בבב
-222
-222
-222
+קארס אנדריי
+150
+150
+150
 round 2
 teamNumber: 5
-גגג
-222
-222
-222
+חבקין ברוך
+150
+150
+150
 final score:
 teamNumber: 4
-0points
+2.5points
 teamNumber: 5
-5points
+2.5points

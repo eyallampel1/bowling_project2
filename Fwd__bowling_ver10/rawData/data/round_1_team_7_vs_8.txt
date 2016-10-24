@@ -1,41 +1,41 @@
 round 1
 teamNumber: 7
-זזז
-180
-180
-180
+לוי מירון
+160
+160
+160
 round 1
 teamNumber: 7
-חחח
-180
-180
-180
+פרגמין טל
+160
+160
+160
 round 1
 teamNumber: 7
-טטט
-180
-180
-180
+פינקר יניב
+160
+160
+160
 round 1
 teamNumber: 8
-ייי
-180
-180
-180
+וידל כרמל
+170
+170
+170
 round 1
 teamNumber: 8
-כככ כככ
-180
-180
-180
+פסח אבי
+170
+170
+170
 round 1
 teamNumber: 8
-ללל ללל
-180
-180
-180
-final score:
+תאודור זכי
+170
+170
+170
+final Score:
 teamNumber: 7
-5points
-teamNumber: 8
 0points
+teamNumber: 8
+5points

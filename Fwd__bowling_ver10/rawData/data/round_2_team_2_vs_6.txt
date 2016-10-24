@@ -1,41 +1,41 @@
 round 2
 teamNumber: 2
-ון קופם
-150
-150
-150
+דנינו ניצן
+120
+120
+120
 round 2
 teamNumber: 2
-אריה סיגנר
-150
-150
-150
+גארד ראובן
+120
+120
+120
 round 2
 teamNumber: 2
-דוטרקי
-150
-150
-150
+מלכיאלי גד
+120
+120
+120
 round 2
 teamNumber: 6
-דדד
-150
-150
-150
+דיין איציק
+160
+160
+160
 round 2
 teamNumber: 6
-ההה
-150
-150
-150
+פרלמן סמיון
+160
+160
+160
 round 2
 teamNumber: 6
-ווו
-150
-150
-150
-final Score:
+אוחיון חיים
+160
+160
+160
+final score:
 teamNumber: 2
-5points
-teamNumber: 6
 0points
+teamNumber: 6
+5points

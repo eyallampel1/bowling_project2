@@ -1,40 +1,40 @@
 round 2
 teamNumber: 1
-אייל למפל
+קסנטיני גבי
 110
 110
 110
 round 2
 teamNumber: 1
-גבי למפל
-200
-200
-200
+קורלשוילי שי
+110
+110
+110
 round 2
 teamNumber: 1
-ברנס ליאור
-200
-200
-200
+פרנסיס ניר
+110
+110
+110
 round 2
 teamNumber: 7
-זזז
-222
-222
-222
+לוי מירון
+170
+170
+170
 round 2
 teamNumber: 7
-חחח
-222
-222
-222
+פרגמין טל
+170
+170
+170
 round 2
 teamNumber: 7
-טטט
-222
-222
-222
-final Score:
+פינקר יניב
+170
+170
+170
+final score:
 teamNumber: 1
 0points
 teamNumber: 7
