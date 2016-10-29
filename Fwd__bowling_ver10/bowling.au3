@@ -19,15 +19,15 @@
 #Region ### START Koda GUI section ### Form=D:\bowling_project2\Fwd_Bowling_ver2\Fwd__bowling\bowling.kxf
 $Form1_1 = GUICreate("Lampel Bowling", 1127, 575, 196, 106)
 GUISetIcon(@ScriptDir&"\pic\download.ico")
-$CreateTablesButton = GUICtrlCreateButton("Create tables", 378, 520, 75, 25)
-$insertDataButton = GUICtrlCreateButton("Enter Data", 610, 520, 75, 25)
+$CreateTablesButton = GUICtrlCreateButton("Create tables", 480, 520, 75, 25)
+$insertDataButton = GUICtrlCreateButton("Enter Data", 710, 520, 75, 25)
 
 
 
 $Label15 = GUICtrlCreateLabel("Round Number", 894, 39, 86, 17)
 $RoundNumberInput = GUICtrlCreateInput("", 907, 58, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
-$PrintGamesCurrentDateButton = GUICtrlCreateButton("Print Round", 472, 520, 123, 25)
-$ShuffleTeamsButton = GUICtrlCreateButton("Shuffle Teams", 82, 520, 123, 25)
+$PrintGamesCurrentDateButton = GUICtrlCreateButton("Print Round", 570, 520, 123, 25)
+$ShuffleTeamsButton = GUICtrlCreateButton("Shuffle Teams", 172, 520, 123, 25)
 $Group2 = GUICtrlCreateGroup("", 176, 290, 609, 225)
 $Player1_score_game1_1 = GUICtrlCreateInput("", 536, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 $Player1_score_game2_1 = GUICtrlCreateInput("", 483, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
@@ -125,7 +125,7 @@ $Group3 = GUICtrlCreateGroup("First time use", 840, 290, 185, 115)
 $InsertPlayersNamesInitialInsertButton = GUICtrlCreateButton("Players names", 864, 314, 139, 25)
 $InseartGamesDateButton = GUICtrlCreateButton("Games Schedule", 864, 362, 139, 25)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$editRoundScoresButton = GUICtrlCreateButton("view / edit round scores", 220, 520, 139, 25)
+$editRoundScoresButton = GUICtrlCreateButton("view / edit round scores", 320, 520, 139, 25)
 $Handicap_groupBox = GUICtrlCreateGroup("For Handicap Calculation", 840, 87, 185, 169)
 $LeagueAVG_Label = GUICtrlCreateLabel("SET League AVG", 888, 119, 89, 17)
 $League_AVG_InputBox = GUICtrlCreateInput("", 872, 143, 121, 21,BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
@@ -3333,6 +3333,7 @@ $OnlyNameArray[31]=$returnArray[43]
 $OnlyNameArray[32]=$returnArray[44]
 ;_ArrayDisplay($OnlyNameArray)
 
+PlayerAvgArray=GeneratePlayerAvgFile()
 
 
 $UserAnswer=4
@@ -3361,5 +3362,11 @@ Return $OnlyNameArray
 EndFunc
 
 Func EqualAsPossibleMethod()
+
+EndFunc
+
+
+Func GeneratePlayerAvgFile()
+
 
 EndFunc
