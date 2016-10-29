@@ -53,7 +53,7 @@ $PrintBefore_radioButton = GUICtrlCreateRadio("Before Sheets", 120, 216, 113, 17
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
-$showPreviewFlag=True ;show preview
+$showPreviewFlag=False;True ;show preview
 
 While 1
 	$nMsg = GUIGetMsg()
@@ -279,6 +279,8 @@ Func Print_Before_Function()
 ;MsgBox(0,"",$msgtoLeague)
 If GUICtrlRead($Which_Round_To_Print_Before_input)="" Or GUICtrlRead($Which_Round_To_Print_Before_input)=" " Then
 MsgBox(16,"Please Enter a round number","You did not entered a round Number")
+ElseIf GUICtrlRead($Which_Round_To_Print_Before_input)="1" Then
+MsgBox(16,"I didnt implemented it yet","print first round before is special becuse i have no data base"&@crlf&"didnt implemented it yet")
 Else;we enter her in case roundinput is not empty
 ProcessClose("excel.exe")
 $msgtoLeague=InputBox("Would You Like to say something to the league ? ","Ex:"&@CRLF&"מזל טוב לרגל.. "&@CRLF&"נא לשלם עד לתאריך ..."&@CRLF&@CRLF&@CRLF&"If you dont want to say anything just leave the field empty, And press OK",Default,Default,500)
@@ -413,35 +415,46 @@ $PLAYER1B_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimRight($Player1_B,1),De
 $PLAYER2B_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimRight($Player2_B,1),Default,Default,Default,1,Default,0)
 $PLAYER3B_INDEX=_ArraySearch($DataForPlayersAVG,StringTrimLeft($Player3_B,2),Default,Default,Default,1,Default,0)
 
+If $PLAYER1A_INDEX<>-1 Then
 $Player1A_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER1A_INDEX][6]))*($HandicapFile[4]/100))
 If $Player1A_Handicap<0 Then
 $Player1A_Handicap=0
 EndIf
+EndIf
 
+If $PLAYER2A_INDEX<>-1 Then
 $Player2A_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER2A_INDEX][6]))*($HandicapFile[4]/100))
 If $Player2A_Handicap<0 Then
 $Player2A_Handicap=0
 EndIf
+EndIf
 
+If $PLAYER3A_INDEX<>-1 Then
 $Player3A_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER3A_INDEX][6]))*($HandicapFile[4]/100))
 If $Player3A_Handicap<0 Then
 $Player3A_Handicap=0
 EndIf
+EndIf
 
+If $PLAYER1B_INDEX<>-1 Then
 $Player1B_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER1B_INDEX][6]))*($HandicapFile[4]/100))
 If $Player1B_Handicap<0 Then
 $Player1B_Handicap=0
 EndIf
+EndIf
 
+If $PLAYER2B_INDEX<>-1 Then
 $Player2B_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER2B_INDEX][6]))*($HandicapFile[4]/100))
 If $Player2B_Handicap<0 Then
 $Player2B_Handicap=0
 EndIf
+EndIf
 
-
+If $PLAYER3B_INDEX<>-1 Then
 $Player3B_Handicap=Round( ($HandicapFile[3]-Number($DataForPlayersAVG[$PLAYER3B_INDEX][6]))*($HandicapFile[4]/100))
 If $Player3B_Handicap<0 Then
 $Player3B_Handicap=0
+EndIf
 EndIf
 ;_ArrayDisplay($DataForPlayersAVG,"name="&$Player3_A&" index="&$PLAYER3A_INDEX)
 ;$Player1_A_AVG=
@@ -479,12 +492,14 @@ _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1_B,"D32")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2_B,"D33")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player3_B,"D34")
 
+If $PLAYER1A_INDEX<>-1 Then
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER1A_INDEX][6],"B15")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER2A_INDEX][6],"B16")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER3A_INDEX][6],"B17")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER1B_INDEX][6],"B32")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER2B_INDEX][6],"B33")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$DataForPlayersAVG[$PLAYER3B_INDEX][6],"B34")
+EndIf
 
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player1A_Handicap,"C15")
 _Excel_RangeWrite($oBeforeSheet,$oBeforeSheet.ActiveSheet,$Player2A_Handicap,"C16")

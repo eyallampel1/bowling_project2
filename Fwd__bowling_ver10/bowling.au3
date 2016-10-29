@@ -27,6 +27,7 @@ $insertDataButton = GUICtrlCreateButton("Enter Data", 610, 520, 75, 25)
 $Label15 = GUICtrlCreateLabel("Round Number", 894, 39, 86, 17)
 $RoundNumberInput = GUICtrlCreateInput("", 907, 58, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 $PrintGamesCurrentDateButton = GUICtrlCreateButton("Print Round", 472, 520, 123, 25)
+$ShuffleTeamsButton = GUICtrlCreateButton("Shuffle Teams", 82, 520, 123, 25)
 $Group2 = GUICtrlCreateGroup("", 176, 290, 609, 225)
 $Player1_score_game1_1 = GUICtrlCreateInput("", 536, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
 $Player1_score_game2_1 = GUICtrlCreateInput("", 483, 135, 49, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER))
@@ -237,6 +238,9 @@ Run(@SCRIPTDIR&"\rawData\" & "bowlingTableTry.exe","");@SCRIPTDIR&"\rawData")
 
 ;Case $Player1_score_game3_1 ;or $Player1_score_game2_1
 		;CalculateAverage()
+		Case $ShuffleTeamsButton
+			Shuffle()
+
 		Case $Player1_score_game3_1
 		;	CalculateAverage()
 		Case $editRoundScoresButton
@@ -3280,5 +3284,82 @@ _FileWriteFromArray(@ScriptDir&"\rawData\data\PlayerLastYearAVG.txt",$FirstRound
   ;EndIf
 
 EndIf
+
+EndFunc
+
+
+Func Shuffle()
+	$returnArray=0
+$PlayersNameTextFile=  FileOpen(@ScriptDir&"\TeamDivder3.txt",0); use TeamDivder3 or TeamDivder
+;If $PlayersNameTextFile=1 then ;file exist add names
+;MsgBox(0,"","file exist")
+_FileReadToArray(@ScriptDir&"\rawData\TeamDivder.txt",$returnArray);read text file into an array
+;MsgBox(0,"fff",@ScriptDir&"\TeamDivder.txt")
+;_ArrayDisplay($returnArray)
+;EndIf
+Local $OnlyNameArray[33]
+$OnlyNameArray[0]=$returnArray[2]
+$OnlyNameArray[1]=$returnArray[3]
+$OnlyNameArray[2]=$returnArray[4]
+$OnlyNameArray[3]=$returnArray[6]
+$OnlyNameArray[4]=$returnArray[7]
+$OnlyNameArray[5]=$returnArray[8]
+$OnlyNameArray[6]=$returnArray[10]
+$OnlyNameArray[7]=$returnArray[11]
+$OnlyNameArray[8]=$returnArray[12]
+$OnlyNameArray[9]=$returnArray[14]
+$OnlyNameArray[10]=$returnArray[15]
+$OnlyNameArray[11]=$returnArray[16]
+$OnlyNameArray[12]=$returnArray[18]
+$OnlyNameArray[13]=$returnArray[19]
+$OnlyNameArray[14]=$returnArray[20]
+$OnlyNameArray[15]=$returnArray[22]
+$OnlyNameArray[16]=$returnArray[23]
+$OnlyNameArray[17]=$returnArray[24]
+$OnlyNameArray[18]=$returnArray[26]
+$OnlyNameArray[19]=$returnArray[27]
+$OnlyNameArray[20]=$returnArray[28]
+$OnlyNameArray[21]=$returnArray[30]
+$OnlyNameArray[22]=$returnArray[31]
+$OnlyNameArray[23]=$returnArray[32]
+$OnlyNameArray[24]=$returnArray[34]
+$OnlyNameArray[25]=$returnArray[35]
+$OnlyNameArray[26]=$returnArray[36]
+$OnlyNameArray[27]=$returnArray[38]
+$OnlyNameArray[28]=$returnArray[39]
+$OnlyNameArray[29]=$returnArray[40]
+$OnlyNameArray[30]=$returnArray[42]
+$OnlyNameArray[31]=$returnArray[43]
+$OnlyNameArray[32]=$returnArray[44]
+;_ArrayDisplay($OnlyNameArray)
+
+
+
+$UserAnswer=4
+
+While $UserAnswer<>1 And $UserAnswer<>2 And $UserAnswer<>3 And @error<>1;@error=1 is user pressed cancel button
+$UserAnswer=InputBox("Shuffle teams","Press 1 for complete random - method"&@crlf&"Press 2 for as equal as possible - method "&@CRLF&"Press 3 if u want to set the diff between highest team avg and lowest team avg - method",Default,Default,470,200)
+
+If $UserAnswer<>1 And $UserAnswer<>2 And $UserAnswer<>3 And @error<>1 Then
+MsgBox(48,"Wrong input","Please enter 1 or 2 or 3 ONLY")
+EndIf
+WEnd
+
+If $UserAnswer=1 Then
+$ShuffledNameArray=CompleteRandomMethod($OnlyNameArray)
+_ArrayDisplay($OnlyNameArray,"before")
+_ArrayDisplay($ShuffledNameArray,"after")
+EndIf
+
+EndFunc
+
+Func CompleteRandomMethod($OnlyNameArray)
+
+_ArrayShuffle($OnlyNameArray)
+Return $OnlyNameArray
+
+EndFunc
+
+Func EqualAsPossibleMethod()
 
 EndFunc
