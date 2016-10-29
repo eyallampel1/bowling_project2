@@ -318,7 +318,7 @@ EndWith
 ;$excelObject.Activesheet.Range("O5:P5").MergeCells = TRUE
 ;$excelObject.Activesheet.Range("Q5:R5").MergeCells = TRUE
 
-Local $Row_A5[18]=["מיקום אישי","שם השחקן","מספר קבוצה","מספר חבר","משחק גבוה","שלישיה גבוהה","מספר משחקים","סהכ פינים","ממוצע אישי"]
+Local $Row_A5[18]=["׳ ׳¡׳™׳•׳","׳ ׳¡׳™׳•׳","׳ ׳¡׳™׳•׳","׳ ׳¡׳™׳•׳"]
 _ArrayTranspose($Row_A5)
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$Row_A5,"A5")
 $excelObject.ActiveSheet.Columns().AutoFit
