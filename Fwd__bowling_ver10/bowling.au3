@@ -3333,7 +3333,11 @@ $OnlyNameArray[31]=$returnArray[43]
 $OnlyNameArray[32]=$returnArray[44]
 ;_ArrayDisplay($OnlyNameArray)
 
+<<<<<<< HEAD
 ;$PlayerAvgArray=GeneratePlayerAvgFile()
+=======
+$PlayerAvgArray=GeneratePlayerAvgFile()
+>>>>>>> origin/master
 
 
 $UserAnswer=4
