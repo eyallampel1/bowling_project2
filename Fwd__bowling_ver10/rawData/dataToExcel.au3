@@ -340,7 +340,7 @@ $SplitHighest3GameName=StringSplit($playerAcumlateScores[$highestGame3Game_Index
 ;_ArrayDisplay($SplitHighest3GameName)
 $untilIndex=$name_index_table+1
 ;MsgBox(0,"highGame",$highestGame_Index)
-
+$excelObject.Activesheet.Range("H8:H"&$numberOfPlayers+7).numberformat="0.00"
 	;For $j=$name_index_table To $untilIndex
 $index+=1
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$returnArray[4+2*$i],"B"&($index+7));PLAYER NAME COL
@@ -351,7 +351,7 @@ _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$SplitGamesPlayedName[14
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$SplitTotalPinsName[12],"G"&($index+7));TOTAL PINS COL
 _Excel_RangeWrite($excelObject,$excelObject.ActiveSheet,$SplitPlayerAVGName[18],"H"&($index+7));PLayer AVG COL
 
-$excelObject.Activesheet.Range("H8:H"&$numberOfPlayers+7).numberformat="0.00"
+
 
 
 ;MsgBox(0,"","")

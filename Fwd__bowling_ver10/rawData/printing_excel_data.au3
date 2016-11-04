@@ -45,15 +45,21 @@ $GroupBest3games_checkbox = GUICtrlCreateCheckbox("Group Best 3 Games", 259, 172
 GUICtrlSetState(-1,$GUI_CHECKED)
 $Game_Schedule_checkbox = GUICtrlCreateCheckbox("Game Schedule", 391, 172, 123, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$FinalPrint_groupbox = GUICtrlCreateGroup("", 16, 192, 225, 81)
+$FinalPrint_groupbox = GUICtrlCreateGroup("", 16, 140, 225, 134)
 $Print_Button = GUICtrlCreateButton("Print Button", 23, 222, 75, 25)
 $PrintAfter_radiobutton = GUICtrlCreateRadio("After Sheets", 120, 240, 113, 17)
-$PrintBefore_radioButton = GUICtrlCreateRadio("Before Sheets", 120, 216, 113, 17)
- GUICtrlSetState($PrintBefore_radioButton, $GUI_CHECKED)
+$PrintBefore_radioButton_Checkbox= GUICtrlCreateRadio("Before Sheets", 120, 216, 113, 17)
+$PrintPreview_Checkbox = GUICtrlCreateCheckbox("Print Preview", 20, 176, 127, 17)
+$PrinterSelection_Checkbox = GUICtrlCreateCheckbox("Select Printer", 20, 156, 127, 17)
+GUICtrlSetState(-1,$GUI_CHECKED)
+GUICtrlSetState($PrintBefore_radioButton_checkbox, $GUI_CHECKED)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
-$showPreviewFlag=False;True ;show preview
+
+
+$showPreviewFlag=False ;show preview
+$showPrinterSelcetion=True
 
 While 1
 	$nMsg = GUIGetMsg()
@@ -61,6 +67,13 @@ While 1
 
 		Case $GUI_EVENT_CLOSE
 			Exit
+		Case $PrintPreview_Checkbox
+			If _IsChecked($PrintPreview_Checkbox) Then
+			$showPreviewFlag=True ;show preview
+
+			Else
+			$showPreviewFlag=False ;show preview
+			EndIf
 
 		Case $Browse_button
 			BrowseSequence()
@@ -126,8 +139,14 @@ With $oWorkbook.Activesheet.PageSetup
 ; If .Zoom <30 Then .Zoom =76
 EndWith
 
-
+If _IsChecked($PrinterSelection_Checkbox) Then
+	$xlDialogPrinterSetup = 9
+$hPrinter = $oExcel.Dialogs($xlDialogPrinterSetup).Show
+	_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,$hPrinter,$showPreviewFlag)
+Else
 _Excel_Print($oExcel,$oWorkbook.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
+EndIf
+
 EndIf
 
 
@@ -376,6 +395,12 @@ EndIf
 Local $oBeforeSheet = _Excel_BookOpen($oExcel, @ScriptDir&"\data\before_Sheet.xlsx")
 If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
 
+
+If _IsChecked($PrinterSelection_Checkbox) Then
+	$xlDialogPrinterSetup = 9
+$hPrinter = $oExcel.Dialogs($xlDialogPrinterSetup).Show
+EndIf
+
 For $i=1 To 5
 
 $Player1_A=_StringBetween($TeamPointsSheetToArray[$TEAM_INDEX[-1+$GameScheduleArray[$Which_Round_To_Print_Before+1][2*$i]]][1],"",@CRLF)
@@ -524,9 +549,13 @@ With $oBeforeSheet.Activesheet.PageSetup
 ; If .Zoom <30 Then .Zoom =76
 EndWith
 
-
+If _IsChecked($PrinterSelection_Checkbox) Then
+;	$xlDialogPrinterSetup = 9
+;$hPrinter = $oExcel.Dialogs($xlDialogPrinterSetup).Show
+	_Excel_Print($oExcel,$oWorkbook.Activesheet,Default,$hPrinter,$showPreviewFlag)
+	Else
 _Excel_Print($oExcel,$oBeforeSheet.Activesheet,Default,Default,$showPreviewFlag);,Default,Default,True,Default,"D:\TRY")
-
+EndIf
 
 Next
 
@@ -536,7 +565,7 @@ Next
 EndIf
 
 
-
+ProcessClose("excel.exe")
 EndFunc
 
 
