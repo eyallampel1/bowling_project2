@@ -1,41 +1,41 @@
 round 1
 teamNumber: 9
 אריול אלכס
-180
-180
-180
+111
+111
+111
 round 1
 teamNumber: 9
 דרוויש אלי
-180
-180
-180
+111
+111
+111
 round 1
 teamNumber: 9
 סגל ראובן
-180
-180
-180
+111
+111
+111
 round 1
 teamNumber: 10
 לוי אמיר
-190
-190
-190
+111
+111
+111
 round 1
 teamNumber: 10
 סיגנר אריה
-190
-190
-190
+111
+111
+111
 round 1
 teamNumber: 10
 אברמוביץ יהודית
-190
-190
-190
+111
+111
+111
 final Score:
 teamNumber: 9
-0points
+2.5points
 teamNumber: 10
-5points
+2.5points

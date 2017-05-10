@@ -1,41 +1,41 @@
 round 1
 teamNumber: 7
 לוי מירון
-160
-160
-160
+111
+111
+111
 round 1
 teamNumber: 7
 פרגמין טל
-160
-160
-160
+111
+111
+111
 round 1
 teamNumber: 7
 פינקר יניב
-160
-160
-160
+111
+111
+111
 round 1
 teamNumber: 8
 וידל כרמל
-170
-170
-170
+111
+111
+111
 round 1
 teamNumber: 8
 פסח אבי
-170
-170
-170
+111
+111
+111
 round 1
 teamNumber: 8
 תאודור זכי
-170
-170
-170
+111
+111
+111
 final Score:
 teamNumber: 7
-0points
+2.5points
 teamNumber: 8
-5points
+2.5points

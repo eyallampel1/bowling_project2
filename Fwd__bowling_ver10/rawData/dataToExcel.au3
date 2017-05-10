@@ -1075,7 +1075,7 @@ _FileReadToArray(@ScriptDir&"\data\Teams_Points_Highest_1_Game_total.txt",$TeamH
 $TeamHighest3GameTotalArray=0
 _FileReadToArray(@ScriptDir&"\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
 
-;_ArrayDisplay($TeamHighest1GameTotalArray)
+;~ _ArrayDisplay($TeamHighest1GameTotalArray)
 
 
 ;_ArrayDisplay($TeamPointsArray)

@@ -1,41 +1,41 @@
 round 1
 teamNumber: 3
 למפל גבי
-120
-120
-120
+111
+111
+111
 round 1
 teamNumber: 3
 דיין יניב
-120
-120
-120
+111
+111
+111
 round 1
 teamNumber: 3
 בוקסדורף שאול
-120
-120
-120
+111
+111
+111
 round 1
 teamNumber: 4
 בן בסט משה
-130
-130
-130
+111
+111
+111
 round 1
 teamNumber: 4
 גבאי מאור
-130
-130
-130
+111
+111
+111
 round 1
 teamNumber: 4
 פלנדין מרגריטה
-130
-130
-130
+111
+111
+111
 final Score:
 teamNumber: 3
-0points
+2.5points
 teamNumber: 4
-5points
+2.5points

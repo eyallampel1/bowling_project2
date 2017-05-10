@@ -1,41 +1,41 @@
 round 1
 teamNumber: 1
 קסנטיני גבי
-100
-100
-100
+111
+111
+111
 round 1
 teamNumber: 1
 קורלשוילי שי
-100
-100
-100
+111
+111
+111
 round 1
 teamNumber: 1
 פרנסיס ניר
-100
-100
-100
+111
+111
+111
 round 1
 teamNumber: 2
 דנינו ניצן
-110
-110
-110
+111
+111
+111
 round 1
 teamNumber: 2
 גארד ראובן
-110
-110
-110
+111
+111
+111
 round 1
 teamNumber: 2
 מלכיאלי גד
-110
-110
-110
+111
+111
+111
 final Score:
 teamNumber: 1
-0points
+2.5points
 teamNumber: 2
-5points
+2.5points

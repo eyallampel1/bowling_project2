@@ -2558,9 +2558,26 @@ If IsArray($returnArray333) Then
    $PersonalScoresArray[ Int($whoIsAgainstTeam12) ][(Int($roundNumberr)-1)*9+9]=$returnArray333[$whoIsAgainstTeam12_index+16]
 
 ;;now fill team 12
- ;  $PersonalScoresArray[ 12 ][(Int($roundNumberr)-1)*9+1]=$returnArray333[$whoIsAgainstTeam12_index+2]
+Local $forIndex=0
+Local $justGoUp=0;
+For $abcdd = 0 To $whoIsAgainstTeam12_index-6
+	$justGoUp+=1;
+
+  If($forIndex=3) Then
+	   $forIndex=0;
+	   $abcdd+=3;
+  EndIf
 
 
+
+   $PersonalScoresArray[ 12 ][(Int($roundNumberr)-1)*9+$justGoUp]=$returnArray333[4+$abcdd]
+   $forIndex+=1;
+;~ _ArrayDisplay($returnArray333,4+$abcdd)
+;~ _ArrayDisplay($PersonalScoresArray,$abcdd)
+
+Next
+
+;~ _ArrayDisplay($PersonalScoresArray)
 EndIf
 
 $gameNume=1+3*(Int($roundNumberr)-1)

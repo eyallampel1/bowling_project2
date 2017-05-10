@@ -1,41 +1,41 @@
 round 1
 teamNumber: 5
 פינקר שלומי
-140
-140
-140
+111
+111
+111
 round 1
 teamNumber: 5
 קארס אנדריי
-140
-140
-140
+111
+111
+111
 round 1
 teamNumber: 5
 חבקין ברוך
-140
-140
-140
+111
+111
+111
 round 1
 teamNumber: 6
 דיין איציק
-150
-150
-150
+111
+111
+111
 round 1
 teamNumber: 6
 פרלמן סמיון
-150
-150
-150
+111
+111
+111
 round 1
 teamNumber: 6
 אוחיון חיים
-150
-150
-150
+111
+111
+111
 final Score:
 teamNumber: 5
-0points
+2.5points
 teamNumber: 6
-5points
+2.5points
