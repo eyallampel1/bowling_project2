@@ -3333,11 +3333,11 @@ $OnlyNameArray[31]=$returnArray[43]
 $OnlyNameArray[32]=$returnArray[44]
 ;_ArrayDisplay($OnlyNameArray)
 
-<<<<<<< HEAD
+
 ;$PlayerAvgArray=GeneratePlayerAvgFile()
-=======
+
 $PlayerAvgArray=GeneratePlayerAvgFile()
->>>>>>> origin/master
+
 
 
 $UserAnswer=4
@@ -3373,7 +3373,7 @@ EndFunc
 Func GeneratePlayerAvgFile()
 	$RETURN=0
 _FileReadToArray(@ScriptDir&"\rawData\data\Personal_Scores2.txt",$RETURN,0,",")
-_ArrayDisplay($RETURN)
+;_ArrayDisplay($RETURN)
 For $i=1 To UBound($RETURN,2)
 
 If $RETURN[1][$i]="z" Then
@@ -3386,18 +3386,18 @@ EndIf
 Next
 $RETURN=_ArrayExtract($RETURN,1,11,1,$saveIndex)
 ;_ArrayColDelete($RETURN,$saveIndex&"-"&UBound($RETURN,2))
-_ArrayDisplay($RETURN)
+;_ArrayDisplay($RETURN)
 
 	   _ArrayTranspose($RETURN)
        _ArraySort($RETURN)
 	    _ArrayTranspose($RETURN)
-_ArrayDisplay($RETURN)
+;_ArrayDisplay($RETURN)
 
 For $row=0 To UBound($RETURN)-1
 	For $col =0 To UBound($RETURN,2)-1
 $SCOREEE=_StringBetween($RETURN[$row][$col],"S","-")
 $SCOREEE=$SCOREEE[0]
-MsgBox(0,"",$SCOREEE)
+;MsgBox(0,"",$SCOREEE)
 If IsArray($SCOREEE) Then
 $SCOREEE=Number($SCOREEE[0])
 EndIf
