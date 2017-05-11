@@ -299,7 +299,10 @@ Func Print_Before_Function()
 If GUICtrlRead($Which_Round_To_Print_Before_input)="" Or GUICtrlRead($Which_Round_To_Print_Before_input)=" " Then
 MsgBox(16,"Please Enter a round number","You did not entered a round Number")
 ElseIf GUICtrlRead($Which_Round_To_Print_Before_input)="1" Then
-MsgBox(16,"I didnt implemented it yet","print first round before is special becuse i have no data base"&@crlf&"didnt implemented it yet")
+	printRound1Before()
+;~ MsgBox(16,"I didnt implemented it yet","print first round before is special becuse i have no data base"&@crlf&"didnt implemented it yet")
+
+
 Else;we enter her in case roundinput is not empty
 ProcessClose("excel.exe")
 $msgtoLeague=InputBox("Would You Like to say something to the league ? ","Ex:"&@CRLF&"מזל טוב לרגל.. "&@CRLF&"נא לשלם עד לתאריך ..."&@CRLF&@CRLF&@CRLF&"If you dont want to say anything just leave the field empty, And press OK",Default,Default,500)
@@ -573,4 +576,52 @@ Func _IsChecked($idControlID)
     Return BitAND(GUICtrlRead($idControlID), $GUI_CHECKED) = $GUI_CHECKED
 EndFunc   ;==>_IsChecked
 
+
+
+Func printRound1Before()
+ProcessClose("excel.exe")
+$msgtoLeague=InputBox("Would You Like to say something to the league ? ","Ex:"&@CRLF&"מזל טוב לרגל.. "&@CRLF&"נא לשלם עד לתאריך ..."&@CRLF&@CRLF&@CRLF&"If you dont want to say anything just leave the field empty, And press OK",Default,Default,500)
+
+Local $GameScheduleArray=0
+_FileReadToArray(@ScriptDir&"\Game_Schedule.txt",$GameScheduleArray,Default,"|")
+;_ArrayDisplay($GameScheduleArray)
+
+Local $teamA_vs_TeamB[5]
+$teamA_vs_TeamB[0]=$GameScheduleArray[1][2]&" + "&$GameScheduleArray[1][3]
+$teamA_vs_TeamB[1]=$GameScheduleArray[1][4]&" + "&$GameScheduleArray[1][5]
+$teamA_vs_TeamB[2]=$GameScheduleArray[1][6]&" + "&$GameScheduleArray[1][7]
+$teamA_vs_TeamB[3]=$GameScheduleArray[1][8]&" + "&$GameScheduleArray[1][9]
+$teamA_vs_TeamB[4]=$GameScheduleArray[1][10]&" + "&$GameScheduleArray[1][11]
+
+
+
+
+
+
+
+$ExcelWantedFile=@WorkingDir&"\data\before_Sheet_firstRound.xlsx"
+;MsgBox(0,"wanted file",$ExcelWantedFile)
+
+
+; *****************************************************************************
+; Open an existing workbook and return its object identifier.
+; *****************************************************************************
+;Local $sWorkbook =GUICtrlRead($browse_input); @ScriptDir & "\..\Output_Excel_Files\round1.xls"
+Local $oExcel = _Excel_Open()
+
+
+
+
+Local $oWorkbook = _Excel_BookOpen($oExcel, $ExcelWantedFile)
+
+MsgBox(0,"",@WorkingDir)
+If @error Then Exit MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Error opening '" & $ExcelWantedFile & "'." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
+;MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_BookOpen Example 1", "Workbook '" & $sWorkbook & "' has been opened successfully." & @CRLF & @CRLF & "Creation Date: " & $oWorkbook.BuiltinDocumentProperties("Creation Date").Value)
+;MsgBox(0,"",@ScriptDir&"\data\before_Sheet.xlsx")
+
+
+
+
+
+EndFunc
 
