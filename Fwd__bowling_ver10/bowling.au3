@@ -666,7 +666,7 @@ firstANDsecRoundsetAVG(int($teamNum_1),int($teamNum_2),int($whoIsAgainstTeam12),
 EndIf
 
 
-	Local $Player1_Score_1[6] , $Player2_Score_1[6],$Player3_Score_1[6],$Player1_Score_2[6] , $Player2_Score_2[6],$Player3_Score_2[6]
+Local $Player1_Score_1[6] , $Player2_Score_1[6],$Player3_Score_1[6],$Player1_Score_2[6] , $Player2_Score_2[6],$Player3_Score_2[6]
 $roundNumber=GUICtrlRead($RoundNumberInput)
 $teamNumber_1=GUICtrlRead($TeamNumber_1_inputbox)
 $teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
@@ -713,7 +713,9 @@ $Player3_Score_2[3]=GUICtrlRead($Player3_score_game1_2 )
 $Player3_Score_2[4]=GUICtrlRead($Player3_score_game2_2 )
 $Player3_Score_2[5]=GUICtrlRead($Player3_score_game3_2 )
 
-	If $NextIndex=4 Then;added 11.08.16 17:00
+	If $NextIndex=4 Then;added 10.05.17 was 4
+;~ MsgBox(0,$whoIsAgainstTeam12,"")
+fillAgainstTeam12Score()
 	$NextIndex=0
 	Else
 	$NextIndex+=1
@@ -809,6 +811,8 @@ $teamNumber_2=GUICtrlRead($TeamNumber_2_inputbox)
 TakePlayerAVGFromTextFile_DisplayOnWindow($roundNumber,$teamNumber_1,$teamNumber_2)
 ;calculateAVGAndPutOnProg()
 EndIf
+
+
 
 
 
@@ -2572,7 +2576,7 @@ For $abcdd = 0 To $whoIsAgainstTeam12_index-6
 
    $PersonalScoresArray[ 12 ][(Int($roundNumberr)-1)*9+$justGoUp]=$returnArray333[4+$abcdd]
    $forIndex+=1;
-;~ _ArrayDisplay($returnArray333,4+$abcdd)
+;~  _ArrayDisplay($returnArray333,4+$abcdd)
 ;~ _ArrayDisplay($PersonalScoresArray,$abcdd)
 
 Next
@@ -2623,7 +2627,7 @@ If IsArray($returnArray333) Then
 
 ;;now fill team 12
  ;  $PersonalScoresArray[ 12 ][(Int($roundNumberr)-1)*9+1]=$returnArray333[$whoIsAgainstTeam12_index+2]
-
+;_ArrayDisplay($PersonalScoresArray2)
 
 EndIf
 
@@ -2839,7 +2843,7 @@ If Not(IsArray($TeamHighest3GameTotalArray)) Then
 FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt")
 _FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
 EndIf
-
+;~ _ArrayDisplay($TeamHighest3GameTotalArray)
 If $Team1_Missing_Players=0 Then ;;;highest 3 games can be earned ONLY if all Players in a certin team has arrived!!!!
 $totalPins_WIthout_handicap_team1=Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
 Else
@@ -3417,5 +3421,75 @@ EndIf
 
 	Next
 Next
+
+EndFunc
+
+
+
+Func fillAgainstTeam12Score()
+Local $TeamHighest3GameTotalArray[11][100]
+Local $TeamHighest1GameTotalArray[11][100]
+
+;~ msgbox(0,"inside team 12fill","")
+
+;who is against team 12
+$roundNumberr=GUICtrlRead($RoundNumberInput)
+For $whoIsAgainstTeam12=1 To 11
+$returnArray333=0
+_FileReadToArray(@ScriptDir&"\rawData\data\round_"&$roundNumberr&"_team_12_vs_"&$whoIsAgainstTeam12&".txt",$returnArray333);read text file into an array
+$whoIsAgainstTeam12_index=_ArraySearch($returnArray333,"teamNumber: "&$whoIsAgainstTeam12);this gives 38
+If IsArray($returnArray333) Then
+ExitLoop
+EndIf
+
+Next
+
+
+$startCalcFromHer=_ArraySearch($returnArray333,"teamNumber: "&$whoIsAgainstTeam12);
+;~ _ArrayDisplay($returnArray333,$startCalcFromHer)
+
+
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
+If Not(IsArray($TeamHighest3GameTotalArray)) Then
+FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,0,",")
+EndIf
+;~ _ArrayDisplay($TeamHighest3GameTotalArray)
+;~ If $Team1_Missing_Players=0 Then ;;;highest 3 games can be earned ONLY if all Players in a certin team has arrived!!!!
+;~ $totalPins_WIthout_handicap_team1=Int(GUICtrlRead($Player1_Score_Game1_1))+Int(GUICtrlRead($Player1_Score_Game2_1))+Int(GUICtrlRead($Player1_Score_Game3_1))+ Int(GUICtrlRead($Player2_Score_Game1_1))+Int(GUICtrlRead($Player2_Score_Game2_1))+Int(GUICtrlRead($Player2_Score_Game3_1))+ Int(GUICtrlRead($Player3_Score_Game1_1))+Int(GUICtrlRead($Player3_Score_Game2_1))+Int(GUICtrlRead($Player3_Score_Game3_1))
+;~ Else
+;~ $totalPins_WIthout_handicap_team1=0
+;~ EndIf
+
+If IsArray($returnArray333) Then
+$totalGame1=int($returnArray333[Int($startCalcFromHer+2)])+int($returnArray333[Int($startCalcFromHer+3)])+int($returnArray333[Int($startCalcFromHer+4)])
+$totalGame2=int($returnArray333[Int($startCalcFromHer+8)])+int($returnArray333[Int($startCalcFromHer+9)])+int($returnArray333[Int($startCalcFromHer+10)])
+$totalGame3=int($returnArray333[Int($startCalcFromHer+14)])+int($returnArray333[Int($startCalcFromHer+15)])+int($returnArray333[Int($startCalcFromHer+16)])
+$Team1_Max_total_pins_for_a_single_game_in_this_round=_Max(_Max($totalGame1,$totalGame2),$totalGame3)
+
+
+$TeamHighest3GameTotalArray[ Int($whoIsAgainstTeam12) ][Int($roundNumberr)]=int($returnArray333[Int($startCalcFromHer+2)])+int($returnArray333[Int($startCalcFromHer+3)])+int($returnArray333[Int($startCalcFromHer+4)])+int($returnArray333[Int($startCalcFromHer+8)])+int($returnArray333[Int($startCalcFromHer+9)])+int($returnArray333[Int($startCalcFromHer+10)])+int($returnArray333[Int($startCalcFromHer+14)])+int($returnArray333[Int($startCalcFromHer+15)])+int($returnArray333[Int($startCalcFromHer+16)])
+
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_3_Games.txt",$TeamHighest3GameTotalArray,Default,Default,",")
+
+
+
+
+
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,0,",")
+If Not(IsArray($TeamHighest1GameTotalArray)) Then
+FileCopy(@ScriptDir&"\rawData\"&"Teams_Points_dont_delete_me_critical_file.txt",@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt")
+_FileReadToArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,0,",")
+EndIf
+
+
+$TeamHighest1GameTotalArray[ Int($whoIsAgainstTeam12) ][Int($roundNumberr)]=$Team1_Max_total_pins_for_a_single_game_in_this_round
+
+
+_FileWriteFromArray(@ScriptDir&"\rawData\data\Teams_Points_Highest_1_Game_total.txt",$TeamHighest1GameTotalArray,Default,Default,",")
+
+EndIf
+
 
 EndFunc
